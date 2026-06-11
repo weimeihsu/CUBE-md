@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typography — Design System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-brand" href="index.html">點麥當勞D · Design System</a>
+  <div class="nav-links">
+    <a href="index.html">Overview</a>
+    <a href="typography.html" class="active">Typography</a>
+    <a href="colors.html">Colors</a>
+    <a href="spacing-radius.html">Spacing &amp; Radius</a>
+    <a href="icons.html">Icons</a>
+  </div>
+</nav>
+
+<main class="page">
+  <div class="page-hero">
+    <h1 class="page-title">Typography</h1>
+    <p class="page-subtitle">2 typefaces · 7 size tokens · 2 weights · 28 text styles · 150% line height</p>
+    <a class="btn-download" href="doc/typography-guidelines.md" download="typography-guidelines.md" onclick="handleDownload(event,this)">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      typography-guidelines.md
+    </a>
+  </div>
+
+  <!-- Font strategy -->
+  <div class="section">
+    <div class="section-title">Font strategy</div>
+    <div class="card" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+      <div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px;">Chinese</div>
+        <div style="font-family:'Noto Sans TC',sans-serif;font-size:28px;font-weight:700;margin-bottom:4px;">Noto Sans TC</div>
+        <div style="font-size:12px;color:var(--muted);">Default for all Chinese (CJK) characters</div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px;">English &amp; Numbers</div>
+        <div style="font-family:'Roboto Flex',sans-serif;font-size:28px;font-weight:700;margin-bottom:4px;">Roboto Flex</div>
+        <div style="font-size:12px;color:var(--muted);">Default for Latin letters and digits</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global specs -->
+  <div class="section">
+    <div class="section-title">Global specifications</div>
+    <div class="card" style="display:flex;gap:48px;flex-wrap:wrap;">
+      <div><div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Line Height</div><div style="font-size:20px;font-weight:700;">150%</div></div>
+      <div><div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Letter Spacing</div><div style="font-size:20px;font-weight:700;">0%</div></div>
+      <div><div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Regular weight</div><div style="font-size:20px;font-weight:700;">400</div></div>
+      <div><div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Bold weight</div><div style="font-size:20px;font-weight:700;">700</div></div>
+    </div>
+  </div>
+
+  <!-- Noto Sans TC -->
+  <div class="section">
+    <div class="section-label">Noto Sans TC — Chinese</div>
+    <div class="card" style="padding:0;overflow:hidden;">
+      <table class="type-table" style="width:100%">
+        <thead>
+          <tr>
+            <th style="width:100px;">Token</th>
+            <th style="width:80px;">Size</th>
+            <th>Bold (700)</th>
+            <th>Regular (400)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="type-meta"><span class="type-token">3xl</span><span class="type-detail">32px / 150%</span></div></td>
+            <td><span style="font-size:13px;color:var(--muted);">32 px</span></td>
+            <td><div class="font-noto type-sample-bold"    style="font-size:32px;line-height:1.5;">使用者</div></td>
+            <td><div class="font-noto type-sample-regular" style="font-size:32px;line-height:1.5;">使用者</div></td>
+          </tr>
+          <tr>
+            <td><div class="type-meta"><span class="type-token">2xl</span><span class="type-detail">24px / 150%</span></div></td>
+            <td><span style="font-size:13px;color:var(--muted);">24 px</span></td>
+            <td><div class="font-noto type-sample-bold"    style="font-size:24px;line-height:1.5;">使用者透過清晰</div></td>
+            <td><div class="font-noto type-sample-regular" style="font-size:24px;line-height:1.5;">使用者透過清晰</div></td>
+          </tr>
+          <tr>
+            <td><div class="type-meta"><span class="type-token">xl</span><span class="type-detail">20px / 150%</span></div></td>
+            <td><span style="font-size:13px;color:var(--muted);">20 px</span></td>
+            <td><div class="font-noto type-sample-bold"    style="font-size:20px;line-height:1.5;">使用者透過清晰易讀</div></td>
+            <td><div class="font-noto type-sample-regular" style="font-size:20px;line-height:1.5;">使用者透過清晰易讀</div></td>
+          </tr>
+          <tr>
+            <td><div class="type-meta"><span class="type-token">lg</span><span class="type-detail">18px / 150%</span></div></td>
+            <td><span style="font-size:13px;color:var(--muted);">18 px</span></td>
+            <td><div class="font-noto type-sample-bold"    style="font-size:18px;line-height:1.5;">使用者透過清晰易讀的介面</div></td>
+            <td><div class="font-noto type-sample-regular" style="font-size:18px;line-height:1.5;">使用者透過清晰易讀的介面</div></td>
+          </tr>
+          <tr>
+            <td><div class="type-meta"><span class="type-token">md</span><span class="type-detail">16px / 150%</span></div></td>
+            <td><span style="font-size:13px;color:var(--muted);">16 px</span></td>
+            <td><div class="font-noto type-sample-bold"    style="font-size:16px;line-height:1.5;">使用者透過清晰易讀的介面快速完成操作</div></td>
+            <td><div class="font-noto type-sample-regular" style="font-size:16px;line-height:1.5;">使用者透過清晰易讀的介面快速完成操作</div></td>
+          </tr>
+          <tr>
+            <td><div class="type-meta"><span class="type-token">sm</span><span class="type-detail">14px / 150%</span></div></td>
+            <td><span style="font-size:13px;color:var(--muted);">14 px</span></td>
+            <td><div class="font-noto type-sample-bold"    style="font-size:14px;line-height:1.5;">使用者透過清晰易讀的介面快速完成操作並獲得良好的體驗</div></td>
+            <td><div class="font-noto type-sample-regular" style="font-size:14px;line-height:1.5;">使用者透過清晰易讀的介面快速完成操作並獲得良好的體驗</div></td>
+          </tr>
+          <tr>
+            <td><div class="type-meta"><span class="type-token">xs</span><span class="type-detail">12px / 150%</span></div></td>
+            <td><span style="font-size:13px;color:var(--muted);">12 px</span></td>
+            <td><div class="font-noto type-sample-bold"    style="font-size:12px;line-height:1.5;">使用者透過清晰易讀的介面快速完成操作並獲得良好的體驗</div></td>
+            <td><div class="font-noto type-sample-regular" style="font-size:12px;line-height:1.5;">使用者透過清晰易讀的介面快速完成操作並獲得良好的體驗</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Roboto Flex -->
+  <div class="section">
+    <div class="section-label">Roboto Flex — English &amp; Numbers</div>
+    <div class="card" style="padding:0;overflow:hidden;">
+      <table class="type-table" style="width:100%">
+        <thead>
+          <tr>
+            <th style="width:100px;">Token</th>
+            <th style="width:80px;">Size</th>
+            <th>Bold (700)</th>
+            <th>Regular (400)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="type-meta"><span class="type-token">3xl</span><span class="type-detail">32px / 150%</span></div></td>
+            <td><span style="font-size:13px;color:var(--muted);">32 px</span></td>
+            <td><div class="font-roboto type-sample-bold"    style="font-size:32px;line-height:1.5;">The quick brown fox</div></td>
+            <td><div class="font-roboto type-sample-regular" style="font-size:32px;line-height:1.5;">The quick brown fox</div></td>
+          </tr>
+          <tr>
+            <td><div class="type-meta"><span class="type-token">2xl</span><span class="type-detail">24px / 150%</span></div></td>
+            <td><span style="font-size:13px;color:var(--muted);">24 px</span></td>
+            <td><div class="font-roboto type-sample-bold"    style="font-size:24px;line-height:1.5;">The quick brown fox jumps</div></td>
+            <td><div class="font-roboto type-sample-regular" style="font-size:24px;line-height:1.5;">The quick brown fox jumps</div></td>
+          </tr>
+          <tr>
+            <td><div class="type-meta"><span class="type-token">xl</span><span class="type-detail">20px / 150%</span></div></td>
+            <td><span style="font-size:13px;color:var(--muted);">20 px</span></td>
+            <td><div class="font-roboto type-sample-bold"    style="font-size:20px;line-height:1.5;">The quick brown fox jumps over the lazy dog</div></td>
+            <td><div class="font-roboto type-sample-regular" style="font-size:20px;line-height:1.5;">The quick brown fox jumps over the lazy dog</div></td>
+          </tr>
+          <tr>
+            <td><div class="type-meta"><span class="type-token">lg</span><span class="type-detail">18px / 150%</span></div></td>
+            <td><span style="font-size:13px;color:var(--muted);">18 px</span></td>
+            <td><div class="font-roboto type-sample-bold"    style="font-size:18px;line-height:1.5;">The quick brown fox jumps over the lazy dog</div></td>
+            <td><div class="font-roboto type-sample-regular" style="font-size:18px;line-height:1.5;">The quick brown fox jumps over the lazy dog</div></td>
+          </tr>
+          <tr>
+            <td><div class="type-meta"><span class="type-token">md</span><span class="type-detail">16px / 150%</span></div></td>
+            <td><span style="font-size:13px;color:var(--muted);">16 px</span></td>
+            <td><div class="font-roboto type-sample-bold"    style="font-size:16px;line-height:1.5;">The quick brown fox jumps over the lazy dog while testing typography, spacing, and readability.</div></td>
+            <td><div class="font-roboto type-sample-regular" style="font-size:16px;line-height:1.5;">The quick brown fox jumps over the lazy dog while testing typography, spacing, and readability.</div></td>
+          </tr>
+          <tr>
+            <td><div class="type-meta"><span class="type-token">sm</span><span class="type-detail">14px / 150%</span></div></td>
+            <td><span style="font-size:13px;color:var(--muted);">14 px</span></td>
+            <td><div class="font-roboto type-sample-bold"    style="font-size:14px;line-height:1.5;">The quick brown fox jumps over the lazy dog while testing typography, spacing, and overall readability.</div></td>
+            <td><div class="font-roboto type-sample-regular" style="font-size:14px;line-height:1.5;">The quick brown fox jumps over the lazy dog while testing typography, spacing, and overall readability.</div></td>
+          </tr>
+          <tr>
+            <td><div class="type-meta"><span class="type-token">xs</span><span class="type-detail">12px / 150%</span></div></td>
+            <td><span style="font-size:13px;color:var(--muted);">12 px</span></td>
+            <td><div class="font-roboto type-sample-bold"    style="font-size:12px;line-height:1.5;">The quick brown fox jumps over the lazy dog while testing typography, spacing, and overall readability.</div></td>
+            <td><div class="font-roboto type-sample-regular" style="font-size:12px;line-height:1.5;">The quick brown fox jumps over the lazy dog while testing typography, spacing, and overall readability.</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Style naming -->
+  <div class="section">
+    <div class="section-title">Text style naming convention</div>
+    <div class="card">
+      <code style="font-size:15px;font-family:monospace;background:var(--gray-100);padding:12px 16px;border-radius:var(--r-md);display:inline-block;">&lt;Family&gt;/&lt;Size&gt;px/&lt;Weight&gt;</code>
+      <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">
+        <span class="badge">NotoSansTC/32px/Bold</span>
+        <span class="badge">NotoSansTC/14px/Regular</span>
+        <span class="badge">RobotoFlex/24px/Bold</span>
+        <span class="badge">RobotoFlex/12px/Regular</span>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="downloads.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

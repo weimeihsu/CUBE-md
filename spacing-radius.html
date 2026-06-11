@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spacing &amp; Radius — Design System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-brand" href="index.html">點麥當勞D · Design System</a>
+  <div class="nav-links">
+    <a href="index.html">Overview</a>
+    <a href="typography.html">Typography</a>
+    <a href="colors.html">Colors</a>
+    <a href="spacing-radius.html" class="active">Spacing &amp; Radius</a>
+    <a href="icons.html">Icons</a>
+  </div>
+</nav>
+
+<main class="page">
+  <div class="page-hero">
+    <h1 class="page-title">間距 Spacing &amp; 圓角 Radius</h1>
+    <p class="page-subtitle">10 spacing tokens · 4 radius tokens · All stored as Figma variables</p>
+    <a class="btn-download" href="doc/spacing-radius.md" download="spacing-radius.md" onclick="handleDownload(event,this)">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      spacing-radius.md
+    </a>
+  </div>
+
+  <div class="sr-grid">
+
+    <!-- Spacing -->
+    <div class="section">
+      <div class="section-label">間距 Spacing</div>
+      <div class="card">
+        <div class="scale-row" style="align-items:flex-end; gap:16px; flex-wrap:wrap;">
+
+          <div class="scale-item">
+            <span class="scale-item-label">xxs</span>
+            <div class="spacing-block" style="width:4px;height:4px;"></div>
+            <span class="scale-item-value">4px</span>
+          </div>
+
+          <div class="scale-item">
+            <span class="scale-item-label">xs</span>
+            <div class="spacing-block" style="width:6px;height:6px;"></div>
+            <span class="scale-item-value">6px</span>
+          </div>
+
+          <div class="scale-item">
+            <span class="scale-item-label">sm</span>
+            <div class="spacing-block" style="width:8px;height:8px;"></div>
+            <span class="scale-item-value">8px</span>
+          </div>
+
+          <div class="scale-item">
+            <span class="scale-item-label">md</span>
+            <div class="spacing-block" style="width:12px;height:12px;"></div>
+            <span class="scale-item-value">12px</span>
+          </div>
+
+          <div class="scale-item">
+            <span class="scale-item-label">lg</span>
+            <div class="spacing-block" style="width:16px;height:16px;"></div>
+            <span class="scale-item-value">16px</span>
+          </div>
+
+          <div class="scale-item">
+            <span class="scale-item-label">xl</span>
+            <div class="spacing-block" style="width:20px;height:20px;"></div>
+            <span class="scale-item-value">20px</span>
+          </div>
+
+          <div class="scale-item">
+            <span class="scale-item-label">2xl</span>
+            <div class="spacing-block" style="width:24px;height:24px;"></div>
+            <span class="scale-item-value">24px</span>
+          </div>
+
+          <div class="scale-item">
+            <span class="scale-item-label">3xl</span>
+            <div class="spacing-block" style="width:32px;height:32px;"></div>
+            <span class="scale-item-value">32px</span>
+          </div>
+
+          <div class="scale-item">
+            <span class="scale-item-label">4xl</span>
+            <div class="spacing-block" style="width:40px;height:40px;"></div>
+            <span class="scale-item-value">40px</span>
+          </div>
+
+          <div class="scale-item">
+            <span class="scale-item-label">5xl</span>
+            <div class="spacing-block" style="width:80px;height:80px;"></div>
+            <span class="scale-item-value">80px</span>
+          </div>
+
+        </div>
+
+        <!-- Token table -->
+        <div style="margin-top:32px;">
+          <table style="width:100%;border-collapse:collapse;">
+            <thead>
+              <tr>
+                <th style="text-align:left;padding:8px 12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);border-bottom:1px solid var(--border);">Token</th>
+                <th style="text-align:left;padding:8px 12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);border-bottom:1px solid var(--border);">Value</th>
+                <th style="text-align:left;padding:8px 12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);border-bottom:1px solid var(--border);">Usage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">xxs</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-family:monospace;">4px</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--muted);font-size:12px;">Tight insets</td></tr>
+              <tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">xs</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-family:monospace;">6px</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--muted);font-size:12px;">Compact gaps</td></tr>
+              <tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">sm</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-family:monospace;">8px</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--muted);font-size:12px;">Icon swatch gap (default intra-swatch)</td></tr>
+              <tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">md</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-family:monospace;">12px</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--muted);font-size:12px;">Default gap between components</td></tr>
+              <tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">lg</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-family:monospace;">16px</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--muted);font-size:12px;">Standard section gap</td></tr>
+              <tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">xl</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-family:monospace;">20px</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--muted);font-size:12px;"></td></tr>
+              <tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">2xl</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-family:monospace;">24px</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--muted);font-size:12px;"></td></tr>
+              <tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">3xl</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-family:monospace;">32px</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--muted);font-size:12px;"></td></tr>
+              <tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">4xl</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-family:monospace;">40px</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--muted);font-size:12px;"></td></tr>
+              <tr><td style="padding:8px 12px;font-weight:700;">5xl</td><td style="padding:8px 12px;font-family:monospace;">80px</td><td style="padding:8px 12px;color:var(--muted);font-size:12px;">Large layout spacing</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Radius -->
+    <div class="section">
+      <div class="section-label">圓角 Radius</div>
+      <div class="card">
+        <div class="scale-row" style="gap:20px; flex-wrap:wrap;">
+
+          <div class="scale-item">
+            <span class="scale-item-label">s</span>
+            <div class="radius-block" style="border-radius:4px;"></div>
+            <span class="scale-item-value">4px</span>
+          </div>
+
+          <div class="scale-item">
+            <span class="scale-item-label">md</span>
+            <div class="radius-block" style="border-radius:6px;"></div>
+            <span class="scale-item-value">6px</span>
+          </div>
+
+          <div class="scale-item">
+            <span class="scale-item-label">lg</span>
+            <div class="radius-block" style="border-radius:12px;"></div>
+            <span class="scale-item-value">12px</span>
+          </div>
+
+          <div class="scale-item">
+            <span class="scale-item-label">full</span>
+            <div class="radius-block" style="border-radius:100px;"></div>
+            <span class="scale-item-value">100px</span>
+          </div>
+
+        </div>
+
+        <!-- Token table -->
+        <div style="margin-top:32px;">
+          <table style="width:100%;border-collapse:collapse;">
+            <thead>
+              <tr>
+                <th style="text-align:left;padding:8px 12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);border-bottom:1px solid var(--border);">Token</th>
+                <th style="text-align:left;padding:8px 12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);border-bottom:1px solid var(--border);">Value</th>
+                <th style="text-align:left;padding:8px 12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);border-bottom:1px solid var(--border);">Usage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">s</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-family:monospace;">4px</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--muted);font-size:12px;">Default — color swatches, cards</td></tr>
+              <tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">md</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-family:monospace;">6px</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--muted);font-size:12px;">Buttons, tags</td></tr>
+              <tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:700;">lg</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);font-family:monospace;">12px</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--muted);font-size:12px;">Panels, modals, larger containers</td></tr>
+              <tr><td style="padding:8px 12px;font-weight:700;">full</td><td style="padding:8px 12px;font-family:monospace;">100px</td><td style="padding:8px 12px;color:var(--muted);font-size:12px;">Pill / fully rounded (badges, avatars)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script src="downloads.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

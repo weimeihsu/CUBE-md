@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Roboto+Flex:opsz,wght@8..144,400;8..144,700&display=swap');
+
+/* ─── Design tokens ──────────────────────────────────────────────── */
+:root {
+  /* Gray */
+  --gray-0:    #FFFFFF; --gray-100: #F5F5F5; --gray-150: #E7E7E7;
+  --gray-200:  #D9D9D9; --gray-300: #BDBDBD; --gray-400: #A3A3A3;
+  --gray-500:  #898989; --gray-600: #707070; --gray-700: #5C5C5C;
+  --gray-800:  #494949; --gray-900: #373737; --gray-1000:#262626;
+  --gray-1100: #000000;
+  /* Blue */
+  --blue-100:#E9F6FE; --blue-500:#1890D2; --blue-600:#0C76B0;
+  /* Spacing */
+  --sp-xxs:4px; --sp-xs:6px; --sp-sm:8px;  --sp-md:12px;
+  --sp-lg:16px; --sp-xl:20px;--sp-2xl:24px;--sp-3xl:32px;
+  --sp-4xl:40px;--sp-5xl:80px;
+  /* Radius */
+  --r-s:4px; --r-md:6px; --r-lg:12px; --r-full:100px;
+  /* UI aliases */
+  --bg:       var(--gray-100);
+  --surface:  var(--gray-0);
+  --border:   var(--gray-150);
+  --text:     var(--gray-900);
+  --muted:    var(--gray-600);
+  --accent:   var(--blue-500);
+  --nav-bg:   var(--gray-1000);
+  --nav-h:    56px;
+}
+
+/* ─── Reset ──────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Roboto Flex', system-ui, -apple-system, sans-serif;
+  background: var(--bg); color: var(--text);
+  font-size: 14px; line-height: 1.5;
+  padding-top: var(--nav-h);
+}
+
+/* ─── Nav ────────────────────────────────────────────────────────── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h);
+  background: var(--nav-bg); display: flex; align-items: center;
+  padding: 0 var(--sp-3xl); gap: var(--sp-2xl); z-index: 100;
+  box-shadow: 0 1px 0 rgba(255,255,255,.08);
+}
+.nav-brand {
+  font-size: 15px; font-weight: 700; color: var(--gray-0);
+  text-decoration: none; letter-spacing: .02em; white-space: nowrap;
+}
+.nav-links { display: flex; gap: var(--sp-xs); }
+.nav-links a {
+  color: var(--gray-400); text-decoration: none;
+  font-size: 13px; padding: 6px var(--sp-sm);
+  border-radius: var(--r-s); transition: color .15s, background .15s;
+}
+.nav-links a:hover  { color: var(--gray-0); background: rgba(255,255,255,.08); }
+.nav-links a.active { color: var(--gray-0); background: var(--accent); }
+
+/* ─── Page layout ────────────────────────────────────────────────── */
+.page { max-width: 1200px; margin: 0 auto; padding: var(--sp-4xl) var(--sp-3xl); }
+.page-hero { margin-bottom: var(--sp-4xl); }
+.page-title {
+  font-family: 'Roboto Flex', sans-serif;
+  font-size: 32px; font-weight: 700; color: var(--text);
+  line-height: 1.2; margin-bottom: var(--sp-sm);
+}
+.page-subtitle { font-size: 16px; color: var(--muted); }
+
+/* ─── Sections ───────────────────────────────────────────────────── */
+.section { margin-bottom: var(--sp-5xl); }
+.section-title {
+  font-size: 12px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: var(--sp-xl); padding-bottom: var(--sp-sm);
+  border-bottom: 1px solid var(--border);
+}
+.section-label {
+  font-size: 20px; font-weight: 700; color: var(--text);
+  margin-bottom: var(--sp-xl);
+}
+
+/* ─── Card ───────────────────────────────────────────────────────── */
+.card {
+  background: var(--surface); border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+  padding: var(--sp-2xl); overflow: hidden;
+}
+
+/* ─── Index cards ────────────────────────────────────────────────── */
+.index-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--sp-xl);
+}
+.index-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r-lg); overflow: hidden; text-decoration: none;
+  color: inherit; display: block; transition: box-shadow .2s, transform .2s;
+}
+.index-card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,.1); transform: translateY(-2px);
+}
+.index-card-thumb {
+  height: 140px; display: flex; align-items: center; justify-content: center;
+  gap: var(--sp-sm); padding: var(--sp-2xl);
+  background: var(--gray-100);
+}
+.index-card-body { padding: var(--sp-xl); border-top: 1px solid var(--border); }
+.index-card-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.index-card-desc  { font-size: 12px; color: var(--muted); }
+
+/* ─── Typography page ────────────────────────────────────────────── */
+.type-table { width: 100%; border-collapse: collapse; }
+.type-table th {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; color: var(--muted);
+  text-align: left; padding: var(--sp-sm) var(--sp-md);
+  border-bottom: 1px solid var(--border);
+}
+.type-table td {
+  padding: var(--sp-xl) var(--sp-md);
+  border-bottom: 1px solid var(--border); vertical-align: middle;
+}
+.type-table tr:last-child td { border-bottom: none; }
+.type-meta { display: flex; flex-direction: column; gap: 2px; min-width: 80px; }
+.type-token { font-size: 13px; font-weight: 700; color: var(--text); }
+.type-detail { font-size: 11px; color: var(--muted); }
+.type-sample-bold    { font-weight: 700; color: var(--text); }
+.type-sample-regular { font-weight: 400; color: var(--gray-600); margin-top: 4px; }
+.font-noto   { font-family: 'Noto Sans TC', sans-serif; }
+.font-roboto { font-family: 'Roboto Flex', sans-serif; }
+
+/* ─── Color page ─────────────────────────────────────────────────── */
+.color-group { margin-bottom: var(--sp-3xl); }
+.color-group-label {
+  font-size: 12px; font-weight: 700; text-transform: capitalize;
+  letter-spacing: .06em; color: var(--muted);
+  margin-bottom: var(--sp-md);
+}
+.color-row { display: flex; flex-wrap: wrap; gap: var(--sp-md); }
+.color-swatch { display: flex; flex-direction: column; gap: var(--sp-sm); align-items: center; width: 66px; }
+.color-swatch-label { font-size: 11px; color: var(--text); white-space: nowrap; }
+.color-swatch-block {
+  width: 56px; height: 56px; border-radius: var(--r-s);
+  border: 1px solid rgba(0,0,0,.06);
+}
+.color-swatch-hex { font-size: 11px; color: var(--muted); font-family: monospace; }
+
+/* ─── Spacing & Radius page ──────────────────────────────────────── */
+.sr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-4xl); }
+@media (max-width: 700px) { .sr-grid { grid-template-columns: 1fr; } }
+.scale-row { display: flex; align-items: flex-start; gap: var(--sp-md); flex-wrap: wrap; }
+.scale-item { display: flex; flex-direction: column; gap: var(--sp-sm); align-items: center; }
+.scale-item-label { font-size: 11px; font-weight: 700; color: var(--text); }
+.scale-item-value { font-size: 11px; color: var(--muted); }
+.spacing-block { background: var(--gray-150); flex-shrink: 0; }
+.radius-block  { background: var(--gray-150); width: 80px; height: 80px; flex-shrink: 0; }
+
+/* ─── Icons page ─────────────────────────────────────────────────── */
+.icon-set { margin-bottom: var(--sp-4xl); }
+.icon-set-header {
+  display: flex; align-items: baseline; gap: var(--sp-md);
+  margin-bottom: var(--sp-xl);
+}
+.icon-set-name { font-size: 18px; font-weight: 700; }
+.icon-set-desc { font-size: 13px; color: var(--muted); }
+.icon-variants { display: flex; flex-direction: column; gap: var(--sp-xl); }
+.icon-row { display: flex; align-items: center; gap: var(--sp-2xl); flex-wrap: wrap; }
+.icon-row-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; color: var(--muted); width: 64px; flex-shrink: 0;
+}
+.icon-sizes { display: flex; gap: var(--sp-2xl); align-items: flex-end; }
+.icon-cell  { display: flex; flex-direction: column; align-items: center; gap: var(--sp-xs); }
+.icon-cell svg  { display: block; }
+.icon-cell-size { font-size: 10px; color: var(--muted); }
+.icon-color { color: var(--gray-900); fill: var(--gray-900); stroke: var(--gray-900); }
+.icon-divider {
+  height: 1px; background: var(--border); margin: var(--sp-xl) 0;
+}
+.badge {
+  display: inline-block; font-size: 10px; font-weight: 700;
+  padding: 2px 7px; border-radius: var(--r-full);
+  background: var(--gray-150); color: var(--muted);
+  letter-spacing: .05em; text-transform: uppercase;
+}
+
+/* ─── Download button ────────────────────────────────────────────── */
+.btn-download {
+  display: inline-flex; align-items: center; gap: var(--sp-xs);
+  margin-top: var(--sp-xl);
+  padding: 8px 14px;
+  font-size: 13px; font-weight: 700;
+  color: var(--text);
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-md);
+  text-decoration: none;
+  transition: background .15s, border-color .15s, color .15s;
+  cursor: pointer;
+}
+.btn-download:hover {
+  background: var(--gray-150);
+  border-color: var(--gray-300);
+}
+.btn-download svg { flex-shrink: 0; }
+
+/* Download link inside index cards */
+.index-card-dl {
+  display: inline-flex; align-items: center; gap: 4px;
+  margin-top: var(--sp-sm);
+  font-size: 11px; font-weight: 700; color: var(--muted);
+  text-decoration: none; letter-spacing: .04em;
+  transition: color .15s;
+}
+.index-card-dl:hover { color: var(--text); }
+.index-card-dl svg { flex-shrink: 0; }
