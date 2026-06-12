@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buttons — Design System</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="tailwind.config.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans bg-gray-100 text-gray-900 text-sm leading-normal pt-14">
+
+<nav></nav>
+<script src="nav.js"></script>
+
+<main class="max-w-page mx-auto px-8 py-10">
+  <div class="mb-10">
+    <h1 class="text-32 font-bold text-gray-900 leading-tight mb-2">按鈕 Buttons</h1>
+    <p class="text-base text-gray-600">5 button types · 32 variants · All tokens bound to Figma variables</p>
+    <a class="inline-flex items-center gap-1.5 mt-5 px-3.5 py-2 text-13 font-bold text-gray-900 bg-white border-1.5 border-gray-150 rounded-md no-underline transition-colors duration-150 hover:bg-gray-150 hover:border-gray-300 cursor-pointer" href="doc/buttons-spec.md" download="buttons-spec.md" onclick="handleDownload(event,this)">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      buttons-spec.md
+    </a>
+  </div>
+
+  <!-- 1. Dynamic Button -->
+  <section class="mb-12">
+    <div class="text-xl font-bold text-gray-900 mb-1">按鈕 Dynamic Button</div>
+    <div class="text-xs text-gray-600 mb-5">Style: Filled / Outlined / Text · Type: Default / Green · Size: lg / sm · State: Enabled / Disabled</div>
+
+    <!-- LG -->
+    <div class="mb-3">
+      <div class="text-xs font-bold uppercase tracking-md text-gray-500 mb-3">Size · LG &nbsp;·&nbsp; <span class="font-mono font-normal normal-case">NotoSansTC / 16px / Bold &nbsp;·&nbsp; px: 2xl=24 &nbsp;·&nbsp; py: md=12 &nbsp;·&nbsp; radius: md=6</span></div>
+      <div class="bg-white rounded-xl border border-gray-150 p-6 overflow-x-auto">
+        <div class="flex flex-wrap gap-8 items-end">
+
+          <div class="flex flex-col items-center gap-3">
+            <div class="bg-blue-1000 text-white font-noto text-base font-bold leading-normal py-3 px-6 rounded-md whitespace-nowrap">按鈕</div>
+            <div class="text-center"><div class="text-11 font-bold text-gray-900">Filled</div><div class="text-11 text-gray-500">Enabled</div></div>
+          </div>
+
+          <div class="flex flex-col items-center gap-3">
+            <div class="bg-gray-150 text-gray-300 font-noto text-base font-bold leading-normal py-3 px-6 rounded-md whitespace-nowrap">按鈕</div>
+            <div class="text-center"><div class="text-11 font-bold text-gray-900">Filled</div><div class="text-11 text-gray-500">Disabled</div></div>
+          </div>
+
+          <div class="flex flex-col items-center gap-3">
+            <div class="border border-blue-1000 text-blue-1000 font-noto text-base font-bold leading-normal py-3 px-6 rounded-md whitespace-nowrap">按鈕</div>
+            <div class="text-center"><div class="text-11 font-bold text-gray-900">Outlined</div><div class="text-11 text-gray-500">Enabled</div></div>
+          </div>
+
+          <div class="flex flex-col items-center gap-3">
+            <div class="border border-gray-900 text-gray-900 font-noto text-base font-bold leading-normal py-3 px-6 rounded-md whitespace-nowrap opacity-50">按鈕</div>
+            <div class="text-center"><div class="text-11 font-bold text-gray-900">Outlined</div><div class="text-11 text-gray-500">Disabled</div></div>
+          </div>
+
+          <div class="flex flex-col items-center gap-3">
+            <div class="text-blue-1000 font-noto text-base font-bold leading-normal py-3 px-6 rounded-md whitespace-nowrap">按鈕</div>
+            <div class="text-center"><div class="text-11 font-bold text-gray-900">Text · Default</div><div class="text-11 text-gray-500">Enabled</div></div>
+          </div>
+
+          <div class="flex flex-col items-center gap-3">
+            <div class="text-gray-900 font-noto text-base font-bold leading-normal py-3 px-6 rounded-md whitespace-nowrap opacity-50">按鈕</div>
+            <div class="text-center"><div class="text-11 font-bold text-gray-900">Text · Default</div><div class="text-11 text-gray-500">Disabled</div></div>
+          </div>
+
+          <div class="flex flex-col items-center gap-3">
+            <div class="text-green-500 font-noto text-base font-bold leading-normal py-3 px-6 rounded-md whitespace-nowrap">按鈕</div>
+            <div class="text-center"><div class="text-11 font-bold text-gray-900">Text · Green</div><div class="text-11 text-gray-500">Enabled</div></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- SM -->
+    <div>
+      <div class="text-xs font-bold uppercase tracking-md text-gray-500 mb-3">Size · SM &nbsp;·&nbsp; <span class="font-mono font-normal normal-case">RobotoFlex / 14px / Bold &nbsp;·&nbsp; px: Spacing-md・12 &nbsp;·&nbsp; py: Spacing-xs・4 &nbsp;·&nbsp; w: 52px</span></div>
+      <div class="bg-white rounded-xl border border-gray-150 p-6 overflow-x-auto">
+        <div class="flex flex-wrap gap-8 items-end">
+
+          <div class="flex flex-col items-center gap-3">
+            <div class="bg-blue-1000 text-white font-roboto text-sm font-bold leading-normal py-1 px-3 rounded-md w-13 text-center">按鈕</div>
+            <div class="text-center"><div class="text-11 font-bold text-gray-900">Filled</div><div class="text-11 text-gray-500">Enabled</div></div>
+          </div>
+
+          <div class="flex flex-col items-center gap-3">
+            <div class="bg-gray-150 text-gray-300 font-roboto text-sm font-bold leading-normal py-1 px-3 rounded-md w-13 text-center">按鈕</div>
+            <div class="text-center"><div class="text-11 font-bold text-gray-900">Filled</div><div class="text-11 text-gray-500">Disabled</div></div>
+          </div>
+
+          <div class="flex flex-col items-center gap-3">
+            <div class="border border-blue-1000 text-blue-1000 font-roboto text-sm font-bold leading-normal py-1 px-3 rounded-md w-13 text-center">按鈕</div>
+            <div class="text-center"><div class="text-11 font-bold text-gray-900">Outlined</div><div class="text-11 text-gray-500">Enabled</div></div>
+          </div>
+
+          <div class="flex flex-col items-center gap-3">
+            <div class="border border-gray-900 text-gray-900 font-roboto text-sm font-bold leading-normal py-1 px-3 rounded-md w-13 text-center opacity-50">按鈕</div>
+            <div class="text-center"><div class="text-11 font-bold text-gray-900">Outlined</div><div class="text-11 text-gray-500">Disabled</div></div>
+          </div>
+
+          <div class="flex flex-col items-center gap-3">
+            <div class="text-blue-1000 font-roboto text-sm font-bold leading-normal py-1 px-3 rounded-md w-13 text-center">按鈕</div>
+            <div class="text-center"><div class="text-11 font-bold text-gray-900">Text · Default</div><div class="text-11 text-gray-500">Enabled</div></div>
+          </div>
+
+          <div class="flex flex-col items-center gap-3">
+            <div class="text-gray-900 font-roboto text-sm font-bold leading-normal py-1 px-3 rounded-md w-13 text-center opacity-50">按鈕</div>
+            <div class="text-center"><div class="text-11 font-bold text-gray-900">Text · Default</div><div class="text-11 text-gray-500">Disabled</div></div>
+          </div>
+
+          <div class="flex flex-col items-center gap-3">
+            <div class="text-green-500 font-roboto text-sm font-bold leading-normal py-1 px-3 rounded-md w-13 text-center">按鈕</div>
+            <div class="text-center"><div class="text-11 font-bold text-gray-900">Text · Green</div><div class="text-11 text-gray-500">Enabled</div></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Token table -->
+    <div class="mt-4 bg-white rounded-xl border border-gray-150 p-6 overflow-hidden">
+      <table class="w-full border-collapse">
+        <thead>
+          <tr>
+            <th class="text-left px-3 py-2 text-11 font-bold uppercase tracking-lg text-gray-600 border-b border-gray-150">Style</th>
+            <th class="text-left px-3 py-2 text-11 font-bold uppercase tracking-lg text-gray-600 border-b border-gray-150">State</th>
+            <th class="text-left px-3 py-2 text-11 font-bold uppercase tracking-lg text-gray-600 border-b border-gray-150">Fill</th>
+            <th class="text-left px-3 py-2 text-11 font-bold uppercase tracking-lg text-gray-600 border-b border-gray-150">Stroke</th>
+            <th class="text-left px-3 py-2 text-11 font-bold uppercase tracking-lg text-gray-600 border-b border-gray-150">Text</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="p-3 border-b border-gray-150 font-bold">Filled</td><td class="p-3 border-b border-gray-150">Enabled</td><td class="p-3 border-b border-gray-150 font-mono text-11 text-blue-1000">blue/blue1000</td><td class="p-3 border-b border-gray-150 text-gray-400">—</td><td class="p-3 border-b border-gray-150 font-mono text-11">gray/gray0</td></tr>
+          <tr><td class="p-3 border-b border-gray-150 font-bold">Filled</td><td class="p-3 border-b border-gray-150">Disabled</td><td class="p-3 border-b border-gray-150 font-mono text-11 text-gray-600">gray/gray150</td><td class="p-3 border-b border-gray-150 text-gray-400">—</td><td class="p-3 border-b border-gray-150 font-mono text-11">gray/gray300</td></tr>
+          <tr><td class="p-3 border-b border-gray-150 font-bold">Outlined</td><td class="p-3 border-b border-gray-150">Enabled</td><td class="p-3 border-b border-gray-150 text-gray-400">—</td><td class="p-3 border-b border-gray-150 font-mono text-11 text-blue-1000">blue/blue1000</td><td class="p-3 border-b border-gray-150 font-mono text-11 text-blue-1000">blue/blue1000</td></tr>
+          <tr><td class="p-3 border-b border-gray-150 font-bold">Outlined</td><td class="p-3 border-b border-gray-150">Disabled</td><td class="p-3 border-b border-gray-150 text-gray-400">—</td><td class="p-3 border-b border-gray-150 font-mono text-11">gray/gray900</td><td class="p-3 border-b border-gray-150 font-mono text-11">gray/gray900 · 50%</td></tr>
+          <tr><td class="p-3 border-b border-gray-150 font-bold">Text · Default</td><td class="p-3 border-b border-gray-150">Enabled</td><td class="p-3 border-b border-gray-150 text-gray-400">—</td><td class="p-3 border-b border-gray-150 text-gray-400">—</td><td class="p-3 border-b border-gray-150 font-mono text-11 text-blue-1000">blue/blue1000</td></tr>
+          <tr><td class="p-3 border-b border-gray-150 font-bold">Text · Default</td><td class="p-3 border-b border-gray-150">Disabled</td><td class="p-3 border-b border-gray-150 text-gray-400">—</td><td class="p-3 border-b border-gray-150 text-gray-400">—</td><td class="p-3 border-b border-gray-150 font-mono text-11">gray/gray900 · 50%</td></tr>
+          <tr><td class="p-3 font-bold">Text · Green</td><td class="p-3">Enabled</td><td class="p-3 text-gray-400">—</td><td class="p-3 text-gray-400">—</td><td class="p-3 font-mono text-11 text-green-500">green/green500</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 2. Bottom Button -->
+  <section class="mb-12">
+    <div class="text-xl font-bold text-gray-900 mb-1">底部按鈕 Bottom Button</div>
+    <div class="text-xs text-gray-600 mb-5">Style: Filled / Outlined · State: Enabled / Disabled · Fixed width 260px</div>
+    <div class="bg-white rounded-xl border border-gray-150 p-6 overflow-x-auto">
+      <div class="flex flex-wrap gap-8 items-end">
+
+        <div class="flex flex-col items-center gap-3">
+          <div class="bg-blue-1000 text-white font-noto text-base font-bold leading-normal p-3 rounded-md w-65 text-center">按鈕</div>
+          <div class="text-center"><div class="text-11 font-bold text-gray-900">Filled · Enabled</div><div class="text-11 font-mono text-gray-500">blue/blue1000</div></div>
+        </div>
+
+        <div class="flex flex-col items-center gap-3">
+          <div class="bg-gray-150 text-gray-300 font-noto text-base font-bold leading-normal p-3 rounded-md w-65 text-center">按鈕</div>
+          <div class="text-center"><div class="text-11 font-bold text-gray-900">Filled · Disabled</div><div class="text-11 font-mono text-gray-500">gray/gray150</div></div>
+        </div>
+
+        <div class="flex flex-col items-center gap-3">
+          <div class="border border-blue-1000 text-blue-1000 font-noto text-base font-bold leading-normal p-3 rounded-md w-65 text-center">按鈕</div>
+          <div class="text-center"><div class="text-11 font-bold text-gray-900">Outlined · Enabled</div><div class="text-11 font-mono text-gray-500">blue/blue1000</div></div>
+        </div>
+
+        <div class="flex flex-col items-center gap-3">
+          <div class="border border-gray-900 text-gray-900 font-noto text-base font-bold leading-normal p-3 rounded-md w-65 text-center opacity-50">按鈕</div>
+          <div class="text-center"><div class="text-11 font-bold text-gray-900">Outlined · Disabled</div><div class="text-11 font-mono text-gray-500">gray/gray900 · 50%</div></div>
+        </div>
+
+      </div>
+      <div class="mt-5 text-11 text-gray-500">Width: 260px &nbsp;·&nbsp; Padding: <span class="font-mono">Spacing-md・12 = 12px</span> all sides &nbsp;·&nbsp; Radius: <span class="font-mono">md = 6px</span> &nbsp;·&nbsp; Typography: <span class="font-mono">NotoSansTC/16px/Bold</span></div>
+    </div>
+  </section>
+
+  <!-- 3. Icon Button -->
+  <section class="mb-12">
+    <div class="text-xl font-bold text-gray-900 mb-1">圖標按鈕 Icon Button</div>
+    <div class="text-xs text-gray-600 mb-5">Primary = icon first (green) · Secondary = icon behind (gray) · min-height 48px · gap Spacing-xs・4</div>
+    <div class="bg-white rounded-xl border border-gray-150 p-6 overflow-x-auto">
+      <div class="flex flex-wrap gap-10 items-end">
+
+        <div class="flex flex-col items-center gap-3">
+          <div class="flex items-center gap-1 min-h-12 text-green-500 font-noto text-sm font-bold leading-normal">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            圖標按鈕
+          </div>
+          <div class="text-center"><div class="text-11 font-bold text-gray-900">Primary · Enabled</div><div class="text-11 font-mono text-gray-500">green/green500</div></div>
+        </div>
+
+        <div class="flex flex-col items-center gap-3">
+          <div class="flex items-center gap-1 min-h-12 text-gray-600 font-noto text-sm font-bold leading-normal opacity-50">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            圖標按鈕
+          </div>
+          <div class="text-center"><div class="text-11 font-bold text-gray-900">Primary · Disabled</div><div class="text-11 font-mono text-gray-500">gray/gray600 · 50%</div></div>
+        </div>
+
+        <div class="flex flex-col items-center gap-3">
+          <div class="flex items-center gap-1 min-h-12 text-gray-600 font-noto text-sm font-bold leading-normal">
+            圖標按鈕
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="text-center"><div class="text-11 font-bold text-gray-900">Secondary · Enabled</div><div class="text-11 font-mono text-gray-500">gray/gray600</div></div>
+        </div>
+
+        <div class="flex flex-col items-center gap-3">
+          <div class="flex items-center gap-1 min-h-12 text-gray-600 font-noto text-sm font-bold leading-normal opacity-50">
+            圖標按鈕
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="text-center"><div class="text-11 font-bold text-gray-900">Secondary · Disabled</div><div class="text-11 font-mono text-gray-500">gray/gray600 · 50%</div></div>
+        </div>
+
+      </div>
+      <div class="mt-5 text-11 text-gray-500">Icon size: 16×16 &nbsp;·&nbsp; Gap: <span class="font-mono">Spacing-xs・4 = 4px</span> &nbsp;·&nbsp; Min-height: 48px &nbsp;·&nbsp; Typography: <span class="font-mono">NotoSansTC/14px/Bold</span></div>
+    </div>
+  </section>
+
+  <!-- 4. Text Link -->
+  <section class="mb-12">
+    <div class="text-xl font-bold text-gray-900 mb-1">文字連結 Text Link</div>
+    <div class="text-xs text-gray-600 mb-5">Size: sm (14px) / lg (16px) · State: Enabled / Disabled · No horizontal padding · min-height 48px</div>
+    <div class="bg-white rounded-xl border border-gray-150 p-6 overflow-x-auto">
+      <div class="flex flex-wrap gap-10 items-end">
+
+        <div class="flex flex-col items-center gap-3">
+          <div class="flex items-center min-h-12 text-green-500 font-noto text-sm font-bold leading-normal">文字連結</div>
+          <div class="text-center"><div class="text-11 font-bold text-gray-900">SM · Enabled</div><div class="text-11 font-mono text-gray-500">14px · green/green500</div></div>
+        </div>
+
+        <div class="flex flex-col items-center gap-3">
+          <div class="flex items-center min-h-12 text-gray-600 font-noto text-sm font-bold leading-normal opacity-50">文字連結</div>
+          <div class="text-center"><div class="text-11 font-bold text-gray-900">SM · Disabled</div><div class="text-11 font-mono text-gray-500">14px · gray/gray600 · 50%</div></div>
+        </div>
+
+        <div class="flex flex-col items-center gap-3">
+          <div class="flex items-center min-h-12 text-green-500 font-noto text-base font-bold leading-normal">文字連結</div>
+          <div class="text-center"><div class="text-11 font-bold text-gray-900">LG · Enabled</div><div class="text-11 font-mono text-gray-500">16px · green/green500</div></div>
+        </div>
+
+        <div class="flex flex-col items-center gap-3">
+          <div class="flex items-center min-h-12 text-gray-600 font-noto text-base font-bold leading-normal opacity-50">文字連結</div>
+          <div class="text-center"><div class="text-11 font-bold text-gray-900">LG · Disabled</div><div class="text-11 font-mono text-gray-500">16px · gray/gray600 · 50%</div></div>
+        </div>
+
+      </div>
+      <div class="mt-5 text-11 text-gray-500">SM typography: <span class="font-mono">NotoSansTC/14px/Bold</span> &nbsp;·&nbsp; LG typography: <span class="font-mono">NotoSansTC/16px/Bold</span></div>
+    </div>
+  </section>
+
+  <!-- 5. Block Button -->
+  <section class="mb-20">
+    <div class="text-xl font-bold text-gray-900 mb-1">區塊按鈕 Block Button</div>
+    <div class="text-xs text-gray-600 mb-5">Single variant · 320×72px · Dashed border · Radius lg=12</div>
+    <div class="bg-white rounded-xl border border-gray-150 p-6 overflow-x-auto">
+      <div style="width:320px;height:72px;border:1px dashed #898989;border-radius:12px;display:flex;align-items:center;justify-content:center;gap:8px;color:#707070;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.5"/><path d="M12 7.5V16.5M7.5 12H16.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span class="font-noto text-base font-bold leading-normal">新增區塊</span>
+      </div>
+      <div class="mt-5 text-11 text-gray-500">
+        Width: 320px &nbsp;·&nbsp; Height: 72px &nbsp;·&nbsp;
+        Border: 1px dashed <span class="font-mono">gray/gray500</span> &nbsp;·&nbsp;
+        Gap: <span class="font-mono">sm = 8px</span> &nbsp;·&nbsp;
+        Radius: <span class="font-mono">lg = 12px</span> &nbsp;·&nbsp;
+        Color: <span class="font-mono">gray/gray600</span> &nbsp;·&nbsp;
+        Typography: <span class="font-mono">NotoSansTC/16px/Bold</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="downloads.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

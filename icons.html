@@ -1,94 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Icons — Design System</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="tailwind.config.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="font-sans bg-gray-100 text-gray-900 text-sm leading-normal pt-14">
 
-<nav class="nav">
-  <a class="nav-brand" href="index.html">點麥當勞D · Design System</a>
-  <div class="nav-links">
-    <a href="index.html">Overview</a>
-    <a href="typography.html">Typography</a>
-    <a href="colors.html">Colors</a>
-    <a href="spacing-radius.html">Spacing &amp; Radius</a>
-    <a href="icons.html" class="active">Icons</a>
-  </div>
-</nav>
+<nav></nav>
+<script src="nav.js"></script>
 
-<main class="page">
-  <div class="page-hero">
-    <h1 class="page-title">Icons</h1>
-    <p class="page-subtitle">5 icons · 5 sizes (16–40px) · All fills bound to <code style="font-size:13px;background:var(--gray-150);padding:2px 6px;border-radius:4px;">Primitive/gray/gray900 #373737</code></p>
-    <a class="btn-download" href="doc/icons.md" download="icons.md" onclick="handleDownload(event,this)">
+<main class="max-w-page mx-auto px-8 py-10">
+  <div class="mb-10">
+    <h1 class="text-32 font-bold text-gray-900 leading-tight mb-2">Icons</h1>
+    <p class="text-base text-gray-600">5 icons · 5 sizes (16–40px) · All fills bound to <code style="font-size:13px;background:#E7E7E7;padding:2px 6px;border-radius:4px;">Primitive/gray/gray900 #373737</code></p>
+    <a class="inline-flex items-center gap-1.5 mt-5 px-3.5 py-2 text-13 font-bold text-gray-900 bg-white border-1.5 border-gray-150 rounded-md no-underline transition-colors duration-150 hover:bg-gray-150 hover:border-gray-300 cursor-pointer" href="doc/icons.md" download="icons.md" onclick="handleDownload(event,this)">
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       icons.md
     </a>
   </div>
 
   <!-- Sizes legend -->
-  <div class="section">
-    <div class="section-title">Size scale</div>
-    <div class="card" style="display:flex;gap:32px;align-items:flex-end;flex-wrap:wrap;">
-      <div class="scale-item">
-        <span class="scale-item-label">lg</span>
+  <div class="mb-20">
+    <div class="text-xs font-bold tracking-widest uppercase text-gray-600 mb-5 pb-2 border-b border-gray-150">Size scale</div>
+    <div class="bg-white rounded-xl border border-gray-150 p-6 overflow-hidden" style="display:flex;gap:32px;align-items:flex-end;flex-wrap:wrap;">
+      <div class="flex flex-col gap-2 items-center">
+        <span class="text-11 font-bold text-gray-900">lg</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#373737" stroke-width="1.5"/><path d="M12 7.5V16.5M7.5 12H16.5" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <span class="scale-item-value">16px</span>
+        <span class="text-11 text-gray-600">16px</span>
       </div>
-      <div class="scale-item">
-        <span class="scale-item-label">xl</span>
+      <div class="flex flex-col gap-2 items-center">
+        <span class="text-11 font-bold text-gray-900">xl</span>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#373737" stroke-width="1.5"/><path d="M12 7.5V16.5M7.5 12H16.5" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <span class="scale-item-value">20px</span>
+        <span class="text-11 text-gray-600">20px</span>
       </div>
-      <div class="scale-item">
-        <span class="scale-item-label">2xl</span>
+      <div class="flex flex-col gap-2 items-center">
+        <span class="text-11 font-bold text-gray-900">2xl</span>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#373737" stroke-width="1.5"/><path d="M12 7.5V16.5M7.5 12H16.5" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <span class="scale-item-value">24px</span>
+        <span class="text-11 text-gray-600">24px</span>
       </div>
-      <div class="scale-item">
-        <span class="scale-item-label">3xl</span>
+      <div class="flex flex-col gap-2 items-center">
+        <span class="text-11 font-bold text-gray-900">3xl</span>
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#373737" stroke-width="1.5"/><path d="M12 7.5V16.5M7.5 12H16.5" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <span class="scale-item-value">32px</span>
+        <span class="text-11 text-gray-600">32px</span>
       </div>
-      <div class="scale-item">
-        <span class="scale-item-label">4xl</span>
+      <div class="flex flex-col gap-2 items-center">
+        <span class="text-11 font-bold text-gray-900">4xl</span>
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#373737" stroke-width="1.5"/><path d="M12 7.5V16.5M7.5 12H16.5" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <span class="scale-item-value">40px</span>
+        <span class="text-11 text-gray-600">40px</span>
       </div>
     </div>
   </div>
 
   <!-- i-01 Add -->
-  <div class="icon-set">
-    <div class="icon-set-header">
-      <span class="icon-set-name">i-01</span>
-      <span class="icon-set-desc">Add (plus in circle)</span>
-      <span class="badge">outlined</span>
-      <span class="badge">filled</span>
+  <div class="mb-10">
+    <div class="flex items-baseline gap-3 mb-5">
+      <span class="text-lg font-bold">i-01</span>
+      <span class="text-13 text-gray-600">Add (plus in circle)</span>
+      <span class="inline-block text-10 font-bold px-2 py-0.5 rounded-full bg-gray-150 text-gray-600 tracking-wider uppercase">outlined</span>
+      <span class="inline-block text-10 font-bold px-2 py-0.5 rounded-full bg-gray-150 text-gray-600 tracking-wider uppercase">filled</span>
     </div>
-    <div class="card">
-      <div class="icon-variants">
-        <div class="icon-row">
-          <span class="icon-row-label">Outlined</span>
-          <div class="icon-sizes">
-            <div class="icon-cell"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#373737" stroke-width="1.5"/><path d="M12 7.5V16.5M7.5 12H16.5" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="icon-cell-size">16</span></div>
-            <div class="icon-cell"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#373737" stroke-width="1.5"/><path d="M12 7.5V16.5M7.5 12H16.5" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="icon-cell-size">20</span></div>
-            <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#373737" stroke-width="1.5"/><path d="M12 7.5V16.5M7.5 12H16.5" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="icon-cell-size">24</span></div>
-            <div class="icon-cell"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#373737" stroke-width="1.5"/><path d="M12 7.5V16.5M7.5 12H16.5" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="icon-cell-size">32</span></div>
-            <div class="icon-cell"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#373737" stroke-width="1.5"/><path d="M12 7.5V16.5M7.5 12H16.5" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="icon-cell-size">40</span></div>
+    <div class="bg-white rounded-xl border border-gray-150 p-6 overflow-hidden">
+      <div class="flex flex-col gap-5">
+        <div class="flex items-center gap-6 flex-wrap">
+          <span class="text-11 font-bold uppercase tracking-lg text-gray-600 w-16 shrink-0">Outlined</span>
+          <div class="flex gap-6 items-end">
+            <div class="flex flex-col items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#373737" stroke-width="1.5"/><path d="M12 7.5V16.5M7.5 12H16.5" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-10 text-gray-600">16</span></div>
+            <div class="flex flex-col items-center gap-1.5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#373737" stroke-width="1.5"/><path d="M12 7.5V16.5M7.5 12H16.5" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-10 text-gray-600">20</span></div>
+            <div class="flex flex-col items-center gap-1.5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#373737" stroke-width="1.5"/><path d="M12 7.5V16.5M7.5 12H16.5" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-10 text-gray-600">24</span></div>
+            <div class="flex flex-col items-center gap-1.5"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#373737" stroke-width="1.5"/><path d="M12 7.5V16.5M7.5 12H16.5" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-10 text-gray-600">32</span></div>
+            <div class="flex flex-col items-center gap-1.5"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#373737" stroke-width="1.5"/><path d="M12 7.5V16.5M7.5 12H16.5" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-10 text-gray-600">40</span></div>
           </div>
         </div>
-        <div class="icon-row">
-          <span class="icon-row-label">Filled</span>
-          <div class="icon-sizes">
-            <div class="icon-cell"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#373737"/><path d="M12 7V17M7 12H17" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg><span class="icon-cell-size">16</span></div>
-            <div class="icon-cell"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#373737"/><path d="M12 7V17M7 12H17" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg><span class="icon-cell-size">20</span></div>
-            <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#373737"/><path d="M12 7V17M7 12H17" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg><span class="icon-cell-size">24</span></div>
-            <div class="icon-cell"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#373737"/><path d="M12 7V17M7 12H17" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg><span class="icon-cell-size">32</span></div>
-            <div class="icon-cell"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#373737"/><path d="M12 7V17M7 12H17" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg><span class="icon-cell-size">40</span></div>
+        <div class="flex items-center gap-6 flex-wrap">
+          <span class="text-11 font-bold uppercase tracking-lg text-gray-600 w-16 shrink-0">Filled</span>
+          <div class="flex gap-6 items-end">
+            <div class="flex flex-col items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#373737"/><path d="M12 7V17M7 12H17" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-10 text-gray-600">16</span></div>
+            <div class="flex flex-col items-center gap-1.5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#373737"/><path d="M12 7V17M7 12H17" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-10 text-gray-600">20</span></div>
+            <div class="flex flex-col items-center gap-1.5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#373737"/><path d="M12 7V17M7 12H17" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-10 text-gray-600">24</span></div>
+            <div class="flex flex-col items-center gap-1.5"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#373737"/><path d="M12 7V17M7 12H17" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-10 text-gray-600">32</span></div>
+            <div class="flex flex-col items-center gap-1.5"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#373737"/><path d="M12 7V17M7 12H17" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-10 text-gray-600">40</span></div>
           </div>
         </div>
       </div>
@@ -96,33 +90,33 @@
   </div>
 
   <!-- i-03 Close -->
-  <div class="icon-set">
-    <div class="icon-set-header">
-      <span class="icon-set-name">i-03</span>
-      <span class="icon-set-desc">Close (X in circle)</span>
-      <span class="badge">outlined</span>
-      <span class="badge">filled</span>
+  <div class="mb-10">
+    <div class="flex items-baseline gap-3 mb-5">
+      <span class="text-lg font-bold">i-03</span>
+      <span class="text-13 text-gray-600">Close (X in circle)</span>
+      <span class="inline-block text-10 font-bold px-2 py-0.5 rounded-full bg-gray-150 text-gray-600 tracking-wider uppercase">outlined</span>
+      <span class="inline-block text-10 font-bold px-2 py-0.5 rounded-full bg-gray-150 text-gray-600 tracking-wider uppercase">filled</span>
     </div>
-    <div class="card">
-      <div class="icon-variants">
-        <div class="icon-row">
-          <span class="icon-row-label">Outlined</span>
-          <div class="icon-sizes">
-            <div class="icon-cell"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#373737" stroke-width="1.5"/><path d="M8.5 8.5L15.5 15.5M15.5 8.5L8.5 15.5" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="icon-cell-size">16</span></div>
-            <div class="icon-cell"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#373737" stroke-width="1.5"/><path d="M8.5 8.5L15.5 15.5M15.5 8.5L8.5 15.5" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="icon-cell-size">20</span></div>
-            <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#373737" stroke-width="1.5"/><path d="M8.5 8.5L15.5 15.5M15.5 8.5L8.5 15.5" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="icon-cell-size">24</span></div>
-            <div class="icon-cell"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#373737" stroke-width="1.5"/><path d="M8.5 8.5L15.5 15.5M15.5 8.5L8.5 15.5" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="icon-cell-size">32</span></div>
-            <div class="icon-cell"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#373737" stroke-width="1.5"/><path d="M8.5 8.5L15.5 15.5M15.5 8.5L8.5 15.5" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="icon-cell-size">40</span></div>
+    <div class="bg-white rounded-xl border border-gray-150 p-6 overflow-hidden">
+      <div class="flex flex-col gap-5">
+        <div class="flex items-center gap-6 flex-wrap">
+          <span class="text-11 font-bold uppercase tracking-lg text-gray-600 w-16 shrink-0">Outlined</span>
+          <div class="flex gap-6 items-end">
+            <div class="flex flex-col items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#373737" stroke-width="1.5"/><path d="M8.5 8.5L15.5 15.5M15.5 8.5L8.5 15.5" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-10 text-gray-600">16</span></div>
+            <div class="flex flex-col items-center gap-1.5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#373737" stroke-width="1.5"/><path d="M8.5 8.5L15.5 15.5M15.5 8.5L8.5 15.5" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-10 text-gray-600">20</span></div>
+            <div class="flex flex-col items-center gap-1.5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#373737" stroke-width="1.5"/><path d="M8.5 8.5L15.5 15.5M15.5 8.5L8.5 15.5" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-10 text-gray-600">24</span></div>
+            <div class="flex flex-col items-center gap-1.5"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#373737" stroke-width="1.5"/><path d="M8.5 8.5L15.5 15.5M15.5 8.5L8.5 15.5" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-10 text-gray-600">32</span></div>
+            <div class="flex flex-col items-center gap-1.5"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#373737" stroke-width="1.5"/><path d="M8.5 8.5L15.5 15.5M15.5 8.5L8.5 15.5" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-10 text-gray-600">40</span></div>
           </div>
         </div>
-        <div class="icon-row">
-          <span class="icon-row-label">Filled</span>
-          <div class="icon-sizes">
-            <div class="icon-cell"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#373737"/><path d="M8.5 8.5L15.5 15.5M15.5 8.5L8.5 15.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg><span class="icon-cell-size">16</span></div>
-            <div class="icon-cell"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#373737"/><path d="M8.5 8.5L15.5 15.5M15.5 8.5L8.5 15.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg><span class="icon-cell-size">20</span></div>
-            <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#373737"/><path d="M8.5 8.5L15.5 15.5M15.5 8.5L8.5 15.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg><span class="icon-cell-size">24</span></div>
-            <div class="icon-cell"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#373737"/><path d="M8.5 8.5L15.5 15.5M15.5 8.5L8.5 15.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg><span class="icon-cell-size">32</span></div>
-            <div class="icon-cell"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#373737"/><path d="M8.5 8.5L15.5 15.5M15.5 8.5L8.5 15.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg><span class="icon-cell-size">40</span></div>
+        <div class="flex items-center gap-6 flex-wrap">
+          <span class="text-11 font-bold uppercase tracking-lg text-gray-600 w-16 shrink-0">Filled</span>
+          <div class="flex gap-6 items-end">
+            <div class="flex flex-col items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#373737"/><path d="M8.5 8.5L15.5 15.5M15.5 8.5L8.5 15.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-10 text-gray-600">16</span></div>
+            <div class="flex flex-col items-center gap-1.5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#373737"/><path d="M8.5 8.5L15.5 15.5M15.5 8.5L8.5 15.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-10 text-gray-600">20</span></div>
+            <div class="flex flex-col items-center gap-1.5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#373737"/><path d="M8.5 8.5L15.5 15.5M15.5 8.5L8.5 15.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-10 text-gray-600">24</span></div>
+            <div class="flex flex-col items-center gap-1.5"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#373737"/><path d="M8.5 8.5L15.5 15.5M15.5 8.5L8.5 15.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-10 text-gray-600">32</span></div>
+            <div class="flex flex-col items-center gap-1.5"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#373737"/><path d="M8.5 8.5L15.5 15.5M15.5 8.5L8.5 15.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-10 text-gray-600">40</span></div>
           </div>
         </div>
       </div>
@@ -130,67 +124,67 @@
   </div>
 
   <!-- i-06 Chevron -->
-  <div class="icon-set">
-    <div class="icon-set-header">
-      <span class="icon-set-name">i-06</span>
-      <span class="icon-set-desc">Chevron right</span>
-      <span class="badge">size only</span>
+  <div class="mb-10">
+    <div class="flex items-baseline gap-3 mb-5">
+      <span class="text-lg font-bold">i-06</span>
+      <span class="text-13 text-gray-600">Chevron right</span>
+      <span class="inline-block text-10 font-bold px-2 py-0.5 rounded-full bg-gray-150 text-gray-600 tracking-wider uppercase">size only</span>
     </div>
-    <div class="card">
-      <div class="icon-row" style="padding:8px 0;">
-        <span class="icon-row-label" style="width:auto;margin-right:8px;">All sizes</span>
-        <div class="icon-sizes">
-          <div class="icon-cell"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6L15 12L9 18" stroke="#373737" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="icon-cell-size">16</span></div>
-          <div class="icon-cell"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 6L15 12L9 18" stroke="#373737" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="icon-cell-size">20</span></div>
-          <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 6L15 12L9 18" stroke="#373737" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="icon-cell-size">24</span></div>
-          <div class="icon-cell"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M9 6L15 12L9 18" stroke="#373737" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="icon-cell-size">32</span></div>
-          <div class="icon-cell"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M9 6L15 12L9 18" stroke="#373737" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="icon-cell-size">40</span></div>
+    <div class="bg-white rounded-xl border border-gray-150 p-6 overflow-hidden">
+      <div class="flex items-center gap-6 flex-wrap" style="padding:8px 0;">
+        <span class="text-11 font-bold uppercase tracking-lg text-gray-600" style="width:auto;margin-right:8px;">All sizes</span>
+        <div class="flex gap-6 items-end">
+          <div class="flex flex-col items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6L15 12L9 18" stroke="#373737" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="text-10 text-gray-600">16</span></div>
+          <div class="flex flex-col items-center gap-1.5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 6L15 12L9 18" stroke="#373737" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="text-10 text-gray-600">20</span></div>
+          <div class="flex flex-col items-center gap-1.5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 6L15 12L9 18" stroke="#373737" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="text-10 text-gray-600">24</span></div>
+          <div class="flex flex-col items-center gap-1.5"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M9 6L15 12L9 18" stroke="#373737" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="text-10 text-gray-600">32</span></div>
+          <div class="flex flex-col items-center gap-1.5"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M9 6L15 12L9 18" stroke="#373737" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="text-10 text-gray-600">40</span></div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- i-24 Search -->
-  <div class="icon-set">
-    <div class="icon-set-header">
-      <span class="icon-set-name">i-24</span>
-      <span class="icon-set-desc">Search (magnifier)</span>
-      <span class="badge">size only</span>
+  <div class="mb-10">
+    <div class="flex items-baseline gap-3 mb-5">
+      <span class="text-lg font-bold">i-24</span>
+      <span class="text-13 text-gray-600">Search (magnifier)</span>
+      <span class="inline-block text-10 font-bold px-2 py-0.5 rounded-full bg-gray-150 text-gray-600 tracking-wider uppercase">size only</span>
     </div>
-    <div class="card">
-      <div class="icon-row" style="padding:8px 0;">
-        <span class="icon-row-label" style="width:auto;margin-right:8px;">All sizes</span>
-        <div class="icon-sizes">
-          <div class="icon-cell"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6" stroke="#373737" stroke-width="1.5"/><path d="M15.5 15.5L19 19" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="icon-cell-size">16</span></div>
-          <div class="icon-cell"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6" stroke="#373737" stroke-width="1.5"/><path d="M15.5 15.5L19 19" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="icon-cell-size">20</span></div>
-          <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6" stroke="#373737" stroke-width="1.5"/><path d="M15.5 15.5L19 19" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="icon-cell-size">24</span></div>
-          <div class="icon-cell"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6" stroke="#373737" stroke-width="1.5"/><path d="M15.5 15.5L19 19" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="icon-cell-size">32</span></div>
-          <div class="icon-cell"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6" stroke="#373737" stroke-width="1.5"/><path d="M15.5 15.5L19 19" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="icon-cell-size">40</span></div>
+    <div class="bg-white rounded-xl border border-gray-150 p-6 overflow-hidden">
+      <div class="flex items-center gap-6 flex-wrap" style="padding:8px 0;">
+        <span class="text-11 font-bold uppercase tracking-lg text-gray-600" style="width:auto;margin-right:8px;">All sizes</span>
+        <div class="flex gap-6 items-end">
+          <div class="flex flex-col items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6" stroke="#373737" stroke-width="1.5"/><path d="M15.5 15.5L19 19" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-10 text-gray-600">16</span></div>
+          <div class="flex flex-col items-center gap-1.5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6" stroke="#373737" stroke-width="1.5"/><path d="M15.5 15.5L19 19" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-10 text-gray-600">20</span></div>
+          <div class="flex flex-col items-center gap-1.5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6" stroke="#373737" stroke-width="1.5"/><path d="M15.5 15.5L19 19" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-10 text-gray-600">24</span></div>
+          <div class="flex flex-col items-center gap-1.5"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6" stroke="#373737" stroke-width="1.5"/><path d="M15.5 15.5L19 19" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-10 text-gray-600">32</span></div>
+          <div class="flex flex-col items-center gap-1.5"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6" stroke="#373737" stroke-width="1.5"/><path d="M15.5 15.5L19 19" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-10 text-gray-600">40</span></div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- i-67 Check -->
-  <div class="icon-set">
-    <div class="icon-set-header">
-      <span class="icon-set-name">i-67</span>
-      <span class="icon-set-desc">Checkmark (stroke — weight scales with size)</span>
-      <span class="badge">stroke</span>
+  <div class="mb-10">
+    <div class="flex items-baseline gap-3 mb-5">
+      <span class="text-lg font-bold">i-67</span>
+      <span class="text-13 text-gray-600">Checkmark (stroke — weight scales with size)</span>
+      <span class="inline-block text-10 font-bold px-2 py-0.5 rounded-full bg-gray-150 text-gray-600 tracking-wider uppercase">stroke</span>
     </div>
-    <div class="card">
-      <div class="icon-row" style="padding:8px 0;">
-        <span class="icon-row-label" style="width:auto;margin-right:8px;">All sizes</span>
-        <div class="icon-sizes">
-          <div class="icon-cell"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="#373737" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="icon-cell-size">16 / 1.3</span></div>
-          <div class="icon-cell"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="#373737" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="icon-cell-size">20 / 1.5</span></div>
-          <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="#373737" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="icon-cell-size">24 / 1.5</span></div>
-          <div class="icon-cell"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="#373737" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="icon-cell-size">32 / 1.5</span></div>
-          <div class="icon-cell"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="#373737" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="icon-cell-size">40 / 2</span></div>
+    <div class="bg-white rounded-xl border border-gray-150 p-6 overflow-hidden">
+      <div class="flex items-center gap-6 flex-wrap" style="padding:8px 0;">
+        <span class="text-11 font-bold uppercase tracking-lg text-gray-600" style="width:auto;margin-right:8px;">All sizes</span>
+        <div class="flex gap-6 items-end">
+          <div class="flex flex-col items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="#373737" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="text-10 text-gray-600">16 / 1.3</span></div>
+          <div class="flex flex-col items-center gap-1.5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="#373737" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="text-10 text-gray-600">20 / 1.5</span></div>
+          <div class="flex flex-col items-center gap-1.5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="#373737" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="text-10 text-gray-600">24 / 1.5</span></div>
+          <div class="flex flex-col items-center gap-1.5"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="#373737" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="text-10 text-gray-600">32 / 1.5</span></div>
+          <div class="flex flex-col items-center gap-1.5"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="#373737" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="text-10 text-gray-600">40 / 2</span></div>
         </div>
       </div>
-      <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border);font-size:12px;color:var(--muted);">
-        Stroke weight shown below each size as <em>px / weight</em>. All strokes bound to <code style="background:var(--gray-150);padding:1px 5px;border-radius:3px;">gray/gray900</code>.
+      <div style="margin-top:16px;padding-top:16px;border-top:1px solid #E7E7E7;font-size:12px;color:#707070;">
+        Stroke weight shown below each size as <em>px / weight</em>. All strokes bound to <code style="background:#E7E7E7;padding:1px 5px;border-radius:3px;">gray/gray900</code>.
       </div>
     </div>
   </div>

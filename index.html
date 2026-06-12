@@ -1,43 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Design System — Overview</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="tailwind.config.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="font-sans bg-gray-100 text-gray-900 text-sm leading-normal pt-14">
 
-<nav class="nav">
-  <a class="nav-brand" href="index.html">點麥當勞D · Design System</a>
-  <div class="nav-links">
-    <a href="index.html" class="active">Overview</a>
-    <a href="typography.html">Typography</a>
-    <a href="colors.html">Colors</a>
-    <a href="spacing-radius.html">Spacing &amp; Radius</a>
-    <a href="icons.html">Icons</a>
-  </div>
-</nav>
+<nav></nav>
+<script src="nav.js"></script>
 
-<main class="page">
-  <div class="page-hero">
-    <h1 class="page-title">Design System</h1>
-    <p class="page-subtitle">Tokens, type scale, color palette, spacing, radius, and icon standards.</p>
+<main class="max-w-page mx-auto px-8 py-10">
+  <div class="mb-10">
+    <h1 class="text-32 font-bold text-gray-900 leading-tight mb-2">Design System</h1>
+    <p class="text-base text-gray-600">Tokens, type scale, color palette, spacing, radius, and icon standards.</p>
   </div>
 
-  <div class="index-grid">
+  <div class="grid gap-5" style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr))">
 
     <!-- Typography -->
-    <a class="index-card" href="typography.html">
-      <div class="index-card-thumb" style="flex-direction:column; align-items:flex-start; gap:6px;">
-        <span style="font-family:'Noto Sans TC',sans-serif;font-size:28px;font-weight:700;color:#373737;line-height:1.3;">文字</span>
-        <span style="font-family:'Roboto Flex',sans-serif;font-size:22px;font-weight:700;color:#373737;line-height:1.3;">Typography</span>
-        <span style="font-family:'Roboto Flex',sans-serif;font-size:13px;color:#898989;">32 · 24 · 20 · 18 · 16 · 14 · 12</span>
+    <a class="overflow-hidden no-underline text-gray-900 block transition-all duration-200" href="typography.html">
+      <div class="flex flex-col items-start justify-center gap-1.5 p-6 bg-white rounded" style="height:140px">
+        <span class="font-noto font-bold text-gray-900" style="font-size:28px;line-height:1.3">文字</span>
+        <span class="font-roboto font-bold text-gray-900" style="font-size:22px;line-height:1.3">Typography</span>
+        <span class="font-roboto text-13 text-gray-500">32 · 24 · 20 · 18 · 16 · 14 · 12</span>
       </div>
-      <div class="index-card-body">
-        <div class="index-card-title">Typography</div>
-        <div class="index-card-desc">Noto Sans TC &amp; Roboto Flex · 7 sizes · 2 weights · 28 styles</div>
-        <a class="index-card-dl" href="doc/typography-guidelines.md" download="typography-guidelines.md" onclick="handleDownload(event,this)">
+      <div class="p-5 border-t-2 border-gray-900">
+        <div class="text-15 font-bold mb-1">Typography</div>
+        <div class="text-xs text-gray-600 mb-1">Noto Sans TC &amp; Roboto Flex · 7 sizes · 2 weights · 28 styles</div>
+        <a class="text-green-600" href="typography.html">前往頁面</a>
+        <a class="inline-flex items-center gap-1 mt-2 text-11 font-bold border border-gray-300 p-2 rounded text-gray-600 no-underline tracking-sm transition-colors duration-150 hover:text-gray-900" href="doc/typography-guidelines.md" download="typography-guidelines.md" onclick="handleDownload(event,this)">
           <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           typography-guidelines.md
         </a>
@@ -45,25 +40,26 @@
     </a>
 
     <!-- Colors -->
-    <a class="index-card" href="colors.html">
-      <div class="index-card-thumb" style="flex-wrap:wrap; gap:6px; align-items:center; justify-content:center;">
-        <div style="width:24px;height:24px;border-radius:4px;background:#1890D2;"></div>
-        <div style="width:24px;height:24px;border-radius:4px;background:#1D9C58;"></div>
-        <div style="width:24px;height:24px;border-radius:4px;background:#757EEC;"></div>
-        <div style="width:24px;height:24px;border-radius:4px;background:#EC5555;"></div>
-        <div style="width:24px;height:24px;border-radius:4px;background:#D56C00;"></div>
-        <div style="width:24px;height:24px;border-radius:4px;background:#707070;"></div>
-        <div style="width:24px;height:24px;border-radius:4px;background:#E9F6FE;border:1px solid #E7E7E7;"></div>
-        <div style="width:24px;height:24px;border-radius:4px;background:#CBEFDC;"></div>
-        <div style="width:24px;height:24px;border-radius:4px;background:#E3E6FF;"></div>
-        <div style="width:24px;height:24px;border-radius:4px;background:#FCE1E1;"></div>
-        <div style="width:24px;height:24px;border-radius:4px;background:#FFE2C2;"></div>
-        <div style="width:24px;height:24px;border-radius:4px;background:#E7E7E7;"></div>
+    <a class=" overflow-hidden no-underline text-gray-900 block transition-all duration-200 " href="colors.html">
+      <div class="flex flex-wrap items-center justify-center gap-1.5 p-6 bg-white rounded" style="height:140px">
+        <div class="w-6 h-6 rounded bg-blue-500"></div>
+        <div class="w-6 h-6 rounded" style="background:#1D9C58"></div>
+        <div class="w-6 h-6 rounded" style="background:#757EEC"></div>
+        <div class="w-6 h-6 rounded" style="background:#EC5555"></div>
+        <div class="w-6 h-6 rounded" style="background:#D56C00"></div>
+        <div class="w-6 h-6 rounded bg-gray-600"></div>
+        <div class="w-6 h-6 rounded border border-gray-150 bg-blue-100"></div>
+        <div class="w-6 h-6 rounded" style="background:#CBEFDC"></div>
+        <div class="w-6 h-6 rounded" style="background:#E3E6FF"></div>
+        <div class="w-6 h-6 rounded" style="background:#FCE1E1"></div>
+        <div class="w-6 h-6 rounded" style="background:#FFE2C2"></div>
+        <div class="w-6 h-6 rounded bg-gray-150"></div>
       </div>
-      <div class="index-card-body">
-        <div class="index-card-title">Color Palette</div>
-        <div class="index-card-desc">Primitive collection · 6 sets · 68 tokens</div>
-        <a class="index-card-dl" href="doc/color-palette.md" download="color-palette.md" onclick="handleDownload(event,this)">
+      <div class="p-5 border-t-2 border-gray-900">
+        <div class="text-15 font-bold mb-1">Color Palette</div>
+        <div class="text-xs text-gray-600 mb-1">Primitive collection · 6 sets · 68 tokens</div>
+        <a class="text-green-600" href="colors.html">前往頁面</a>
+        <a class="inline-flex items-center gap-1 mt-2 text-11 font-bold border border-gray-300 p-2 rounded text-gray-600 no-underline tracking-sm transition-colors duration-150 hover:text-gray-900" href="doc/color-palette.md" download="color-palette.md" onclick="handleDownload(event,this)">
           <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           color-palette.md
         </a>
@@ -71,27 +67,28 @@
     </a>
 
     <!-- Spacing & Radius -->
-    <a class="index-card" href="spacing-radius.html">
-      <div class="index-card-thumb" style="align-items:flex-end; gap:8px;">
-        <div style="display:flex;align-items:flex-end;gap:6px;">
-          <div style="width:4px;height:4px;background:#BDBDBD;border-radius:0;"></div>
-          <div style="width:8px;height:8px;background:#BDBDBD;border-radius:0;"></div>
-          <div style="width:12px;height:12px;background:#BDBDBD;border-radius:0;"></div>
-          <div style="width:16px;height:16px;background:#BDBDBD;border-radius:0;"></div>
-          <div style="width:24px;height:24px;background:#BDBDBD;border-radius:0;"></div>
-          <div style="width:40px;height:40px;background:#BDBDBD;border-radius:0;"></div>
+    <a class=" overflow-hidden no-underline text-gray-900 block transition-all duration-200 " href="spacing-radius.html">
+      <div class="flex items-end justify-center gap-2 p-6 bg-white rounded" style="height:140px">
+        <div class="flex items-end gap-1.5">
+          <div class="w-1 h-1 bg-gray-300 rounded-none"></div>
+          <div class="w-2 h-2 bg-gray-300 rounded-none"></div>
+          <div class="w-3 h-3 bg-gray-300 rounded-none"></div>
+          <div class="w-4 h-4 bg-gray-300 rounded-none"></div>
+          <div class="w-6 h-6 bg-gray-300 rounded-none"></div>
+          <div class="w-10 h-10 bg-gray-300 rounded-none"></div>
         </div>
-        <div style="display:flex;gap:8px;align-items:flex-end;">
-          <div style="width:32px;height:32px;background:#D9D9D9;border-radius:4px;"></div>
-          <div style="width:32px;height:32px;background:#D9D9D9;border-radius:6px;"></div>
-          <div style="width:32px;height:32px;background:#D9D9D9;border-radius:12px;"></div>
-          <div style="width:32px;height:32px;background:#D9D9D9;border-radius:100px;"></div>
+        <div class="flex gap-2 items-end">
+          <div class="w-8 h-8 bg-gray-200 rounded"></div>
+          <div class="w-8 h-8 bg-gray-200 rounded-md"></div>
+          <div class="w-8 h-8 bg-gray-200 rounded-xl"></div>
+          <div class="w-8 h-8 bg-gray-200 rounded-full"></div>
         </div>
       </div>
-      <div class="index-card-body">
-        <div class="index-card-title">Spacing &amp; Radius</div>
-        <div class="index-card-desc">10 spacing tokens · 4 radius tokens</div>
-        <a class="index-card-dl" href="doc/spacing-radius.md" download="spacing-radius.md" onclick="handleDownload(event,this)">
+      <div class="p-5 border-t-2 border-gray-900">
+        <div class="text-15 font-bold mb-1">Spacing &amp; Radius</div>
+        <div class="text-xs text-gray-600 mb-1">10 spacing tokens · 4 radius tokens</div>
+        <a class="text-green-600" href="spacing-radius.html">前往頁面</a>
+        <a class="inline-flex items-center gap-1 mt-2 text-11 font-bold border border-gray-300 p-2 rounded text-gray-600 no-underline tracking-sm transition-colors duration-150 hover:text-gray-900" href="doc/spacing-radius.md" download="spacing-radius.md" onclick="handleDownload(event,this)">
           <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           spacing-radius.md
         </a>
@@ -99,20 +96,47 @@
     </a>
 
     <!-- Icons -->
-    <a class="index-card" href="icons.html">
-      <div class="index-card-thumb" style="gap:20px;">
+    <a class=" overflow-hidden no-underline text-gray-900 block transition-all duration-200 " href="icons.html">
+      <div class="flex items-center justify-center gap-5 p-6 bg-white rounded" style="height:140px">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="#373737" stroke-width="1.5"/><path d="M12 7.5V16.5M7.5 12H16.5" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg>
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#373737"/><path d="M8.5 8.5L15.5 15.5M15.5 8.5L8.5 15.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M9 6L15 12L9 18" stroke="#373737" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6" stroke="#373737" stroke-width="1.5"/><path d="M15.5 15.5L19 19" stroke="#373737" stroke-width="1.5" stroke-linecap="round"/></svg>
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="#373737" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-      <div class="index-card-body">
-        <div class="index-card-title">Icons</div>
-        <div class="index-card-desc">5 icons · 5 sizes · outlined, filled &amp; stroke variants</div>
-        <a class="index-card-dl" href="doc/icons.md" download="icons.md" onclick="handleDownload(event,this)">
+      <div class="p-5 border-t-2 border-gray-900">
+        <div class="text-15 font-bold mb-1">Icons</div>
+        <div class="text-xs text-gray-600 mb-1">5 icons · 5 sizes · outlined, filled &amp; stroke variants</div>
+        <a class="text-green-600" href="icons.html">前往頁面</a>
+        <a class="inline-flex items-center gap-1 mt-2 text-11 font-bold border border-gray-300 p-2 rounded text-gray-600 no-underline tracking-sm transition-colors duration-150 hover:text-gray-900" href="doc/icons.md" download="icons.md" onclick="handleDownload(event,this)">
           <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           icons.md
+        </a>
+      </div>
+    </a>
+
+    <!-- Buttons -->
+    <a class="overflow-hidden no-underline text-gray-900 block transition-all duration-200" href="buttons.html">
+      <div class="flex items-center justify-center p-6 bg-white rounded" style="height:140px; flex-direction:column; gap:12px;">
+        <div style="display:flex; gap:8px; align-items:center;">
+          <div style="background:#02293D; color:#FFFFFF; font-family:'Noto Sans TC',sans-serif; font-size:13px; font-weight:700; padding:7px 16px; border-radius:6px; white-space:nowrap;">按鈕</div>
+          <div style="border:1px solid #02293D; color:#02293D; font-family:'Noto Sans TC',sans-serif; font-size:13px; font-weight:700; padding:7px 16px; border-radius:6px; white-space:nowrap;">按鈕</div>
+          <div style="color:#02293D; font-family:'Noto Sans TC',sans-serif; font-size:13px; font-weight:700; padding:7px 8px; border-radius:6px; white-space:nowrap;">按鈕</div>
+        </div>
+        <div style="display:flex; gap:12px; align-items:center;">
+          <div style="display:flex; align-items:center; gap:4px; color:#1D9C58; font-family:'Noto Sans TC',sans-serif; font-size:12px; font-weight:700;">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M8 3V13M3 8H13" stroke="#1D9C58" stroke-width="1.5" stroke-linecap="round"/></svg>圖標按鈕
+          </div>
+          <div style="color:#1D9C58; font-family:'Noto Sans TC',sans-serif; font-size:12px; font-weight:700;">文字連結</div>
+        </div>
+      </div>
+      <div class="p-5 border-t-2 border-gray-900">
+        <div class="text-15 font-bold mb-1">Buttons</div>
+        <div class="text-xs text-gray-600 mb-1">5 button types · 32 variants · Filled, Outlined, Text, Icon &amp; Block</div>
+        <a class="text-green-600" href="buttons.html">前往頁面</a>
+        <a class="inline-flex items-center gap-1 mt-2 text-11 font-bold border border-gray-300 p-2 rounded text-gray-600 no-underline tracking-sm transition-colors duration-150 hover:text-gray-900" href="doc/buttons-spec.md" download="buttons-spec.md" onclick="handleDownload(event,this)">
+          <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          buttons-spec.md
         </a>
       </div>
     </a>
@@ -120,24 +144,49 @@
   </div>
 
   <!-- Token summary table -->
-  <div class="section" style="margin-top: 48px;">
-    <div class="section-title">Token summary</div>
-    <div class="card">
-      <table style="width:100%;border-collapse:collapse;">
+  <div class="mb-20 mt-12">
+    <div class="text-xs font-bold tracking-widest uppercase text-gray-600 mb-5 pb-2 border-b border-gray-150">Token summary</div>
+    <div class="bg-white rounded-xl border border-gray-150 p-6 overflow-hidden">
+      <table class="w-full border-collapse">
         <thead>
           <tr>
-            <th style="text-align:left;padding:8px 12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);border-bottom:1px solid var(--border);">Category</th>
-            <th style="text-align:left;padding:8px 12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);border-bottom:1px solid var(--border);">Collection</th>
-            <th style="text-align:left;padding:8px 12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);border-bottom:1px solid var(--border);">Count</th>
-            <th style="text-align:left;padding:8px 12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);border-bottom:1px solid var(--border);">Type</th>
+            <th class="text-left px-3 py-2 text-11 font-bold uppercase tracking-lg text-gray-600 border-b border-gray-150">Category</th>
+            <th class="text-left px-3 py-2 text-11 font-bold uppercase tracking-lg text-gray-600 border-b border-gray-150">Collection</th>
+            <th class="text-left px-3 py-2 text-11 font-bold uppercase tracking-lg text-gray-600 border-b border-gray-150">Count</th>
+            <th class="text-left px-3 py-2 text-11 font-bold uppercase tracking-lg text-gray-600 border-b border-gray-150">Type</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td style="padding:12px;border-bottom:1px solid var(--border);">Colors</td><td style="padding:12px;border-bottom:1px solid var(--border);">Primitive</td><td style="padding:12px;border-bottom:1px solid var(--border);">68</td><td style="padding:12px;border-bottom:1px solid var(--border);">COLOR</td></tr>
-          <tr><td style="padding:12px;border-bottom:1px solid var(--border);">Spacing</td><td style="padding:12px;border-bottom:1px solid var(--border);">Spacing</td><td style="padding:12px;border-bottom:1px solid var(--border);">10</td><td style="padding:12px;border-bottom:1px solid var(--border);">FLOAT</td></tr>
-          <tr><td style="padding:12px;border-bottom:1px solid var(--border);">Radius</td><td style="padding:12px;border-bottom:1px solid var(--border);">Radius</td><td style="padding:12px;border-bottom:1px solid var(--border);">4</td><td style="padding:12px;border-bottom:1px solid var(--border);">FLOAT</td></tr>
-          <tr><td style="padding:12px;border-bottom:1px solid var(--border);">Text styles</td><td style="padding:12px;border-bottom:1px solid var(--border);">—</td><td style="padding:12px;border-bottom:1px solid var(--border);">28</td><td style="padding:12px;border-bottom:1px solid var(--border);">TEXT STYLE</td></tr>
-          <tr><td style="padding:12px;">Icons</td><td style="padding:12px;">—</td><td style="padding:12px;">5 sets · 35 variants</td><td style="padding:12px;">COMPONENT</td></tr>
+          <tr>
+            <td class="p-3 border-b border-gray-150">Colors</td>
+            <td class="p-3 border-b border-gray-150">Primitive</td>
+            <td class="p-3 border-b border-gray-150">68</td>
+            <td class="p-3 border-b border-gray-150">COLOR</td>
+          </tr>
+          <tr>
+            <td class="p-3 border-b border-gray-150">Spacing</td>
+            <td class="p-3 border-b border-gray-150">Spacing</td>
+            <td class="p-3 border-b border-gray-150">10</td>
+            <td class="p-3 border-b border-gray-150">FLOAT</td>
+          </tr>
+          <tr>
+            <td class="p-3 border-b border-gray-150">Radius</td>
+            <td class="p-3 border-b border-gray-150">Radius</td>
+            <td class="p-3 border-b border-gray-150">4</td>
+            <td class="p-3 border-b border-gray-150">FLOAT</td>
+          </tr>
+          <tr>
+            <td class="p-3 border-b border-gray-150">Text styles</td>
+            <td class="p-3 border-b border-gray-150">—</td>
+            <td class="p-3 border-b border-gray-150">28</td>
+            <td class="p-3 border-b border-gray-150">TEXT STYLE</td>
+          </tr>
+          <tr>
+            <td class="p-3">Icons</td>
+            <td class="p-3">—</td>
+            <td class="p-3">5 sets · 35 variants</td>
+            <td class="p-3">COMPONENT</td>
+          </tr>
         </tbody>
       </table>
     </div>

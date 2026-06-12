@@ -1,29 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Colors — Design System</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="tailwind.config.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="font-sans bg-gray-100 text-gray-900 text-sm leading-normal pt-14">
 
-<nav class="nav">
-  <a class="nav-brand" href="index.html">點麥當勞D · Design System</a>
-  <div class="nav-links">
-    <a href="index.html">Overview</a>
-    <a href="typography.html">Typography</a>
-    <a href="colors.html" class="active">Colors</a>
-    <a href="spacing-radius.html">Spacing &amp; Radius</a>
-    <a href="icons.html">Icons</a>
-  </div>
-</nav>
+<nav></nav>
+<script src="nav.js"></script>
 
-<main class="page">
-  <div class="page-hero">
-    <h1 class="page-title">Color Palette</h1>
-    <p class="page-subtitle">Primitive collection · 6 color sets · 68 tokens · All bound to Figma variables</p>
-    <a class="btn-download" href="doc/color-palette.md" download="color-palette.md" onclick="handleDownload(event,this)">
+<main class="max-w-page mx-auto px-8 py-10">
+  <div class="mb-10">
+    <h1 class="text-32 font-bold text-gray-900 leading-tight mb-2">Color Palette</h1>
+    <p class="text-base text-gray-600">Primitive collection · 6 color sets · 68 tokens · All bound to Figma variables</p>
+    <a class="inline-flex items-center gap-1.5 mt-5 px-3.5 py-2 text-13 font-bold text-gray-900 bg-white border-1.5 border-gray-150 rounded-md no-underline transition-colors duration-150 hover:bg-gray-150 hover:border-gray-300 cursor-pointer" href="doc/color-palette.md" download="color-palette.md" onclick="handleDownload(event,this)">
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       color-palette.md
     </a>
@@ -42,17 +36,17 @@
       const container = document.getElementById('palette');
       Object.entries(palette).forEach(([group, shades]) => {
         const section = document.createElement('div');
-        section.className = 'color-group';
-        section.innerHTML = `<div class="color-group-label">${group}</div>`;
+        section.className = 'mb-8';
+        section.innerHTML = `<div class="text-xs font-bold capitalize tracking-md text-gray-600 mb-3">${group}</div>`;
         const row = document.createElement('div');
-        row.className = 'color-row';
+        row.className = 'flex flex-wrap gap-3';
         Object.entries(shades).forEach(([weight, hex]) => {
           const needsBorder = ['#FFFFFF','#F5F5F5','#E7E7E7','#F3F4FF','#FDF2F2','#FFF3E6','#E9F6FE','#E9F8F0','#E3E6FF','#CAECFF','#FCE1E1','#FFE2C2'].includes(hex);
           row.innerHTML += `
-            <div class="color-swatch">
-              <span class="color-swatch-label">${group}${weight}</span>
-              <div class="color-swatch-block" style="background:${hex};${needsBorder?'border:1px solid #E7E7E7;':''}"></div>
-              <span class="color-swatch-hex">${hex}</span>
+            <div class="flex flex-col gap-2 items-center" style="width:66px">
+              <span class="text-11 text-gray-900 whitespace-nowrap">${group}${weight}</span>
+              <div class="w-14 h-14 rounded border border-black/6" style="background:${hex};${needsBorder?'border-color:#E7E7E7;':''}"></div>
+              <span class="text-11 text-gray-600 font-mono">${hex}</span>
             </div>`;
         });
         section.appendChild(row);
