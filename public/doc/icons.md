@@ -6,6 +6,14 @@ bound to the `Primitive` color variables.
 
 Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **Icon-IconFont**.
 
+> ⚠️ **Critical for AI agents — always pull paths from the source file.**
+> Do NOT substitute paths from generic icon libraries (Material Design, Heroicons, etc.).
+> Each icon's path data must be extracted directly from the source Figma file using the
+> Plugin API: open `kkyAx6QTTNF6ZyB9rSeN6W`, switch to the `Icon-IconFont` page, find
+> each icon's shape node (Union / Subtract / Vector), and call
+> `await node.exportAsync({ format: 'SVG' })` to get the exact per-size artwork.
+> See §10 for the full extraction script.
+
 ---
 
 ## 1. Overview
@@ -179,3 +187,51 @@ Component (e.g. Size=24, Variant=outlined)
   ]
 }
 ```
+
+---
+
+## 10. Source path extraction script (for AI agents)
+
+Run this in the **source file** (`kkyAx6QTTNF6ZyB9rSeN6W`) to get every icon's exact SVG path data per size. Execute via `use_figma` before rebuilding icons in the target file.
+
+```javascript
+// Step 1 — switch to the Icon-IconFont page
+const page = figma.root.children.find(p => p.name === "Icon-IconFont");
+await figma.setCurrentPageAsync(page);
+
+// Step 2 — map icon shape node IDs (shape child of each component, not the component itself)
+// Update these IDs if the source file changes; discover them with:
+//   page.children.forEach(cs => cs.children.forEach(c =>
+//     console.log(cs.name, c.name, c.children.map(ch => ch.name+' '+ch.id))))
+const shapeNodes = {
+  // i-01 outlined: Union nodes
+  "i01-out-16":"25:1899","i01-out-20":"25:1906","i01-out-24":"25:1913","i01-out-32":"25:1920","i01-out-40":"25:1927",
+  // i-01 filled: Subtract nodes
+  "i01-fil-16":"25:1934","i01-fil-20":"25:1942","i01-fil-24":"25:1950","i01-fil-32":"25:1958","i01-fil-40":"25:1965",
+  // i-03 outlined: Union nodes
+  "i03-out-16":"28:3847","i03-out-20":"28:3854","i03-out-24":"28:3861","i03-out-32":"28:3868","i03-out-40":"28:3875",
+  // i-03 filled: Group nodes (contain Subtract)
+  "i03-fil-16":"28:3882","i03-fil-20":"28:3890","i03-fil-24":"28:3898","i03-fil-32":"28:3906","i03-fil-40":"28:3914",
+  // i-06 chevron: Union nodes
+  "i06-16":"25:2022","i06-20":"25:2026","i06-24":"25:2030","i06-32":"25:2034","i06-40":"25:2038",
+  // i-24 search: Union nodes
+  "i24-16":"28:3959","i24-20":"28:3965","i24-24":"28:3971","i24-32":"28:3977","i24-40":"28:3983",
+  // i-67 checkmark: Vector nodes (stroke-based)
+  "i67-16":"31:3358","i67-20":"31:3361","i67-24":"31:3364","i67-32":"31:3367","i67-40":"31:3370"
+};
+
+// Step 3 — export each shape node as SVG
+function bytesToStr(b) { let s=''; for(let i=0;i<b.length;i++) s+=String.fromCharCode(b[i]); return s; }
+
+const results = {};
+for (const [key, id] of Object.entries(shapeNodes)) {
+  const node = await figma.getNodeByIdAsync(id);
+  if (!node) { results[key] = "NOT FOUND"; continue; }
+  const bytes = await node.exportAsync({ format: 'SVG' });
+  results[key] = bytesToStr(bytes); // full SVG string — parse viewBox + path d from this
+}
+return results;
+```
+
+The returned SVG strings contain the exact `viewBox`, `d` (path data), and stroke attributes
+needed to recreate each icon at pixel-perfect fidelity in the target file.

@@ -28,19 +28,21 @@
 
 ### 間距 Spacing
 
-| Variable Name | Value |
-|---|---|
-| `Spacing - xs・4` | `4` |
-| `Spacing - md・12` | `12` |
-| `sm` | `8` |
-| `2xl` | `24` |
+| Variable Name | Value | 用途 Usage |
+|---|---|---|
+| `xxs` | `4` | Dynamic Button sm 上下 padding；Icon Button gap |
+| `sm` | `8` | Block Button gap |
+| `md` | `12` | Dynamic Button lg 上下 padding；Bottom Button state-layer 四邊 padding |
+| `2xl` | `24` | Dynamic Button lg 左右 padding |
+| `4xl` | `40` | Bottom Button、Icon Button 元件組外框 container padding |
 
 ### 圓角 Radius
 
-| Variable Name | Value |
-|---|---|
-| `md` | `6` |
-| `lg` | `12` |
+| Variable Name | Value | 用途 Usage |
+|---|---|---|
+| `s` | `4` | 微小圓角 |
+| `md` | `6` | Dynamic Button 所有 variants；Bottom Button state-layer |
+| `lg` | `12` | Block Button 外框 |
 
 ### 字體 Typography
 
@@ -49,7 +51,15 @@
 | `NotoSansTC/16px/Bold` | Noto Sans TC | 16 | Bold / 700 | 1.5 |
 | `NotoSansTC/14px/Bold` | Noto Sans TC | 14 | Bold / 700 | 1.5 |
 | `NotoSansTC/32px/Bold` | Noto Sans TC | 32 | Bold / 700 | 1.5 |
-| `RobotoFlex/14px/Bold` | Roboto Flex | 14 | Bold / 700 | 1.5 |
+| `NotoSansTC/14px/Bold` | Noto Sans TC | 14 | Bold / 700 | 1.5 |
+
+### 懸浮效果 Hover Effect
+
+所有 `State=Hover` variants 外觀與 `State=Enabled` 相同，額外加上陰影：
+
+> Drop Shadow: `0px 8px 20px -5px rgba(0, 40, 61, 0.30)`
+
+Icon Button、Text Link 與 Block Button 無 Hover 狀態。
 
 ---
 
@@ -69,9 +79,9 @@
 | `Style` | Variant | `Filled` / `Outlined` / `Text` |
 | `Type` | Variant | `Default` / `Green` |
 | `Size` | Variant | `lg` / `sm` |
-| `State` | Variant | `Enabled` / `Disabled` |
+| `State` | Variant | `Enabled` / `Hover` / `Disabled` |
 
-> `Type=Green` 僅在 `Style=Text` 時使用。
+> `Type=Green` 僅在 `Style=Text` 時使用。Hover 僅適用於 `Style=Filled` 與 `Style=Outlined`。
 
 ### 版本規格 Variant Specs
 
@@ -87,9 +97,11 @@ Frame 設定：
 | Style | Type | State | Fill | Stroke | Text Color | Opacity |
 |---|---|---|---|---|---|---|
 | Filled | Default | Enabled | `blue/blue1000` | — | `gray/gray0` | 100% |
+| Filled | Default | Hover | `blue/blue1000` | — | `gray/gray0` | 100% |
 | Filled | Default | Disabled | `gray/gray150` | — | `gray/gray300` | 100% |
-| Outlined | Default | Enabled | — | `blue/blue1000` / 1px | `blue/blue1000` | 100% |
-| Outlined | Default | Disabled | — | `gray/gray900` / 1px | `gray/gray900` | 50% |
+| Outlined | Default | Enabled | `gray/gray0` | `blue/blue1000` / 1px | `blue/blue1000` | 100% |
+| Outlined | Default | Hover | `gray/gray0` | `blue/blue1000` / 1px | `blue/blue1000` | 100% |
+| Outlined | Default | Disabled | `gray/gray0` | `gray/gray900` / 1px | `gray/gray900` | 50% |
 | Text | Default | Enabled | — | — | `blue/blue1000` | 100% |
 | Text | Default | Disabled | — | — | `gray/gray900` | 50% |
 | Text | Green | Enabled | — | — | `green/green500` | 100% |
@@ -102,22 +114,24 @@ Typography: `NotoSansTC/16px/Bold` → Noto Sans TC, Bold, 16px, lh 1.5
 
 Frame 設定：
 - Layout: Horizontal Auto Layout, 主軸居中對齊
-- Padding 左右: `Spacing - md・12` = 12
-- Padding 上下: `Spacing - xs・4` = 4
-- Width: 固定 52px
+- Padding 左右: `md` (spacing) = 12
+- Padding 上下: `xxs` = 4
+- Width: Hug（由文字撐開）
 - Corner Radius: `md` (radius) = 6
 
 | Style | Type | State | Fill | Stroke | Text Color | Opacity |
 |---|---|---|---|---|---|---|
 | Filled | Default | Enabled | `blue/blue1000` | — | `gray/gray0` | 100% |
+| Filled | Default | Hover | `blue/blue1000` | — | `gray/gray0` | 100% |
 | Filled | Default | Disabled | `gray/gray150` | — | `gray/gray300` | 100% |
-| Outlined | Default | Enabled | — | `blue/blue1000` / 1px | `blue/blue1000` | 100% |
-| Outlined | Default | Disabled | — | `gray/gray900` / 1px | `gray/gray900` | 50% |
+| Outlined | Default | Enabled | `gray/gray0` | `blue/blue1000` / 1px | `blue/blue1000` | 100% |
+| Outlined | Default | Hover | `gray/gray0` | `blue/blue1000` / 1px | `blue/blue1000` | 100% |
+| Outlined | Default | Disabled | `gray/gray0` | `gray/gray900` / 1px | `gray/gray900` | 50% |
 | Text | Default | Enabled | — | — | `blue/blue1000` | 100% |
 | Text | Default | Disabled | — | — | `gray/gray900` | 50% |
 | Text | Green | Enabled | — | — | `green/green500` | 100% |
 
-Typography: `RobotoFlex/14px/Bold` → Roboto Flex, Bold, 14px, lh 1.5
+Typography: `NotoSansTC/14px/Bold` → Noto Sans TC, Bold, 14px, lh 1.5
 
 ---
 
@@ -131,26 +145,31 @@ Typography: `RobotoFlex/14px/Bold` → Roboto Flex, Bold, 14px, lh 1.5
 | Property | Type | Options |
 |---|---|---|
 | `Style` | Variant | `Filled` / `Outlined` |
-| `State` | Variant | `Enabled` / `Disabled` |
+| `State` | Variant | `Enabled` / `Hover` / `Disabled` |
 
 ### 版本規格 Variant Specs
 
-外框 (wrapper) 設定：
-- Width: 260px
+外框 (component set container) 設定：
 - Layout: Vertical Auto Layout
+- Corner Radius: `full` = 100
+- Padding: `4xl` = 40（四邊）
 
 內層 state-layer 設定：
 - Layout: Horizontal Auto Layout, 主軸居中對齊
-- Padding: `Spacing - md・12` = 12（四邊）
+- Padding: `md` (spacing) = 12（四邊）
 - Corner Radius: `md` (radius) = 6
-- Width: Fill (100%)
+- Width: **Fill Container** — 寬度填滿父層容器，不設固定寬度
+
+> 使用情境：單一按鈕時佔滿全寬；兩個按鈕並排時各自 Fill，等分共享寬度（間距 `md` = 12）。
 
 | Style | State | Fill | Stroke | Text Color | Opacity |
 |---|---|---|---|---|---|
 | Filled | Enabled | `blue/blue1000` | — | `gray/gray0` | 100% |
+| Filled | Hover | `blue/blue1000` | — | `gray/gray0` | 100% |
 | Filled | Disabled | `gray/gray150` | — | `gray/gray300` | 100% |
-| Outlined | Enabled | — | `blue/blue1000` / 1px | `blue/blue1000` | 100% |
-| Outlined | Disabled | — | `gray/gray900` / 1px | `gray/gray900` | 50% |
+| Outlined | Enabled | `gray/gray0` | `blue/blue1000` / 1px | `blue/blue1000` | 100% |
+| Outlined | Hover | `gray/gray0` | `blue/blue1000` / 1px | `blue/blue1000` | 100% |
+| Outlined | Disabled | `gray/gray0` | `gray/gray900` / 1px | `gray/gray900` | 50% |
 
 Typography: `NotoSansTC/16px/Bold` → Noto Sans TC, Bold, 16px, lh 1.5, 居中對齊
 
@@ -185,9 +204,10 @@ Typography: `NotoSansTC/16px/Bold` → Noto Sans TC, Bold, 16px, lh 1.5, 居中�
 
 Frame 設定：
 - Layout: Horizontal Auto Layout, 垂直居中對齊
-- Gap: `Spacing - xs・4` = 4
+- Gap: `xxs` = 4
 - Min Height: 48px
 - Width: Hug
+- Component set container Padding: `4xl` = 40；Corner Radius: `full` = 100
 
 | Variant | State | Icon Color | Text Color | Opacity |
 |---|---|---|---|---|
@@ -198,6 +218,7 @@ Frame 設定：
 
 圖標 Icon：
 - Size: 16 × 16
+- Source: `i-01` from `Icon-IconFont` page
 - Icon 排列：Primary = 圖標在前（Icon → Text）；Secondary = 圖標在後（Text → Icon）
 
 Typography: `NotoSansTC/14px/Bold` → Noto Sans TC, Bold, 14px, lh 1.5
@@ -226,6 +247,7 @@ Frame 設定：
 - Layout: Horizontal Auto Layout, 垂直居中對齊
 - Min Height: 48px
 - Width: Hug（文字自然展開，無左右 padding）
+- Component set container Corner Radius: `full` = 100
 
 | Size | State | Text Color | Opacity |
 |---|---|---|---|
@@ -256,7 +278,7 @@ Frame 設定：
 - Corner Radius: `lg` (radius) = 12
 
 內容層：
-- Icon: 16 × 16（`gray/gray600` 色調）
+- Icon: 16 × 16，顏色 `gray/gray600`，Source: `i-01` from `Icon-IconFont` page
 - Label: 文字 `新增區塊`，顏色 `gray/gray600`
 
 Typography: `NotoSansTC/16px/Bold` → Noto Sans TC, Bold, 16px, lh 1.5
