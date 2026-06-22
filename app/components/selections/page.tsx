@@ -131,7 +131,7 @@ function SelectionCard({ selected, state }: { selected: Selected; state: SelStat
 
   const borderColor = (isOn && !isDisabled) ? "var(--green-500)" : isError ? "var(--red-500)" : "var(--gray-500)"
   const textColor = (isOn && !isDisabled) ? "var(--green-500)" : (isOn && isDisabled) ? "var(--gray-900)" : "var(--gray-600)"
-  const checkColor = isDisabled ? "var(--gray-500)" : "var(--green-500)"
+  const checkColor = isDisabled ? "var(--gray-900)" : "var(--green-500)"
 
   return (
     <div style={{ width: 142, height: 48, background: "var(--gray-0)", borderRadius: 6, overflow: "hidden", opacity: isDisabled ? 0.5 : 1 }}>
@@ -140,7 +140,7 @@ function SelectionCard({ selected, state }: { selected: Selected; state: SelStat
           width: "100%", height: "100%",
           border: `1px solid ${borderColor}`,
           borderRadius: 6,
-          display: "flex", alignItems: "center", justifyContent: "center",
+          display: "flex", alignItems: "center", justifyContent: "flex-start",
           paddingLeft: isOn ? 8 : 12, paddingRight: 12,
           gap: isOn ? 4 : 0,
         }}

@@ -15,7 +15,7 @@ export function TopNav() {
         href="/"
         className="text-md font-bold text-white no-underline tracking-tight shrink-0 whitespace-nowrap"
       >
-        點麥當勞D · Design System
+        Design System 點麥當勞D
       </Link>
 
       <nav className="flex items-center gap-1.5">

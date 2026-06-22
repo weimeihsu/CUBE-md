@@ -1,3 +1,11 @@
+---
+title: 間距與圓角
+section: 基礎
+href: /base/spacing-radius
+date: 2026-05-20
+description: 10 個間距 Token（xxs–5xl）與 4 個圓角 Token（s、md、lg、full）。以階梯式區塊搭配 Token 標籤呈現視覺比例尺。
+---
+
 # 間距 Spacing & 圓角 Radius Guidelines
 
 Spacing and radius tokens combined — matching the layout of the reference page

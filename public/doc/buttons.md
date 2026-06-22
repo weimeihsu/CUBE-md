@@ -1,3 +1,11 @@
+---
+title: 按鈕
+section: 元件
+href: /components/buttons
+date: 2026-06-15
+description: 新增 5 種按鈕類型——動態按鈕、底部按鈕、圖示按鈕、文字連結與區塊按鈕，共 32 種變體，涵蓋填充、外框與文字樣式。所有色彩 Token 已綁定至 Figma 變數。
+---
+
 # 按鈕元件規格 Button Components Spec
 
 > **前置作業 Prerequisites**

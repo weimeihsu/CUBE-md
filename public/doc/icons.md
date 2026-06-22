@@ -1,3 +1,11 @@
+---
+title: 圖示
+section: 元件
+href: /components/icons
+date: 2026-06-01
+description: 5 組圖示元件集（i-01、i-03、i-06、i-24、i-67），涵蓋 5 種尺寸（16–40px）。填充與描邊顏色均綁定至 Primitive/gray/gray900。
+---
+
 # Icon Set Guidelines
 
 The icon system and how to re-create it. Written so designers and AI agents can

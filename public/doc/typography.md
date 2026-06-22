@@ -1,3 +1,11 @@
+---
+title: 字體排版
+section: 基礎
+href: /base/typography
+date: 2026-05-10
+description: 橫跨 Noto Sans TC 與 Roboto Flex 的 28 種文字樣式——7 個尺寸 Token（12–32px）× 2 種字重 × 2 種字體家族。行高 150%，字間距 0%。
+---
+
 # Typography Guidelines
 
 A shared typography standard for product/app design. This document is the single

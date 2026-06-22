@@ -21,6 +21,7 @@ export const navSections: NavSection[] = [
       { label: "圖標 Icons", href: "/components/icons" },
       { label: "按鈕 Buttons", href: "/components/buttons" },
       { label: "選擇元件 Selections", href: "/components/selections" },
+      { label: "文字欄位 Text Field", href: "/components/text-field" },
     ],
   },
 ]

@@ -1,3 +1,11 @@
+---
+title: 文字欄位
+section: 元件
+href: /components/text-field
+date: 2026-06-22
+description: 輸入框與多行文字元件，支援標籤、輔助文字、錯誤狀態及前綴／後綴插槽。所有框線與填充顏色均已綁定至 Figma 變數。
+---
+
 # 文字欄位規格 Text Field Components Spec
 
 > **前置作業 Prerequisites**

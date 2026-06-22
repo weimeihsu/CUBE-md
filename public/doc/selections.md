@@ -1,3 +1,11 @@
+---
+title: 選擇元件
+section: 元件
+href: /components/selections
+date: 2026-06-20
+description: 核取方塊、單選按鈕與切換開關元件，所有狀態（預設、懸停、聚焦、停用）的 Figma 變數均已完整綁定。
+---
+
 # 選擇元件規格 Selection Components Spec
 
 > **前置作業 Prerequisites**
@@ -226,7 +234,7 @@ Typography: `NotoSansTC/16px/Regular` → Noto Sans TC, Regular, 16px, lh 1.5
 - Height: 48px
 
 內層 state-layer 設定：
-- Layout: Horizontal Auto Layout, 主軸與交叉軸均居中對齊
+- Layout: Horizontal Auto Layout, 主軸靠左對齊、交叉軸居中對齊
 - Border: 1px solid（顏色依狀態）
 - Corner Radius: `md` = 6px
 - Padding 上下: `md` = 12px
@@ -240,10 +248,13 @@ Typography: `NotoSansTC/16px/Regular` → Noto Sans TC, Regular, 16px, lh 1.5
 | Off | Disabled | `gray/gray500` | `gray/gray600` | — | 50% |
 | Off | Error | `red/red500` | `gray/gray600` | — | 100% |
 | On | Enabled | `green/green500` | `green/green500` | `i-67`，`green/green500` | 100% |
-| On | Disabled | `gray/gray500` | `gray/gray900` | `i-67`，gray | 50% |
+| On | Disabled | `gray/gray500` | `gray/gray900` | `i-67`，`gray/gray900` | 50% |
+
+> 文字內容預設為「選項」。
 
 勾選圖標：
 - Source: `i-67`（Icon-IconFont 頁面）
 - Size: 16 × 16px，stroke 風格
+- 顏色：`Selected=On, State=Enabled` 為 `green/green500`；`Selected=On, State=Disabled` 為 `gray/gray900`（並隨 state-layer 套用 50% opacity）
 
 Typography: `NotoSansTC/16px/Regular` → Noto Sans TC, Regular, 16px, lh 1.5

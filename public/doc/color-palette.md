@@ -1,3 +1,11 @@
+---
+title: 色彩
+section: 基礎
+href: /base/colors
+date: 2026-05-15
+description: 涵蓋 6 組色系的 68 個基礎色彩變數：藍、綠、紫、紅、橙與灰。以色票格展示並標示已綁定的 Figma 變數名稱與十六進位色碼。
+---
+
 # Color Palette Guidelines
 
 The primitive color palette and how to re-create it. This is the single source of
