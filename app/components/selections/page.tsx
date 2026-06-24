@@ -1,4 +1,4 @@
-import { DownloadDoc } from "@/components/download-doc"
+import { PageHeader } from "@/components/page-header"
 
 // ── SVG icons ─────────────────────────────────────────────────────────────────
 
@@ -195,13 +195,7 @@ const selectionVariants: { label: string; selected: Selected; state: SelState }[
 export default function SelectionsPage() {
   return (
     <div>
-      <div className="flex items-start justify-between mb-8">
-        <div>
-          <h1 className="text-2xl font-bold text-foreground mb-1">選擇元件 Selections</h1>
-          <p className="text-sm text-muted-foreground">5 種選擇元件。</p>
-        </div>
-        <DownloadDoc filename="selections.md" />
-      </div>
+      <PageHeader title="選擇元件 Selections" description="5 種選擇元件。" filename="selections.md" />
 
       <div className="flex flex-col gap-14">
 

@@ -1,4 +1,4 @@
-import { DownloadDoc } from "@/components/download-doc"
+import { PageHeader } from "@/components/page-header"
 
 const spacingTokens = [
   { token: "xxs", value: 4 },
@@ -23,15 +23,7 @@ const radiusTokens = [
 export default function SpacingRadiusPage() {
   return (
     <div>
-      <div className="flex items-start justify-between mb-8">
-        <div>
-          <h1 className="text-2xl font-bold text-foreground mb-1">間距與圓角 Spacing & Radius</h1>
-          <p className="text-sm text-muted-foreground">
-            10 個間距標記和 4 個圓角標記。
-          </p>
-        </div>
-        <DownloadDoc filename="spacing-radius.md" />
-      </div>
+      <PageHeader title="間距與圓角 Spacing & Radius" description="10 個間距標記和 4 個圓角標記。" filename="spacing-radius.md" />
 
       {/* ── Spacing ── */}
       <section className="mb-12">

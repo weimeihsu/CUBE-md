@@ -1,4 +1,4 @@
-import { DownloadDoc } from "@/components/download-doc"
+import { PageHeader } from "@/components/page-header"
 
 const scale = [
   { token: "3xl", size: 32 },
@@ -28,15 +28,7 @@ const fonts = [
 export default function TypographyPage() {
   return (
     <div>
-      <div className="flex items-start justify-between mb-6">
-        <div>
-          <h1 className="text-2xl font-bold text-foreground mb-1">字體 Typography</h1>
-          <p className="text-sm text-muted-foreground">
-            Noto Sans TC 和 Roboto Flex 共 28 種文字樣式組合。
-          </p>
-        </div>
-        <DownloadDoc filename="typography.md" />
-      </div>
+      <PageHeader title="字體 Typography" description="Noto Sans TC 和 Roboto Flex 共 28 種文字樣式組合。" filename="typography.md" />
 
       <div className="flex flex-col gap-12">
         {fonts.map(({ name, figmaPrefix, family, specimen }) => (

@@ -62,6 +62,23 @@ Icon sizes map directly to spacing tokens:
 Always reference icons by their token size name (`lg`, `xl`, `2xl` …) in design
 specs and code, not the raw pixel value.
 
+### Frame size vs. glyph artwork size
+
+The `Size` value is the **component frame** (bounding box). The visible icon glyph
+(the Union / Subtract / Vector shape) is **inset** inside that frame, identically
+across all icons:
+
+| Frame (px) | Glyph artwork | Inset per side |
+| ---------- | ------------- | -------------- |
+| 16         | 14 × 14       | 1     |
+| 20         | 18 × 18       | 1     |
+| 24         | 21 × 21       | 1.5   |
+| 32         | 28 × 28       | 2     |
+| 40         | 35 × 35       | 2.5   |
+
+> ⚠️ When rebuilding, draw the glyph at the **artwork** size (not the full frame
+> size) and center it. Drawing at full frame size makes the icon look oversized.
+
 ---
 
 ## 4. Variant properties
@@ -131,9 +148,14 @@ Component (e.g. Size=24, Variant=outlined)
 │   └── gride   [BOOLEAN_OPERATION] ← grid overlay (red/pink, hidden in prod)
 └── <Icon shape>                   ← the actual icon
     ├── outlined/size-only:  Union  [BOOLEAN_OPERATION]  — fill → gray/gray900
-    ├── filled:              Group → Subtract [BOOLEAN_OPERATION] — fill → gray/gray900
+    ├── filled (i-01):       Subtract [BOOLEAN_OPERATION] — fill → gray/gray900   (bare, no Group)
+    ├── filled (i-03):       Group → Subtract [BOOLEAN_OPERATION] — fill → gray/gray900
     └── stroke (i-67):       Vector [VECTOR] — stroke → gray/gray900
 ```
+
+> ⚠️ **`filled` shape differs per icon:** `i-01` filled is a **bare `Subtract`** (no
+> Group wrapper), while `i-03` filled wraps its `Subtract` in a **`Group`**. Don't
+> assume a uniform structure across the two.
 
 ---
 

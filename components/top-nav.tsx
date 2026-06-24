@@ -24,7 +24,7 @@ export function TopNav() {
           return (
             <Link
               key={section.href}
-              href={section.children[0].href}
+              href={section.children?.[0].href ?? section.href}
               className={`px-2 py-1.5 rounded text-md no-underline transition-colors duration-150 ${
                 isActive
                   ? "text-white bg-green-600"

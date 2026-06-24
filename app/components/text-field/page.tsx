@@ -1,4 +1,4 @@
-import { DownloadDoc } from "@/components/download-doc"
+import { PageHeader } from "@/components/page-header"
 
 // ── SVG Icons ──────────────────────────────────────────────────────────────────
 
@@ -169,13 +169,7 @@ const states: { label: string; state: TFState }[] = [
 export default function TextFieldPage() {
   return (
     <div>
-      <div className="flex items-start justify-between mb-8">
-        <div>
-          <h1 className="text-2xl font-bold text-foreground mb-1">文字欄位 Text Field</h1>
-          <p className="text-sm text-muted-foreground">3 種文字欄位元件。</p>
-        </div>
-        <DownloadDoc filename="text-field.md" />
-      </div>
+      <PageHeader title="文字欄位 Text Field" description="3 種文字欄位元件。" filename="text-field.md" />
 
       <div className="flex flex-col gap-14">
 

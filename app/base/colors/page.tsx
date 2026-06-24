@@ -1,4 +1,4 @@
-import { DownloadDoc } from "@/components/download-doc"
+import { PageHeader } from "@/components/page-header"
 
 const palette = [
   {
@@ -104,15 +104,7 @@ const palette = [
 export default function ColorsPage() {
   return (
     <div>
-      <div className="flex items-start justify-between mb-8">
-        <div>
-          <h1 className="text-2xl font-bold text-foreground mb-1">顏色 Colors</h1>
-          <p className="text-sm text-muted-foreground">
-            68 個原始顏色，分佈在 6 個集合中。
-          </p>
-        </div>
-        <DownloadDoc filename="color-palette.md" />
-      </div>
+      <PageHeader title="顏色 Colors" description="68 個原始顏色，分佈在 6 個集合中。" filename="color-palette.md" />
 
       <div className="flex flex-col gap-6">
         {palette.map(({ name, swatches }) => (

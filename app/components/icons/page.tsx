@@ -1,4 +1,4 @@
-import { DownloadDoc } from "@/components/download-doc"
+import { PageHeader } from "@/components/page-header"
 
 // ── SVG icon components (viewBox 0 0 24 24) ──────────────────────────────────
 
@@ -83,15 +83,7 @@ const gridCols = "grid-cols-[72px_repeat(5,56px)]"
 export default function IconsPage() {
   return (
     <div>
-      <div className="flex items-start justify-between mb-8">
-        <div>
-          <h1 className="text-2xl font-bold text-foreground mb-1">圖標 Icons</h1>
-          <p className="text-sm text-muted-foreground">
-            5 套圖標組件，共 5 種尺寸。
-          </p>
-        </div>
-        <DownloadDoc filename="icons.md" />
-      </div>
+      <PageHeader title="圖標 Icons" description="5 套圖標組件，共 5 種尺寸。" filename="icons.md" />
 
       <div className="overflow-x-auto">
         {/* Size scale header */}

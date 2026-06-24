@@ -1,7 +1,7 @@
 export type NavSection = {
   label: string
   href: string
-  children: { label: string; href: string }[]
+  children?: { label: string; href: string }[]
 }
 
 export const navSections: NavSection[] = [
@@ -23,5 +23,9 @@ export const navSections: NavSection[] = [
       { label: "選擇元件 Selections", href: "/components/selections" },
       { label: "文字欄位 Text Field", href: "/components/text-field" },
     ],
+  },
+  {
+    label: "安裝指南",
+    href: "/guide",
   },
 ]

@@ -1,4 +1,4 @@
-import { DownloadDoc } from "@/components/download-doc"
+import { PageHeader } from "@/components/page-header"
 
 function PlusIcon({ size = 16, color = "currentColor" }: { size?: number; color?: string }) {
   return (
@@ -27,13 +27,7 @@ function StateLabel({ children }: { children: React.ReactNode }) {
 export default function ButtonsPage() {
   return (
     <div>
-      <div className="flex items-start justify-between mb-8">
-        <div>
-          <h1 className="text-2xl font-bold text-foreground mb-1">按鈕 Buttons</h1>
-          <p className="text-sm text-muted-foreground">5 種按鈕元件。</p>
-        </div>
-        <DownloadDoc filename="buttons.md" />
-      </div>
+      <PageHeader title="按鈕 Buttons" description="5 種按鈕元件。" filename="buttons.md" />
 
       <div className="flex flex-col gap-14">
 
