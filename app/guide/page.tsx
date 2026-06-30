@@ -1,4 +1,6 @@
+import Image from "next/image"
 import { DownloadDoc } from "@/components/download-doc"
+import { CopyBlock } from "@/components/copy-block"
 
 const baseFiles = [
   { label: "顏色 Colors",           file: "color-palette.md",  description: "68 個顏色變數，6 組色系" },
@@ -43,7 +45,7 @@ export default function GuidePage() {
   return (
     <div className="max-w-2xl mx-auto px-6 py-12">
       <h1 className="text-2xl font-bold text-foreground mb-1">安裝指南</h1>
-      <p className="text-sm text-muted-foreground mb-10">
+      <p className="text-base text-muted-foreground mb-10">
         透過 AI Agent 將 CUBE 設計系統匯入至你的 Figma 檔案。
       </p>
 
@@ -51,28 +53,24 @@ export default function GuidePage() {
 
         {/* ── 準備工作 ─────────────────────────────────────────────────────── */}
         <section>
-          <h2 className="text-[14px] font-bold text-foreground pb-3 mb-4 border-b border-gray-150">
+          <h2 className="text-lg font-bold text-foreground pb-3 mb-4 border-b border-gray-150">
             準備工作
           </h2>
-          <ul className="flex flex-col gap-2 text-sm text-muted-foreground">
+          <ul className="flex flex-col gap-2 text-base text-muted-foreground">
             <li className="flex items-start gap-2">
               <span className="mt-1 shrink-0 w-1.5 h-1.5 rounded-full bg-gray-400" />
               一個空白的 Figma 檔案（需有編輯權限）
             </li>
             <li className="flex items-start gap-2">
               <span className="mt-1 shrink-0 w-1.5 h-1.5 rounded-full bg-gray-400" />
-              支援 Figma MCP 的 AI Agent（例如 Claude）
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1 shrink-0 w-1.5 h-1.5 rounded-full bg-gray-400" />
-              本文件站台的網址（用於讓 Agent 讀取規格文件）
+              支援 Figma MCP 的 AI Agent（例如 Claude Code）
             </li>
           </ul>
         </section>
 
         {/* ── 步驟 ─────────────────────────────────────────────────────────── */}
         <section>
-          <h2 className="text-[14px] font-bold text-foreground pb-3 mb-6 border-b border-gray-150">
+          <h2 className="text-lg font-bold text-foreground pb-3 mb-6 border-b border-gray-150">
             操作步驟
           </h2>
 
@@ -80,32 +78,34 @@ export default function GuidePage() {
 
             <div className="flex gap-4">
               <StepNumber n={1} />
-              <div className="pt-0.5">
-                <p className="text-sm font-semibold text-foreground mb-1">建立空白 Figma 檔案</p>
-                <p className="text-sm text-muted-foreground">
+              <div className="pt-0.5 flex-1 min-w-0">
+                <p className="font-semibold text-foreground mb-1">建立空白 Figma 檔案</p>
+                <p className="text-base text-muted-foreground mb-3">
                   在 Figma 中新增一個空白設計檔案，複製檔案 URL（格式為 <code className="text-[14px] bg-gray-100 px-1 rounded">figma.com/design/…</code>）。
                 </p>
+                <Image src="/img/copy-figma-url.png" alt="複製 Figma 檔案 URL" width={600} height={400} className="rounded-lg border border-gray-150 w-full" />
               </div>
             </div>
 
             <div className="flex gap-4">
               <StepNumber n={2} />
               <div className="pt-0.5">
-                <p className="text-sm font-semibold text-foreground mb-1">開啟 AI Agent 對話</p>
-                <p className="text-sm text-muted-foreground">
-                  啟動支援 Figma MCP 的 AI Agent，在對話中提供 Figma 檔案 URL 與本站網址。
+                <p className="font-semibold text-foreground mb-1">開啟 AI Agent 對話</p>
+                <p className="text-base text-muted-foreground">
+                  啟動支援 Figma MCP 的 AI Agent，在對話中提供 Figma URL 與下載好的md檔。
                 </p>
+                <Image src="/img/prompt.png" alt="promt" width={600} height={400} className="rounded-lg border border-gray-150 w-full" />
               </div>
             </div>
 
             <div className="flex gap-4">
               <StepNumber n={3} />
-              <div className="pt-0.5">
-                <p className="text-sm font-semibold text-foreground mb-2">依序匯入基礎建設</p>
-                <p className="text-sm text-muted-foreground mb-3">
+              <div className="pt-0.5 flex-1 min-w-0">
+                <p className="font-semibold text-foreground mb-2">依序匯入基礎建設</p>
+                <p className="text-base text-muted-foreground mb-3">
                   讓 Agent 依序讀取以下規格文件並匯入。<strong className="text-foreground">每個檔案完成後再進行下一個</strong>，因為後續層級依賴前一層的變數名稱。
                 </p>
-                <div className="rounded-lg border border-gray-150 overflow-hidden">
+                <div className="rounded-lg border border-gray-150 overflow-hidden mb-3">
                   <div className="px-3 py-2 bg-green-150 flex items-center gap-2">
                     <span className="text-[14px] font-bold text-green-800 uppercase tracking-wide">基礎建設 — 優先匯入</span>
                   </div>
@@ -120,12 +120,12 @@ export default function GuidePage() {
 
             <div className="flex gap-4">
               <StepNumber n={4} />
-              <div className="pt-0.5">
-                <p className="text-sm font-semibold text-foreground mb-2">匯入元件</p>
-                <p className="text-sm text-muted-foreground mb-3">
+              <div className="pt-0.5 flex-1 min-w-0">
+                <p className="font-semibold text-foreground mb-2">匯入元件</p>
+                <p className="text-base text-muted-foreground mb-3">
                   基礎建設全數完成後，依序匯入元件規格。元件內的色彩與間距會自動綁定至已建立的變數。
                 </p>
-                <div className="rounded-lg border border-gray-150 overflow-hidden">
+                <div className="rounded-lg border border-gray-150 overflow-hidden mb-3">
                   <div className="px-3 py-2 bg-blue-150 flex items-center gap-2">
                     <span className="text-[14px] font-bold text-blue-800 uppercase tracking-wide">元件 — 基礎建設完成後匯入</span>
                   </div>
@@ -143,26 +143,23 @@ export default function GuidePage() {
 
         {/* ── 提示詞範本 ───────────────────────────────────────────────────── */}
         <section>
-          <h2 className="text-[14px] font-bold text-foreground pb-3 mb-4 border-b border-gray-150">
+          <h2 className="text-lg font-bold text-foreground pb-3 mb-4 border-b border-gray-150">
             Agent 提示詞範本
           </h2>
-          <p className="text-sm text-muted-foreground mb-4">
-            對 Agent 重複使用以下格式，每次替換對應的規格文件路徑：
-          </p>
-          <pre className="text-[14px] bg-gray-100 rounded-lg p-4 overflow-x-auto leading-relaxed text-gray-900 whitespace-pre-wrap">{`我有一個 Figma 檔案：[FIGMA_URL]
+          <CopyBlock>{`我有一個 Figma 檔案：[FIGMA_URL]
 
-請讀取 [SITE_URL]/doc/[filename].md，依照文件中的規格在 Figma 中建立對應的設計系統內容。請嚴格依照文件的 Variable Reference 表格使用變數名稱，不要使用 hex 色碼。完成後告知我結果，我會再給你下一個檔案。`}</pre>
+請依照附件md檔的規格文件，將 CUBE 設計系統匯入至該 Figma 檔案中。`}</CopyBlock>
           <p className="text-[14px] text-muted-foreground mt-3">
-            將 <code className="bg-gray-100 px-1 rounded">[FIGMA_URL]</code>、<code className="bg-gray-100 px-1 rounded">[SITE_URL]</code> 與 <code className="bg-gray-100 px-1 rounded">[filename]</code> 替換為實際值。
+            將 <code className="bg-gray-100 px-1 rounded">[FIGMA_URL]</code> 替換為你的 Figma 檔案網址，並貼上對應規格文件的內容。
           </p>
         </section>
 
         {/* ── 注意事項 ─────────────────────────────────────────────────────── */}
         <section>
-          <h2 className="text-[14px] font-bold text-foreground pb-3 mb-4 border-b border-gray-150">
+          <h2 className="text-lg font-bold text-foreground pb-3 mb-4 border-b border-gray-150">
             注意事項
           </h2>
-          <ul className="flex flex-col gap-2.5 text-sm text-muted-foreground">
+          <ul className="flex flex-col gap-2.5 text-base text-muted-foreground">
             <li className="flex items-start gap-2">
               <span className="mt-1 shrink-0 w-1.5 h-1.5 rounded-full bg-gray-400" />
               基礎建設必須在元件之前完成，否則元件的變數綁定會失敗。
