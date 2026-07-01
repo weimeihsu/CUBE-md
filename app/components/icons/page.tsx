@@ -9,14 +9,14 @@ function AddIcon({ size, strokeWidth = 1.5, filled = false }: { size: number; st
     return (
       <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
         <circle cx="12" cy="12" r="10" fill={COLOR} />
-        <path d="M8 12h8M12 8v8" stroke="white" strokeWidth={1.8} strokeLinecap="round" />
+        <path d="M8 12h8M12 8v8" stroke="white" strokeWidth={1.8} strokeLinecap="butt" />
       </svg>
     )
   }
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
       <circle cx="12" cy="12" r="10" stroke={COLOR} strokeWidth={strokeWidth} />
-      <path d="M8 12h8M12 8v8" stroke={COLOR} strokeWidth={strokeWidth} strokeLinecap="round" />
+      <path d="M8 12h8M12 8v8" stroke={COLOR} strokeWidth={strokeWidth} strokeLinecap="butt" />
     </svg>
   )
 }
@@ -26,14 +26,14 @@ function CloseIcon({ size, strokeWidth = 1.5, filled = false }: { size: number; 
     return (
       <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
         <circle cx="12" cy="12" r="10" fill={COLOR} />
-        <path d="M8.5 8.5l7 7M15.5 8.5l-7 7" stroke="white" strokeWidth={1.8} strokeLinecap="round" />
+        <path d="M8.5 8.5l7 7M15.5 8.5l-7 7" stroke="white" strokeWidth={1.8} strokeLinecap="butt" />
       </svg>
     )
   }
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
       <circle cx="12" cy="12" r="10" stroke={COLOR} strokeWidth={strokeWidth} />
-      <path d="M8.5 8.5l7 7M15.5 8.5l-7 7" stroke={COLOR} strokeWidth={strokeWidth} strokeLinecap="round" />
+      <path d="M8.5 8.5l7 7M15.5 8.5l-7 7" stroke={COLOR} strokeWidth={strokeWidth} strokeLinecap="butt" />
     </svg>
   )
 }
@@ -41,7 +41,7 @@ function CloseIcon({ size, strokeWidth = 1.5, filled = false }: { size: number; 
 function ChevronRightIcon({ size, strokeWidth = 1.5 }: { size: number; strokeWidth?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      <path d="M9 6l6 6-6 6" stroke={COLOR} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M9 6l6 6-6 6" stroke={COLOR} strokeWidth={strokeWidth} strokeLinejoin="miter" />
     </svg>
   )
 }
@@ -50,7 +50,7 @@ function SearchIcon({ size, strokeWidth = 1.5 }: { size: number; strokeWidth?: n
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
       <circle cx="11" cy="11" r="7" stroke={COLOR} strokeWidth={strokeWidth} />
-      <path d="M16 16l4.5 4.5" stroke={COLOR} strokeWidth={strokeWidth} strokeLinecap="round" />
+      <path d="M16 16l4.5 4.5" stroke={COLOR} strokeWidth={strokeWidth} strokeLinecap="butt" />
     </svg>
   )
 }
@@ -58,7 +58,7 @@ function SearchIcon({ size, strokeWidth = 1.5 }: { size: number; strokeWidth?: n
 function CheckmarkIcon({ size, strokeWidth = 1.5 }: { size: number; strokeWidth?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      <path d="M4 13l5 5L20 6" stroke={COLOR} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M4 13l5 5L20 6" stroke={COLOR} strokeWidth={strokeWidth} strokeLinejoin="miter" />
     </svg>
   )
 }

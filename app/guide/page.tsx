@@ -1,18 +1,20 @@
 import Image from "next/image"
+import Link from "next/link"
 import { DownloadDoc } from "@/components/download-doc"
 import { CopyBlock } from "@/components/copy-block"
 
 const baseFiles = [
-  { label: "顏色 Colors",           file: "color-palette.md",  description: "68 個顏色變數，6 組色系" },
-  { label: "字體 Typography",        file: "typography.md",     description: "28 種文字樣式，2 種字體家族" },
-  { label: "間距與圓角 Spacing & Radius", file: "spacing-radius.md", description: "10 個間距 Token，4 個圓角 Token" },
+  { label: "顏色 Colors",                file: "color-palette.md",  description: "68 個顏色變數，6 組色系",        url: "/base/colors" },
+  { label: "字體 Typography",            file: "typography.md",     description: "28 種文字樣式，2 種字體家族",    url: "/base/typography" },
+  { label: "間距與圓角 Spacing & Radius", file: "spacing-radius.md", description: "10 個間距 Token，4 個圓角 Token", url: "/base/spacing-radius" },
 ]
 
 const componentFiles = [
-  { label: "圖標 Icons",             file: "icons.md",          description: "5 組圖標元件集，5 種尺寸" },
-  { label: "按鈕 Buttons",           file: "buttons.md",        description: "5 種按鈕類型，32 種變體" },
-  { label: "選擇元件 Selections",     file: "selections.md",     description: "核取方塊、單選框、選項卡片" },
-  { label: "文字欄位 Text Field",     file: "text-field.md",     description: "輸入框、浮動標籤、欄位群組" },
+  { label: "圖標 Icons",                file: "icons.md",          description: "5 組圖標元件集，5 種尺寸",                  url: "/components/icons" },
+  { label: "按鈕 Buttons",              file: "buttons.md",        description: "5 種按鈕類型，32 種變體",                    url: "/components/buttons" },
+  { label: "選擇元件 Selections",        file: "selections.md",     description: "核取方塊、單選框、選項卡片",                 url: "/components/selections" },
+  { label: "文字欄位 Text Field",        file: "text-field.md",     description: "輸入框、浮動標籤、欄位群組",                 url: "/components/text-field" },
+  { label: "頁首與頁尾 Header & Footer", file: "header-footer.md",  description: "網頁 RWD 頁首／頁尾三斷點、原生頭尾參考",   url: "/components/header-footer" },
 ]
 
 function StepNumber({ n }: { n: number }) {
@@ -23,11 +25,12 @@ function StepNumber({ n }: { n: number }) {
   )
 }
 
-function FileRow({ index, label, file, description }: {
+function FileRow({ index, label, file, description, url }: {
   index: number
   label: string
   file: string
   description: string
+  url?: string
 }) {
   return (
     <div className="flex items-start gap-3 py-3 border-b border-gray-150 last:border-0">
@@ -36,6 +39,11 @@ function FileRow({ index, label, file, description }: {
         <p className="text-[14px] font-semibold text-foreground">{label}</p>
         <p className="text-[14px] text-muted-foreground mt-0.5">{description}</p>
       </div>
+      {url && (
+        <Link href={url} className="inline-flex items-center px-3 py-1.5 rounded text-[14px] bg-gray-150 text-gray-900 hover:bg-gray-200 transition-colors duration-150 no-underline shrink-0">
+          預覽
+        </Link>
+      )}
       <DownloadDoc filename={file} />
     </div>
   )
@@ -56,14 +64,11 @@ export default function GuidePage() {
           <h2 className="text-lg font-bold text-foreground pb-3 mb-4 border-b border-gray-150">
             準備工作
           </h2>
-          <ul className="flex flex-col gap-2 text-base text-muted-foreground">
-            <li className="flex items-start gap-2">
-              <span className="mt-1 shrink-0 w-1.5 h-1.5 rounded-full bg-gray-400" />
-              一個空白的 Figma 檔案（需有編輯權限）
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1 shrink-0 w-1.5 h-1.5 rounded-full bg-gray-400" />
-              支援 Figma MCP 的 AI Agent（例如 Claude Code）
+          <ul className="list-disc pl-5 flex flex-col gap-2 text-muted-foreground">
+            <li>一個空白的 Figma 檔案（需有編輯權限）</li>
+            <li>
+              支援 Figma MCP 的 AI Agent（例如 Claude Code）<br />
+              <Link href="https://www.figma.com/mcp-catalog/" target="_blank" className="text-blue-500 hover:underline">Figma MCP Server安裝指南</Link>
             </li>
           </ul>
         </section>
@@ -101,9 +106,9 @@ export default function GuidePage() {
             <div className="flex gap-4">
               <StepNumber n={3} />
               <div className="pt-0.5 flex-1 min-w-0">
-                <p className="font-semibold text-foreground mb-2">依序匯入基礎建設</p>
+                <p className="font-semibold text-foreground mb-2">匯入基礎建設</p>
                 <p className="text-base text-muted-foreground mb-3">
-                  讓 Agent 依序讀取以下規格文件並匯入。<strong className="text-foreground">每個檔案完成後再進行下一個</strong>，因為後續層級依賴前一層的變數名稱。
+                  讓 Agent 依序讀取以下規格文件並匯入。
                 </p>
                 <div className="rounded-lg border border-gray-150 overflow-hidden mb-3">
                   <div className="px-3 py-2 bg-green-150 flex items-center gap-2">
@@ -122,9 +127,11 @@ export default function GuidePage() {
               <StepNumber n={4} />
               <div className="pt-0.5 flex-1 min-w-0">
                 <p className="font-semibold text-foreground mb-2">匯入元件</p>
-                <p className="text-base text-muted-foreground mb-3">
-                  基礎建設全數完成後，依序匯入元件規格。元件內的色彩與間距會自動綁定至已建立的變數。
-                </p>
+                <ol className="list-decimal pl-5 flex flex-col gap-1 text-muted-foreground mb-3">
+                  <li>確認基礎建設已全數完成，元件樣式會自動綁定至基礎建設的變數。</li>
+                  <li>選擇需要的元件匯入您的figma即可，匯入方式與基礎建設相同。</li>
+                  <li>匯入前可點擊「預覽」，前往對應的頁面，查看元件外觀。</li>
+                </ol>
                 <div className="rounded-lg border border-gray-150 overflow-hidden mb-3">
                   <div className="px-3 py-2 bg-blue-150 flex items-center gap-2">
                     <span className="text-[14px] font-bold text-blue-800 uppercase tracking-wide">元件 — 基礎建設完成後匯入</span>
@@ -159,19 +166,10 @@ export default function GuidePage() {
           <h2 className="text-lg font-bold text-foreground pb-3 mb-4 border-b border-gray-150">
             注意事項
           </h2>
-          <ul className="flex flex-col gap-2.5 text-base text-muted-foreground">
-            <li className="flex items-start gap-2">
-              <span className="mt-1 shrink-0 w-1.5 h-1.5 rounded-full bg-gray-400" />
-              基礎建設必須在元件之前完成，否則元件的變數綁定會失敗。
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1 shrink-0 w-1.5 h-1.5 rounded-full bg-gray-400" />
-              每次只讓 Agent 處理一個規格文件，確認完成再繼續下一個。
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1 shrink-0 w-1.5 h-1.5 rounded-full bg-gray-400" />
-              元件規格中的顏色均以變數名稱表示（如 <code className="text-[14px] bg-gray-100 px-1 rounded">gray/gray500</code>），Agent 應綁定至變數，而非直接填入 hex 值。
-            </li>
+          <ul className="list-disc pl-5 flex flex-col gap-2.5 text-muted-foreground">
+            <li>基礎建設必須在元件之前完成，否則元件的變數綁定會失敗。</li>
+            <li>每次只讓 Agent 處理一個規格文件，確認完成再繼續下一個。</li>
+            <li>元件規格中的顏色均以變數名稱表示（如 <code className="text-[14px] bg-gray-100 px-1 rounded">gray/gray500</code>），Agent 應綁定至變數，而非直接填入 hex 值。</li>
           </ul>
         </section>
 

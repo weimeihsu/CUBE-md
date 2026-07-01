@@ -1,0 +1,185 @@
+---
+title: 頁首與頁尾
+section: 元件
+href: /components/header-footer
+date: 2026-07-01
+description: 網頁 RWD 頁首與頁尾元件（桌機／平板／手機三斷點）及手機原生頭尾參考。所有色彩、文字與漸層均綁定至本地變數與樣式。
+---
+
+# 頁首與頁尾規格 Header & Footer Components Spec
+
+> **前置作業 Prerequisites**
+> 請先完成以下匯入，再依本文件建立頁首／頁尾元件庫：
+> 1. 基礎設定 Base Settings
+> 2. 色彩 Colors
+> 3. 字體排版 Typography
+> 4. 間距 Spacing
+> 5. 圓角 Radius
+> 6. 漸層樣式 Gradient Styles（`漸層色 Gradients_Cathay/Cathay-Green`）
+> 7. 品牌 Logo 資產（國泰世華銀行 × cube 鎖定圖）
+
+Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **Header n Footer**（`148:428`）。
+
+---
+
+## 變數對照表 Variable Reference
+
+### 顏色 Colors
+
+| Variable Name | Value | 用途 Usage |
+|---|---|---|
+| `gray/gray0` | `#FFFFFF` | 頁首／頁尾背景；綠色橫幅文字 |
+| `gray/gray150` | `#E7E7E7` | 頁尾上緣分隔線；行動裝置瀏覽器列邊框；手機尾選單格線 |
+| `gray/gray600` | `#707070` | 行動裝置瀏覽器列網址文字 |
+| `gray/gray700` | `#5C5C5C` | 頁尾選單連結文字 |
+
+### 漸層與樣式 Styles
+
+| Style Name | Value | 用途 Usage |
+|---|---|---|
+| `漸層色 Gradients_Cathay/Cathay-Green` | 線性漸層 `#72C361 → #4FB980` | 頁尾綠色橫幅背景 |
+| `Icon/color/90` | `#333333` | 行動裝置瀏覽器列圖標（i-05／i-06／i-19）|
+
+### 間距 Spacing
+
+以本地 `Spacing` 集合的 Token 表示（依像素值對應）：
+
+| Variable Name | Value | 用途 Usage |
+|---|---|---|
+| `xxs` | `4` | 瀏覽器列上下 padding |
+| `xs` | `6` | 頁尾 logo 與選單列間距（桌機／平板）|
+| `sm` | `8` | 手機尾選單格子 padding 與列間距；手機 Nav Bar 項目間距 |
+| `md` | `12` | 瀏覽器列左右 padding |
+| `lg` | `16` | 頁首 Wrap 上下 padding；平板頁尾選單項目間距 |
+| `xl` | `20` | 頁尾左右 padding；社群圖標間距；平板頁首 Wrap 左右 padding |
+| `2xl` | `24` | 頁尾上下 padding；綠色橫幅 padding 與連結間距 |
+| `3xl` | `32` | 桌機頁尾上緣 padding；桌機選單項目間距 |
+| `4xl` | `40` | 手機頁尾上下 padding；手機主內容區間距 |
+
+
+### 字體 Typography
+
+| Variable Name | Font | Size | Weight | Line Height | 用途 |
+|---|---|---|---|---|---|
+| `NotoSansTC/14px/Regular` | Noto Sans TC | 14 | Regular / 400 | 1.5 | 頁尾選單、綠色橫幅連結、版權文字 |
+| `RobotoFlex/16px/Regular` | Roboto Flex | 16 | Regular / 400 | 1.5 | 平板瀏覽器列網址 |
+
+> 手機瀏覽器列網址使用系統字 `SF Pro 16px`（模擬原生瀏覽器 UI，非 CUBE 文字樣式）。
+
+---
+
+## Logo 資產
+
+品牌鎖定圖：**國泰世華銀行 + Cathay United Bank ＋ 分隔線 ＋ cube**。
+
+| 版本 | 尺寸 | 使用位置 |
+|---|---|---|
+| 完整版 | `323 × 34px` | 桌機／平板頁首 |
+| 精簡版 | `187.5 × 34px` | 手機頁首、所有頁尾 |
+
+> Logo 以影像／向量資產置入。其品牌色（`#00994E` 綠、`#040000` 黑等）屬品牌資產，**刻意不綁定**至灰階變數。
+
+---
+
+## 元件 1 — 網頁頁首 WebHeader
+
+**Component name:** `WebHeader`
+**Node reference:** `191:442`
+
+### 元件屬性 Properties
+
+| Property | Type | Options |
+|---|---|---|
+| `Device` | Variant | `DESK` / `TB` / `MB` |
+
+共同設定：容器背景 `gray/gray0`；底部 1px 分隔線；logo 靠左（手機置中）。
+
+### DESK（桌機，`191:439`）
+
+- 無瀏覽器列。
+- `Wrap`：max-width `1200px`，height `68px`，上下 padding `lg`（16px），完整 logo 靠左。
+- 容器底部 1px 分隔線。
+- 下方 `mb30` 空白間距 `30px`。
+
+### TB（平板 768px，`191:440`）
+
+- `Browser Head`（瀏覽器列）：白底，底部 1px `gray/gray150`；左右 padding `md`（12px）、上下 `xxs`（4px）。
+  - 左：返回／前進圖標 i-05・i-06（16px，`Icon/color/90`）
+  - 中：網址「cathay.com」`RobotoFlex/16px/Regular`，`gray/gray600`
+  - 右：關閉圖標 i-19（16px）
+- `Wrap`：height `68px`，max-width `1024px`，左右 padding `xl`（20px）、上下 `16px`，完整 logo。
+- 下方 `mb20` 空白 `20px`。
+
+### MB（手機 375px，`191:441`）
+
+- `Browser Head`：結構同 TB，但網址文字使用系統字 `SF Pro 16px`（原生模擬）。
+- `Nav Bar/Mobile`：height `56px`，白底，底部 1px 分隔線，精簡 logo（187.5×34）置中。
+- 下方 `mb20` 空白 `20px`。
+
+---
+
+## 元件 2 — 網頁頁尾 WebFooter
+
+**Component name:** `WebFooter`
+**Node reference:** `191:476`
+
+### 元件屬性 Properties
+
+| Property | Type | Options |
+|---|---|---|
+| `Device` | Variant | `DESK` / `TB` / `MB` |
+
+共同設定：兩段式結構——
+
+1. **footer 上段**：白底，上緣 1px `gray/gray150`。含 logo、關係企業選單、社群圖標。
+2. **綠色橫幅下段**：`漸層色 Gradients_Cathay/Cathay-Green` 漸層背景，文字 `gray/gray0`。含次要連結與版權。
+
+選單文字：`NotoSansTC/14px/Regular`，`gray/gray700`。
+社群圖標：`40 × 40px`（fb／line／youtube／linked-in）。
+
+### DESK（桌機，`191:477`）
+
+- footer：padding 上 `3xl`（32）、下 `2xl`（24）、左右 `xl`（20）；max-width `1200px` wrapper，gap `xs`（6）。
+- logo `187.5 × 34`。
+- 選單列（space-between）：左為 6 個關係企業連結（gap `3xl`＝32），右為社群圖標（gap `xl`＝20）。
+- 綠色橫幅：左右 padding `xl`（20）、上下 `2xl`（24）；`1200` wrapper space-between：左連結列（gap `2xl`＝24），右版權靠右。
+
+### TB（平板 768px，`191:506`）
+
+- 結構同 DESK，差異：
+  - footer 上下 padding 皆為 `2xl`（24）。
+  - 選單連結 gap 縮為 `lg`（16）。
+  - 綠色橫幅連結改為 `flex-wrap` 換行、置中（gap `2xl`＝24）。
+
+### MB（手機 375px，`191:535`）
+
+- footer：左右 padding `xl`（20）、上下 `4xl`（40），區塊 gap `2xl`（24）；max-width `556px`。
+- logo `187.5` 置中。
+- 尾選單：**2 欄格線**佈局，每格 1px `gray/gray150` 邊框、padding `sm`（8）、文字置中；列間距 `sm`（8）、欄間距 `xl`（20）。
+- 社群圖標置中（gap `xl`＝20）。
+- 綠色橫幅：連結 2 欄堆疊（gap `2xl`＝24），版權置中。
+
+---
+
+## 手機原生頭尾 Mobile Native（參考用）
+
+**Node reference:** `231:693`
+
+用於展示 App 在原生環境的頭尾脈絡，**非可重建的 CUBE 元件**：
+
+| 元素 | 尺寸 | 說明 |
+|---|---|---|
+| StatusBar（iOS）| `375 × 44px` | 模擬 iOS 狀態列 |
+| StatusBar（Android）| `360 × 24px` | 模擬 Android 狀態列 |
+| iOS Home Indicator | `375 × 34px` | iOS 底部指示條 |
+| Android Bottom Button | `360 × 48px` | 底部導覽按鈕，label「按鈕」，色 `#02293D` |
+
+> 這些原生元素的顏色（黑色系統圖標、`#02293D` 等）**刻意不綁定** CUBE 變數，用以忠實模擬作業系統外觀。
+
+---
+
+## 實作備註 Implementation Notes
+
+- **色彩／文字綁定狀態：** 頁尾主要色彩（`gray/gray0`、`gray/gray150`、`gray/gray700`）、綠色橫幅漸層與所有文字樣式皆已綁定至本地變數／樣式。重建時務必沿用變數，勿寫死 hex。
+- **頁首底部分隔線：** 原始檔案中桌機／平板 `Wrap` 與手機 `Nav Bar` 的底線目前為原始色 `rgba(0,0,0,0.1)`，**未綁定變數**。建議統一改綁 `gray/gray150`（與頁尾上緣分隔線一致）。
+- **間距集合：** 原始頁首／頁尾綁定於一套與 CUBE `Spacing` 名稱衝突的外部間距集合（該集合 `lg=20`、`xl=24`…）。本文件已依**像素值**對應回本地 `Spacing` Token；重建時請綁定本地 Token，勿沿用外部集合。
