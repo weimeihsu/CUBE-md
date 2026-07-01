@@ -148,6 +148,60 @@ For programmatic re-creation. Line height and letter spacing apply to all entrie
 3. **Map tokens to sizes** using the scale in §2 (`3xl`→32 … `xs`→12).
 4. **Apply by language:** Chinese content uses the `NotoSansTC/*` styles;
    English and numeric content uses the `RobotoFlex/*` styles.
-5. **Build the reference page** (optional): two tables, columns
-   `Token | Font size | Font weight | Look`, one row per token, showing the
-   Bold and Regular specimen for each — one table per font family.
+5. **Build the reference page** (optional): two `table` frames inside `文字清單_App`,
+   one per font family. Layer structure per table:
+   - `row-header-label` — section label text (`section-label`)
+   - `divider` — full-width rule spanning `1108px` from `x=0`
+   - `row-header` — column headers: `th-token`, `th-size`, `th-weight`, `th-look`
+   - `divider`
+   - `row` × 7 — one per token; each row contains `col-token`, `col-size`,
+     `col-weight`, `col-look`; the `col-look` cell holds two text nodes
+     (`look-1` = Bold specimen, `look-2` = Regular specimen)
+
+---
+
+## 實作備註 Implementation Notes
+
+**Figma source:** file `kkyAx6QTTNF6ZyB9rSeN6W`, page **Typography** (`0:1`), frame `Typography` (`1:40`).
+
+### 層級結構 Layer hierarchy
+
+```
+Typography (1:40)
+└── 文字清單_App (1:167)
+    ├── table (1:168)  — App typography (Noto Sans TC)
+    └── table (1:258)  — Web typography (Roboto Flex)
+```
+
+Each `table` (width `1108px`) follows this repeating pattern:
+
+```
+row-header-label
+  └── section-label          ← TEXT, table section title
+divider                      ← VECTOR, x=0, width=1108
+row-header
+  ├── th-token               ← width 48
+  ├── th-size                ← width 68
+  ├── th-weight              ← width 160
+  └── th-look                ← width 550
+divider
+row  (× 7, one per token)
+  ├── col-token → token      ← TEXT
+  ├── col-size  → size       ← TEXT
+  ├── col-weight → weight    ← TEXT
+  └── col-look
+        ├── look-1           ← TEXT, Bold specimen
+        └── look-2           ← TEXT, Regular specimen
+```
+
+### 文字樣式綁定 Text style binding
+
+All specimen text nodes (`look-1`, `look-2`) must be bound to the corresponding
+registered text style (`NotoSansTC/<size>px/<weight>` or `RobotoFlex/<size>px/<weight>`),
+not hard-coded font properties.
+
+### 分隔線 Dividers
+
+All `divider` vectors span the full table width (`x=0`, `width=1108`). When
+rebuilding, position each divider at `x=0` and set path data to `M 0 0 L 1108 0`
+before fixing the node position via `relativeTransform`.

@@ -97,24 +97,24 @@ Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **Header n Footer**（`148:428
 ### DESK（桌機，`191:439`）
 
 - 無瀏覽器列。
-- `Wrap`：max-width `1200px`，height `68px`，上下 padding `lg`（16px），完整 logo 靠左。
+- `nav-content`：max-width `1200px`，height `68px`，上下 padding `lg`（16px），完整 logo 靠左。
 - 容器底部 1px 分隔線。
-- 下方 `mb30` 空白間距 `30px`。
+- 下方 `bottom-spacer` 空白間距 `30px`。
 
 ### TB（平板 768px，`191:440`）
 
-- `Browser Head`（瀏覽器列）：白底，底部 1px `gray/gray150`；左右 padding `md`（12px）、上下 `xxs`（4px）。
-  - 左：返回／前進圖標 i-05・i-06（16px，`Icon/color/90`）
-  - 中：網址「cathay.com」`RobotoFlex/16px/Regular`，`gray/gray600`
-  - 右：關閉圖標 i-19（16px）
-- `Wrap`：height `68px`，max-width `1024px`，左右 padding `xl`（20px）、上下 `16px`，完整 logo。
-- 下方 `mb20` 空白 `20px`。
+- `browser-chrome`（瀏覽器列）：白底，底部 1px `gray/gray150`；左右 padding `md`（12px）、上下 `xxs`（4px）。
+  - `nav-left`：返回／前進圖標 `i-05`・`i-06`（16px，`Icon/color/90`）
+  - `url-bar`：網址「cathay.com」`RobotoFlex/16px/Regular`，`gray/gray600`
+  - 右：關閉圖標 `i-19`（16px）
+- `nav-content`：height `68px`，max-width `1024px`，左右 padding `xl`（20px）、上下 `16px`，完整 logo。
+- 下方 `bottom-spacer` 空白 `20px`。
 
 ### MB（手機 375px，`191:441`）
 
-- `Browser Head`：結構同 TB，但網址文字使用系統字 `SF Pro 16px`（原生模擬）。
-- `Nav Bar/Mobile`：height `56px`，白底，底部 1px 分隔線，精簡 logo（187.5×34）置中。
-- 下方 `mb20` 空白 `20px`。
+- `browser-chrome`：結構同 TB，但 `url-bar` 網址文字使用系統字 `SF Pro 16px`（原生模擬）。
+- `nav-bar`：height `56px`，白底，底部 1px 分隔線，精簡 logo（187.5×34）置中。
+- 下方 `bottom-spacer` 空白 `20px`。
 
 ---
 
@@ -135,29 +135,29 @@ Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **Header n Footer**（`148:428
 2. **綠色橫幅下段**：`漸層色 Gradients_Cathay/Cathay-Green` 漸層背景，文字 `gray/gray0`。含次要連結與版權。
 
 選單文字：`NotoSansTC/14px/Regular`，`gray/gray700`。
-社群圖標：`40 × 40px`（fb／line／youtube／linked-in）。
+社群圖標：`40 × 40px`，使用本地元件集 `social-media`（`251:282`，頁面 **Icon-IconFont**），`type` 變體：`fb`、`line`、`youtube`、`linkedin`。
 
 ### DESK（桌機，`191:477`）
 
-- footer：padding 上 `3xl`（32）、下 `2xl`（24）、左右 `xl`（20）；max-width `1200px` wrapper，gap `xs`（6）。
+- `footer`：padding 上 `3xl`（32）、下 `2xl`（24）、左右 `xl`（20）；`1200-container`（max-width `1200px`），gap `xs`（6）。
 - logo `187.5 × 34`。
-- 選單列（space-between）：左為 6 個關係企業連結（gap `3xl`＝32），右為社群圖標（gap `xl`＝20）。
-- 綠色橫幅：左右 padding `xl`（20）、上下 `2xl`（24）；`1200` wrapper space-between：左連結列（gap `2xl`＝24），右版權靠右。
+- `links-and-social`（space-between）：左 `menu-links` 為 6 個關係企業連結（gap `3xl`＝32），右 `social-icons` 為社群圖標（gap `xl`＝20）。
+- `legal-bar`（綠色橫幅）：左右 padding `xl`（20）、上下 `2xl`（24）；`1200-container` space-between：左 `legal-links`（gap `2xl`＝24），右版權靠右。
 
 ### TB（平板 768px，`191:506`）
 
 - 結構同 DESK，差異：
-  - footer 上下 padding 皆為 `2xl`（24）。
-  - 選單連結 gap 縮為 `lg`（16）。
-  - 綠色橫幅連結改為 `flex-wrap` 換行、置中（gap `2xl`＝24）。
+  - `footer-body` 上下 padding 皆為 `2xl`（24）。
+  - `menu-links` 連結 gap 縮為 `lg`（16）。
+  - `legal-bar` 連結改為 `flex-wrap` 換行、置中（gap `2xl`＝24）。
 
 ### MB（手機 375px，`191:535`）
 
-- footer：左右 padding `xl`（20）、上下 `4xl`（40），區塊 gap `2xl`（24）；max-width `556px`。
+- `footer-body`：左右 padding `xl`（20）、上下 `4xl`（40），區塊 gap `2xl`（24）；max-width `556px`。
 - logo `187.5` 置中。
-- 尾選單：**2 欄格線**佈局，每格 1px `gray/gray150` 邊框、padding `sm`（8）、文字置中；列間距 `sm`（8）、欄間距 `xl`（20）。
-- 社群圖標置中（gap `xl`＝20）。
-- 綠色橫幅：連結 2 欄堆疊（gap `2xl`＝24），版權置中。
+- `menu-links`（尾選單）：**2 欄格線**佈局（`menu-col-1` ／ `menu-col-2` ／ `menu-col-3`），每格 1px `gray/gray150` 邊框、padding `sm`（8）、文字置中；列間距 `sm`（8）、欄間距 `xl`（20）。
+- `social-icons` 置中（gap `xl`＝20）。
+- `legal-bar`（綠色橫幅）：`legal-links` 2 欄堆疊（`legal-col-1` ／ `legal-col-2` ／ `legal-col-3` ／ `legal-col-4`），gap `2xl`（24），版權置中。
 
 ---
 
@@ -181,5 +181,6 @@ Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **Header n Footer**（`148:428
 ## 實作備註 Implementation Notes
 
 - **色彩／文字綁定狀態：** 頁尾主要色彩（`gray/gray0`、`gray/gray150`、`gray/gray700`）、綠色橫幅漸層與所有文字樣式皆已綁定至本地變數／樣式。重建時務必沿用變數，勿寫死 hex。
-- **頁首底部分隔線：** 原始檔案中桌機／平板 `Wrap` 與手機 `Nav Bar` 的底線目前為原始色 `rgba(0,0,0,0.1)`，**未綁定變數**。建議統一改綁 `gray/gray150`（與頁尾上緣分隔線一致）。
+- **頁首底部分隔線：** 原始檔案中桌機／平板 `nav-content` 與手機 `nav-bar` 的底線目前為原始色 `rgba(0,0,0,0.1)`，**未綁定變數**。建議統一改綁 `gray/gray150`（與頁尾上緣分隔線一致）。
 - **間距集合：** 原始頁首／頁尾綁定於一套與 CUBE `Spacing` 名稱衝突的外部間距集合（該集合 `lg=20`、`xl=24`…）。本文件已依**像素值**對應回本地 `Spacing` Token；重建時請綁定本地 Token，勿沿用外部集合。
+- **社群圖標元件：** 頁尾三斷點的 `social-icons` 內的圖標已改為本地元件集 `social-media`（`251:282`，頁面 **Icon-IconFont**）。以 `type` 屬性切換四個變體（`fb`、`line`、`youtube`、`linkedin`），尺寸 `40 × 40px`。重建時直接使用本地元件，勿連結外部圖示庫。
