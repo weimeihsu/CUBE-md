@@ -12,6 +12,7 @@ export const navSections: NavSection[] = [
       { label: "顏色 Colors", href: "/base/colors" },
       { label: "字體 Typography", href: "/base/typography" },
       { label: "間距與圓角 Spacing & Radius", href: "/base/spacing-radius" },
+      { label: "裝置版面 Device Layout", href: "/base/device-layout" },
     ],
   },
   {

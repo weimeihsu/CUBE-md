@@ -7,6 +7,7 @@ const baseFiles = [
   { label: "顏色 Colors",                file: "color-palette.md",  description: "68 個顏色變數，6 組色系",        url: "/base/colors" },
   { label: "字體 Typography",            file: "typography.md",     description: "28 種文字樣式，2 種字體家族",    url: "/base/typography" },
   { label: "間距與圓角 Spacing & Radius", file: "spacing-radius.md", description: "10 個間距 Token，4 個圓角 Token", url: "/base/spacing-radius" },
+  { label: "裝置版面 Device Layout",     file: "device-layout.md",  description: "五種裝置版面骨架，安全內容區與留白間距", url: "/base/device-layout" },
 ]
 
 const componentFiles = [
@@ -120,6 +121,9 @@ export default function GuidePage() {
                     ))}
                   </div>
                 </div>
+                <p className="text-[14px] text-muted-foreground">
+                  ⚠️ <strong className="text-foreground">裝置版面 Device Layout</strong> 需最後匯入——它引用前述所有基礎建設的間距與色彩變數，請務必在其他基礎建設文件全數完成後，作為基礎建設的最後一項匯入。
+                </p>
               </div>
             </div>
 
