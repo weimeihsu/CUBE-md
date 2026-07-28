@@ -3,7 +3,7 @@ title: 圖示
 section: 元件
 href: /components/icons
 date: 2026-06-01
-description: 5 組圖示元件集（i-01、i-03、i-06、i-24、i-67），涵蓋 5 種尺寸（16–40px）。填充與描邊顏色均綁定至 Primitive/gray/gray900。
+description: 8 組圖示範例元件集——7 組單色工具圖示（i-01、i-03、i-05、i-06、i-19、i-24、i-67，綁定 gray/gray900）＋ 1 組品牌圖示 social-media（fb／youtube／linkedin／line，綁定 gray/gray400）。涵蓋 5 種尺寸（16–40px）。本頁為範例樣本，可依範本自行擴充所需圖示。
 ---
 
 # Icon Set Guidelines
@@ -26,24 +26,40 @@ Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **Icon-IconFont**.
 
 ## 1. Overview
 
-- **5 icon component sets** on the `Icon-IconFont` page.
+- **8 icon component sets** on the `Icon-IconFont` page — **7 monochrome utility
+  sets** (`i-01`, `i-03`, `i-05`, `i-06`, `i-19`, `i-24`, `i-67`) plus **1 brand
+  set** (`social-media`).
+- **This page is a sample set** (an in-canvas note says so). Treat these as
+  reference examples: reproduce them as-is, and build any *additional* icons you
+  need by following the same template — line weight, the 5-size scale, and the
+  colour-binding rule below.
 - Each icon is a **Figma Component Set** with `Size` as a variant property (and
-  optionally `Variant` or `Theme/Weight`).
+  optionally `Variant` or `Theme/Weight`; `social-media` uses `type` instead).
 - **5 sizes:** 16, 20, 24, 32, 40 px — mapped directly to spacing scale tokens.
-- **All icon fill / stroke colors are bound to `Primitive/gray/gray900`** (`#373737`).
-  Never hardcode a color value; always bind to the variable so theming works.
+- **Utility icon fill / stroke colors are bound to `Primitive/gray/gray900`**
+  (`#373737`). The **`social-media`** brand set is bound to
+  `Primitive/gray/gray400` (`#A3A3A3`). Never hardcode a color value; always bind
+  to the variable so theming works.
 
 ---
 
 ## 2. Icon catalogue
 
-| Component Set | Icon        | Variants                       | Total |
-| ------------- | ----------- | ------------------------------ | ----- |
-| `i-01`        | Add (plus in circle)   | Size × Variant (outlined, filled) | 10 |
-| `i-03`        | Close (X in circle)    | Size × Variant (outlined, filled) | 10 |
-| `i-06`        | Chevron right          | Size only                         | 5  |
-| `i-24`        | Search (magnifier)     | Size only                         | 5  |
-| `i-67`        | Checkmark (stroke)     | Size × Theme (stroke) × Weight    | 5  |
+| Component Set  | Icon        | Variants                       | Total | Color |
+| -------------- | ----------- | ------------------------------ | ----- | ----- |
+| `i-01`         | Add (plus in circle)   | Size × Variant (outlined, filled) | 10 | `gray/gray900` |
+| `i-03`         | Close (X in circle)    | Size × Variant (outlined, filled) | 10 | `gray/gray900` |
+| `i-05`         | Chevron left (stroke)  | Size × Theme (stroke) × Weight    | 5  | `gray/gray900` |
+| `i-06`         | Chevron right          | Size only                         | 5  | `gray/gray900` |
+| `i-19`         | Close / X (stroke)     | Size × Theme (stroke) × Weight    | 5  | `gray/gray900` |
+| `i-24`         | Search (magnifier)     | Size only                         | 5  | `gray/gray900` |
+| `i-67`         | Checkmark (stroke)     | Size × Theme (stroke) × Weight    | 5  | `gray/gray900` |
+| `social-media` | Brand icons (fb, youtube, linkedin, line) | `type` only    | 4  | `gray/gray400` |
+
+> `i-05`, `i-19` and `i-67` share the same stroke-theme weight ladder
+> (`Weight` = 1.3 / 1.5 / 1.5 / 1.5 / 2 for sizes 16 / 20 / 24 / 32 / 40). Note
+> that `i-05` and `i-19` render their outline as a **filled `Union`** (bind the
+> **fill**), whereas `i-67` is a true stroked `Vector` (bind the **stroke**).
 
 ---
 
@@ -100,8 +116,9 @@ Single visual style; no Variant property.
 Component name format: `Size=<px>`
 e.g. `Size=24`
 
-### i-67 (Size × Theme × Weight)
-Stroke-only icon with a stroke weight that scales with size.
+### i-05 · i-19 · i-67 (Size × Theme × Weight)
+Stroke-theme icons whose stroke weight scales with size (`i-05` = chevron left,
+`i-19` = close/X, `i-67` = checkmark). All three share the same weight ladder:
 
 | Size (px) | Theme    | Weight |
 | --------- | -------- | ------ |
@@ -113,6 +130,26 @@ Stroke-only icon with a stroke weight that scales with size.
 
 Component name format: `Size=<px>, Theme=stroke, Weight=<value>`
 
+> ⚠️ Rendering differs: `i-67` is a genuine stroked `Vector` (bind the **stroke**
+> to `gray/gray900`), while `i-05` and `i-19` bake the outline into a **filled
+> `Union`** (bind the **fill** to `gray/gray900`). Variant-name spacing is
+> inconsistent in the source (`Size=16,Theme=stroke,Weight=1.3` vs
+> `Size=16, Theme=stroke, Weight=1.3`) — normalize when rebuilding.
+
+### social-media (type only)
+Brand glyph set — a single monochrome treatment (no size variants; every glyph is
+`40 × 40`). The shape `Union` fill is bound to **`gray/gray400`** (`#A3A3A3`), not
+`gray900`, so the brand marks read as neutral UI icons.
+
+| type       | Brand    |
+| ---------- | -------- |
+| `fb`       | Facebook |
+| `youtube`  | YouTube  |
+| `linkedin` | LinkedIn |
+| `line`     | LINE     |
+
+Component name format: `type=<fb|youtube|linkedin|line>`
+
 ---
 
 ## 5. Color binding (critical)
@@ -121,11 +158,16 @@ Component name format: `Size=<px>, Theme=stroke, Weight=<value>`
 `Primitive/gray/gray900 | #373737` variable.**
 
 Rules:
-- For **filled / outlined** icons (i-01, i-03, i-06, i-24): bind the **fill** of
-  every `BOOLEAN_OPERATION` (Union / Subtract) and `VECTOR` that forms the icon
-  shape to `gray/gray900`.
-- For **stroke** icons (i-67): bind the **stroke color** of the icon's `VECTOR`
-  to `gray/gray900`.
+- For **filled / outlined** icons (i-01, i-03, i-06, i-24) and the **filled-Union
+  stroke-theme** icons (i-05, i-19): bind the **fill** of the icon's
+  `BOOLEAN_OPERATION` (Union / Subtract) to `gray/gray900`.
+- For genuinely **stroked** icons (i-67): bind the **stroke color** of the icon's
+  `VECTOR` to `gray/gray900`.
+- For the **`social-media`** brand set: bind the `Union` **fill** to
+  **`gray/gray400`** (`#A3A3A3`) instead of `gray900`.
+- Bind the visible top-level shape (the `Union` / `Subtract` / `Vector`); nested
+  child `Vector`s inside a boolean operation don't need binding — the boolean op
+  carries the rendered color.
 - Each component contains an **`Icon Grid` INSTANCE** (a construction guide with
   pink/red helper lines). **Do not bind that instance's colors** — it is
   invisible in production and acts only as an alignment reference.
@@ -190,11 +232,11 @@ Component (e.g. Size=24, Variant=outlined)
 ```json
 {
   "page": "Icon-IconFont",
+  "sample": true,
   "colorBinding": {
     "collection": "Primitive",
-    "variable": "gray/gray900 | #373737",
-    "hex": "#373737",
-    "applyTo": "fill (outlined/filled/size-only) or stroke (stroke-theme icons)"
+    "utility": { "variable": "gray/gray900 | #373737", "hex": "#373737", "applyTo": "fill (outlined/filled/size-only/filled-Union stroke) or stroke (true stroked Vector, i-67)" },
+    "brand":   { "variable": "gray/gray400 | #A3A3A3", "hex": "#A3A3A3", "applyTo": "fill of social-media Union" }
   },
   "sizes": [
     { "px": 16, "spacingToken": "Spacing/lg"  },
@@ -204,16 +246,23 @@ Component (e.g. Size=24, Variant=outlined)
     { "px": 40, "spacingToken": "Spacing/4xl" }
   ],
   "icons": [
-    { "id": "i-01", "description": "Add (plus in circle)",  "variantProps": { "Size": ["16","20","24","32","40"], "Variant": ["outlined","filled"] } },
-    { "id": "i-03", "description": "Close (X in circle)",   "variantProps": { "Size": ["16","20","24","32","40"], "Variant": ["outlined","filled"] } },
-    { "id": "i-06", "description": "Chevron right",         "variantProps": { "Size": ["16","20","24","32","40"] } },
-    { "id": "i-24", "description": "Search (magnifier)",    "variantProps": { "Size": ["16","20","24","32","40"] } },
-    { "id": "i-67", "description": "Checkmark (stroke)",    "variantProps": {
+    { "id": "i-01", "description": "Add (plus in circle)",  "color": "gray/gray900", "variantProps": { "Size": ["16","20","24","32","40"], "Variant": ["outlined","filled"] } },
+    { "id": "i-03", "description": "Close (X in circle)",   "color": "gray/gray900", "variantProps": { "Size": ["16","20","24","32","40"], "Variant": ["outlined","filled"] } },
+    { "id": "i-05", "description": "Chevron left (filled-Union stroke)", "color": "gray/gray900", "variantProps": {
+        "Size":   ["16","20","24","32","40"], "Theme": ["stroke"],
+        "Weight": { "16":"1.3", "20":"1.5", "24":"1.5", "32":"1.5", "40":"2" } } },
+    { "id": "i-06", "description": "Chevron right",         "color": "gray/gray900", "variantProps": { "Size": ["16","20","24","32","40"] } },
+    { "id": "i-19", "description": "Close / X (filled-Union stroke)", "color": "gray/gray900", "variantProps": {
+        "Size":   ["16","20","24","32","40"], "Theme": ["stroke"],
+        "Weight": { "16":"1.3", "20":"1.5", "24":"1.5", "32":"1.5", "40":"2" } } },
+    { "id": "i-24", "description": "Search (magnifier)",    "color": "gray/gray900", "variantProps": { "Size": ["16","20","24","32","40"] } },
+    { "id": "i-67", "description": "Checkmark (true stroke)", "color": "gray/gray900", "variantProps": {
         "Size":   ["16","20","24","32","40"],
         "Theme":  ["stroke"],
         "Weight": { "16":"1.3", "20":"1.5", "24":"1.5", "32":"1.5", "40":"2" }
       }
-    }
+    },
+    { "id": "social-media", "description": "Brand icons (monochrome)", "color": "gray/gray400", "variantProps": { "type": ["fb","youtube","linkedin","line"] } }
   ]
 }
 ```
@@ -247,7 +296,13 @@ const shapeNodes = {
   // i-24 search: Union nodes
   "i24-16":"28:3959","i24-20":"28:3965","i24-24":"28:3971","i24-32":"28:3977","i24-40":"28:3983",
   // i-67 checkmark: Vector nodes (stroke-based)
-  "i67-16":"31:3358","i67-20":"31:3361","i67-24":"31:3364","i67-32":"31:3367","i67-40":"31:3370"
+  "i67-16":"31:3358","i67-20":"31:3361","i67-24":"31:3364","i67-32":"31:3367","i67-40":"31:3370",
+  // i-05 chevron left: filled-Union nodes
+  "i05-16":"179:3292","i05-20":"179:3296","i05-24":"179:3300","i05-32":"179:3304","i05-40":"179:3308",
+  // i-19 close/X: filled-Union nodes
+  "i19-16":"179:3335","i19-20":"179:3340","i19-24":"179:3345","i19-32":"179:3350","i19-40":"179:3355",
+  // social-media brand: Union nodes (40px only)
+  "sm-fb":"248:722","sm-youtube":"248:723","sm-linkedin":"248:724","sm-line":"248:725"
 };
 
 // Step 3 — export each shape node as SVG

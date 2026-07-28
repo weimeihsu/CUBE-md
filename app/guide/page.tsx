@@ -11,7 +11,7 @@ const baseFiles = [
 ]
 
 const componentFiles = [
-  { label: "圖標 Icons",                file: "icons.md",          description: "5 組圖標元件集，5 種尺寸",                  url: "/components/icons" },
+  { label: "圖標 Icons",                file: "icons.md",          description: "8 組圖標範例元件集，5 種尺寸",              url: "/components/icons" },
   { label: "按鈕 Buttons",              file: "buttons.md",        description: "5 種按鈕類型，32 種變體",                    url: "/components/buttons" },
   { label: "選擇元件 Selections",        file: "selections.md",     description: "核取方塊、單選框、選項卡片",                 url: "/components/selections" },
   { label: "文字欄位 Text Field",        file: "text-field.md",     description: "輸入框、浮動標籤、欄位群組",                 url: "/components/text-field" },

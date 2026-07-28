@@ -3,7 +3,7 @@ title: 選擇元件
 section: 元件
 href: /components/selections
 date: 2026-06-20
-description: 核取方塊、單選按鈕與切換開關元件，所有狀態（預設、懸停、聚焦、停用）的 Figma 變數均已完整綁定。
+description: 核取方塊、單選框與單選項目卡片元件（含圖標版與含標籤版），涵蓋啟用、已選、停用、錯誤等狀態；所有色彩、文字、間距與圓角均綁定至本地變數與樣式。
 ---
 
 # 選擇元件規格 Selection Components Spec
@@ -258,3 +258,14 @@ Typography: `NotoSansTC/16px/Regular` → Noto Sans TC, Regular, 16px, lh 1.5
 - 顏色：`Selected=On, State=Enabled` 為 `green/green500`；`Selected=On, State=Disabled` 為 `gray/gray900`（並隨 state-layer 套用 50% opacity）
 
 Typography: `NotoSansTC/16px/Regular` → Noto Sans TC, Regular, 16px, lh 1.5
+
+---
+
+## 實作備註 Implementation Notes
+
+- **色彩綁定狀態：** 五個元件的所有色彩皆綁定至本地 `Primitive` 色彩變數（`gray/*`、`green/*`、`red/*`），無 remote 發佈庫樣式、無舊版重複命名、無寫死 hex。原先頁面填色／描邊綁定至外部發佈庫的繪製樣式（`Gray/Gray800`、`Green/Green500`、`Red/Red700` 等），已全數改綁本地變數（沿用 [buttons.md](buttons.md) 以色彩變數綁定 fill／stroke 的作法）。
+- **文字綁定狀態：** 標籤（`label-text`）與錯誤訊息（`error-text`）文字皆綁定本地文字樣式 `NotoSansTC/14px/Regular` 與 `NotoSansTC/16px/Regular`。原為外部 `Android/Noto Sans TC/*` 遠端樣式，已改綁本地同尺寸樣式。
+- **間距／圓角綁定狀態：** padding／gap 綁定本地 `Spacing`（`sm`＝8、`md`＝12、`xxs`＝4）；圓角綁定本地 `Radius`（`s`＝4、`md`＝6、`full`＝100）。原外部 `Spacing`／`Radius` 集合（`Spacing - md・12`、`Radius - full・100` 等）已依數值改綁本地 Token。
+- **展示裝飾不列入元件色：** 頁面的區塊標題（`Title`，`gray/gray800` ＋ `NotoSansTC/32px/Bold`）、示範列底板（`green/green100` 填色 ＋ `green/green150` 邊框）與外框卡片（`gray/gray150` 邊框）皆為版面展示用裝飾，**非元件本體色彩**；雖已綁定本地變數，但不納入上方元件色表，重建元件時可忽略。
+- **變體命名修正：** `Radio Button`（含標籤版，`99:775`）的 `State` 變體原有 `DIsabled` 拼字錯誤，已更正為 `Disabled`（變體 `99:794`、`99:776`）。
+- **重建須沿用變數：** 所有值均以本地變數／樣式綁定，重建時請沿用變數，勿寫死 hex 或像素值。

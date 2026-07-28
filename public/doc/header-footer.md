@@ -180,7 +180,8 @@ Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **Header n Footer**（`148:428
 
 ## 實作備註 Implementation Notes
 
-- **色彩／文字綁定狀態：** 頁尾主要色彩（`gray/gray0`、`gray/gray150`、`gray/gray700`）、綠色橫幅漸層與所有文字樣式皆已綁定至本地變數／樣式。重建時務必沿用變數，勿寫死 hex。
-- **頁首底部分隔線：** 原始檔案中桌機／平板 `nav-content` 與手機 `nav-bar` 的底線目前為原始色 `rgba(0,0,0,0.1)`，**未綁定變數**。建議統一改綁 `gray/gray150`（與頁尾上緣分隔線一致）。
-- **間距集合：** 原始頁首／頁尾綁定於一套與 CUBE `Spacing` 名稱衝突的外部間距集合（該集合 `lg=20`、`xl=24`…）。本文件已依**像素值**對應回本地 `Spacing` Token；重建時請綁定本地 Token，勿沿用外部集合。
+- **色彩／文字綁定狀態：** 頁尾主要色彩（`gray/gray0`、`gray/gray150`、`gray/gray700`）與所有文字樣式皆已綁定至本地變數／樣式。重建時務必沿用變數，勿寫死 hex。
+- **綠色橫幅漸層：** 頁尾三斷點的 `legal-bar` 綠色漸層（線性 `#72C361 → #4FB980`）皆綁定至**本地**繪製樣式 `漸層色 Gradients_Cathay/Cathay-Green`。此樣式原為外部發佈庫的遠端樣式，已於本地重建同名副本以確保檔案自包含；重建時請沿用本地樣式，勿連結外部庫。
+- **頁首底部分隔線：** 桌機／平板 `nav-content` 與手機 `nav-bar` 的底部分隔線（`strokeAlign=INSIDE`，1px）已綁定至 `gray/gray150`，容器填色綁定 `gray/gray0`，與頁尾上緣分隔線一致。
+- **間距集合：** 頁首／頁尾所有 padding 與 gap 間距皆已綁定至本地 `Spacing` 集合 Token（無殘留外部間距集合）。重建時請綁定本地 Token，勿沿用外部集合。
 - **社群圖標元件：** 頁尾三斷點的 `social-icons` 內的圖標已改為本地元件集 `social-media`（`251:282`，頁面 **Icon-IconFont**）。以 `type` 屬性切換四個變體（`fb`、`line`、`youtube`、`linkedin`），尺寸 `40 × 40px`。重建時直接使用本地元件，勿連結外部圖示庫。

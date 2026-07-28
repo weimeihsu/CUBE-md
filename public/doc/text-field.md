@@ -3,7 +3,7 @@ title: 文字欄位
 section: 元件
 href: /components/text-field
 date: 2026-06-22
-description: 輸入框與多行文字元件，支援標籤、輔助文字、錯誤狀態及前綴／後綴插槽。所有框線與填充顏色均已綁定至 Figma 變數。
+description: 輸入框、浮動標籤輸入框與文字欄位群組元件，涵蓋啟用、聚焦、錯誤、停用狀態，支援前導／後置圖標、浮動標籤、輔助與計數文字；所有色彩、文字、間距與圓角均綁定至本地變數與樣式。
 ---
 
 # 文字欄位規格 Text Field Components Spec
@@ -221,3 +221,14 @@ description: 輸入框與多行文字元件，支援標籤、輔助文字、錯�
 
 - 兩欄均有 `padding-top: sm = 8px`
 - Counting text `padding-left: xxs = 4px`（與 supporting text 的間距）
+
+---
+
+## 實作備註 Implementation Notes
+
+- **色彩綁定狀態：** 三個元件的所有色彩皆綁定至本地 `Primitive` 色彩變數（`gray/*`、`green/*`、`red/*`），無 remote 發佈庫樣式、無寫死 hex。原先部分填色／描邊綁定至外部發佈庫的繪製樣式（`Gray/Gray900`、`Gray/Gray0`、`Green/Green700`、`Gray/Gray600` 等），已全數改綁本地變數。
+- **文字綁定狀態（含字體修正）：** 標籤、placeholder、輸入文字、輔助與計數文字皆綁定本地文字樣式（`NotoSansTC/12px`・`14px`・`16px` 與 `RobotoFlex/14px/Regular`）。原先部分文字綁定至**非 CUBE 字體**的遠端樣式——含 `iOS/PingFang TC/md｜16・Regular`（蘋方）與 `Android/Noto Sans TC`／`Android/Roboto` 系列——已依 CUBE 排版規範（中文＝Noto Sans TC、數字＝Roboto Flex）改綁本地同尺寸樣式，使 Figma 與本文件的字體規格一致。
+- **間距／圓角綁定狀態：** padding／gap 綁定本地 `Spacing`（`xxs`＝4、`sm`＝8、`md`＝12）；輸入框外框圓角綁定本地 `Radius/md`＝6。原外部 `Spacing`／`Radius` 集合（`Spacing - md・12`、`Radius - md・6` 等）已依數值改綁本地 Token。
+- **展示裝飾不列入元件色：** 頁面的區塊標題（`Title`，`gray/gray800` ＋ `NotoSansTC/32px/Bold`）為版面展示用裝飾，**非元件本體色彩**，不納入上方元件色表。
+- **子元件為 instance：** 文字欄位群組（`Text Field Group`）內的 `Small Text Link`（Buttons 頁面 `1:3809`）與 `Small Checkbox`（Selections 頁面 `27:11977`）皆為 instance，本文件僅引用、不改動其內部；其變數綁定由各自來源元件維護。
+- **重建須沿用變數：** 所有值均以本地變數／樣式綁定，重建時請沿用變數，勿寫死 hex 或像素值。

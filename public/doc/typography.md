@@ -148,8 +148,9 @@ For programmatic re-creation. Line height and letter spacing apply to all entrie
 3. **Map tokens to sizes** using the scale in §2 (`3xl`→32 … `xs`→12).
 4. **Apply by language:** Chinese content uses the `NotoSansTC/*` styles;
    English and numeric content uses the `RobotoFlex/*` styles.
-5. **Build the reference page** (optional): two `table` frames inside `文字清單_App`,
-   one per font family. Layer structure per table:
+5. **Build the reference page** (optional): a `Component-title` heading plus two
+   `table` frames inside the `Typography` container, one per font family.
+   Layer structure per table:
    - `row-header-label` — section label text (`section-label`)
    - `divider` — full-width rule spanning `1108px` from `x=0`
    - `row-header` — column headers: `th-token`, `th-size`, `th-weight`, `th-look`
@@ -162,16 +163,20 @@ For programmatic re-creation. Line height and letter spacing apply to all entrie
 
 ## 實作備註 Implementation Notes
 
-**Figma source:** file `kkyAx6QTTNF6ZyB9rSeN6W`, page **Typography** (`0:1`), frame `Typography` (`1:40`).
+**Figma source:** file `kkyAx6QTTNF6ZyB9rSeN6W`, page **Typography**, container frame `Typography` (`1:167`).
 
 ### 層級結構 Layer hierarchy
 
 ```
-Typography (1:40)
-└── 文字清單_App (1:167)
-    ├── table (1:168)  — App typography (Noto Sans TC)
-    └── table (1:258)  — Web typography (Roboto Flex)
+Typography (1:167)
+├── Component-title (290:1419)  — page heading
+├── table (1:168)  — App typography (Noto Sans TC)
+└── table (1:258)  — Web typography (Roboto Flex)
 ```
+
+> The first table's header uses a `row-header` frame; the second table's header
+> row is named `row`. Both hold the same `th-token / th-size / th-weight / th-look`
+> (or `token / size / weight / look`) header cells.
 
 Each `table` (width `1108px`) follows this repeating pattern:
 

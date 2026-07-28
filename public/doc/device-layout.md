@@ -43,21 +43,24 @@ Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **DeviceLayout**（`179:186`�
 
 | Variable Name | Value | 用途 Usage |
 |---|---|---|
+| `gray/gray100` | `#F5F5F5` | 裝置畫板背景底色（frame backdrop）|
 | `blue/blue150` | `#CAECFF` | 安全內容區（container）填色 |
 | `orange/orange150` | `#FFE2C2` | 留白／間距量測區塊底色 |
-| `orange/orange400` | `#F28815` | 量測標記線與端點（DesignMark ticks）|
+| `orange/orange400` | `#F28815` | 垂直留白／間距量測標記線與端點（DesignMark ticks）|
+| `blue/blue500` | `#1890D2` | DESK 內容最大寬度（1200px）水平量測標記線與文字 |
 
 ### 間距 Spacing
 
-版面留白與垂直間距以本地 `Spacing` Token 對應：
+本頁的留白（gutter）與垂直間距屬**量測參考骨架**，以固定尺寸的 `DesignMark` 標註框呈現。標註框本身**不進行變數綁定**（屬設計參考而非產品元件），其像素值對應下列本地 `Spacing` Token 的**數值**：
 
-| Variable Name | Value | 用途 Usage |
+| Token | 對應 px | 用途 Usage |
 |---|---|---|
 | `xl` | `20` | 行動裝置／平板左右留白；頁首→內容垂直間距 |
-| `3xl` | `32` | — |
 | `4xl` | `40` | 桌機左右最小留白；MB／TB 內容→頁尾垂直間距 |
 
 > ⚠️ DESK 內容→頁尾的 `100px` 大區塊間距**不在本地間距刻度上**（刻度最大為 `4xl`＝40），屬版面級離散值，實作時以原始 `100px` 處理。
+>
+> ℹ️ 五種畫板中，響應式網頁裝置的寬度（MB `375`／TB `768`／DESK `1280`）綁定至本地 `Device/Breakpoint` 變數；其餘留白／間距標註框則為固定尺寸，未綁定變數。
 
 ---
 
@@ -93,7 +96,9 @@ Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **DeviceLayout**（`179:186`�
 
 ## 實作備註 Implementation Notes
 
-- **輔助色綁定狀態：** 本頁所有量測輔助色（`blue/blue150`、`orange/orange150`、`orange/orange400`）皆已綁定本地 `Primitive` 變數，無外部集合、無舊版重複、無寫死 hex。此頁為**設計參考骨架**，量測標記（`DesignMark` / `measurement`）不應輸出至產品 UI。
+- **輔助色綁定狀態：** 本頁所有量測輔助色（`gray/gray100`、`blue/blue150`、`orange/orange150`、`orange/orange400`、`blue/blue500`）皆已綁定本地 `Primitive` 變數，無外部集合、無舊版重複、無寫死 hex。此頁為**設計參考骨架**，量測標記（`DesignMark` / `measurement`）不應輸出至產品 UI。
+- **量測標記配色：** 垂直留白／間距標記使用 `orange/orange400`；DESK 內容最大寬度（1200px）水平標記使用 `blue/blue500`；裝置畫板背景為 `gray/gray100`。
+- **間距未變數綁定：** 留白／間距標註框為固定尺寸的量測參考，**未**綁定 `Spacing` 變數；僅響應式網頁畫板寬度（375／768／1280）綁定至 `Device/Breakpoint`。重建產品 UI（非本骨架）時，仍應以本地 `Spacing` Token 綁定實際留白。
 - **留白統一為 `xl`（20）：** iOS、Android、MB、TB 四種裝置左右留白一致為 `20px`（`Spacing/xl`）。桌機改為 `1200px` 置中、最小留白 `40px`（`Spacing/4xl`）。
 - **垂直節奏：** 頁首→內容固定 `xl`（20）；內容→頁尾在 MB／TB 為 `4xl`（40），DESK 為 `100px`（無對應 Token，見上）。
 - **原生頭尾不綁定：** iOS／Android 的 `StatusBar`、`Home Indicator`、`Bottom Button` 為作業系統外觀模擬，顏色**刻意不綁定** CUBE 變數（沿用 [header-footer.md](header-footer.md) 的原生頭尾參考）。

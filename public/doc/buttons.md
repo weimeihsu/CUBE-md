@@ -48,7 +48,7 @@ description: 新增 5 種按鈕類型——動態按鈕、底部按鈕、圖示�
 
 | Variable Name | Value | 用途 Usage |
 |---|---|---|
-| `s` | `4` | 微小圓角 |
+| `s` | `4` | 元件組排列外框圓角（component set wrapper，不隨 instance 匯入）|
 | `md` | `6` | Dynamic Button 所有 variants；Bottom Button state-layer |
 | `lg` | `12` | Block Button 外框 |
 
@@ -84,12 +84,12 @@ Icon Button、Text Link 與 Block Button 無 Hover 狀態。
 
 | Property | Type | Options |
 |---|---|---|
-| `Style` | Variant | `Filled` / `Outlined` / `Text` |
+| `Style` | Variant | `Filled` / `Outlined` / `Ghost` |
 | `Type` | Variant | `Default` / `Green` |
 | `Size` | Variant | `lg` / `sm` |
 | `State` | Variant | `Enabled` / `Hover` / `Disabled` |
 
-> `Type=Green` 僅在 `Style=Text` 時使用。Hover 僅適用於 `Style=Filled` 與 `Style=Outlined`。
+> `Style=Ghost` 為無填色、無外框的**文字樣式按鈕**（Figma 變體值為 `Ghost`，即設計上所稱的 Text Button）。`Type=Green` 僅在 `Style=Ghost` 時使用；Hover 僅適用於 `Style=Filled` 與 `Style=Outlined`。
 
 ### 版本規格 Variant Specs
 
@@ -110,9 +110,9 @@ Frame 設定：
 | Outlined | Default | Enabled | `gray/gray0` | `blue/blue1000` / 1px | `blue/blue1000` | 100% |
 | Outlined | Default | Hover | `gray/gray0` | `blue/blue1000` / 1px | `blue/blue1000` | 100% |
 | Outlined | Default | Disabled | `gray/gray0` | `gray/gray900` / 1px | `gray/gray900` | 50% |
-| Text | Default | Enabled | — | — | `blue/blue1000` | 100% |
-| Text | Default | Disabled | — | — | `gray/gray900` | 50% |
-| Text | Green | Enabled | — | — | `green/green500` | 100% |
+| Ghost | Default | Enabled | — | — | `blue/blue1000` | 100% |
+| Ghost | Default | Disabled | — | — | `gray/gray900` | 50% |
+| Ghost | Green | Enabled | — | — | `green/green500` | 100% |
 
 Typography: `NotoSansTC/16px/Bold` → Noto Sans TC, Bold, 16px, lh 1.5
 
@@ -135,9 +135,9 @@ Frame 設定：
 | Outlined | Default | Enabled | `gray/gray0` | `blue/blue1000` / 1px | `blue/blue1000` | 100% |
 | Outlined | Default | Hover | `gray/gray0` | `blue/blue1000` / 1px | `blue/blue1000` | 100% |
 | Outlined | Default | Disabled | `gray/gray0` | `gray/gray900` / 1px | `gray/gray900` | 50% |
-| Text | Default | Enabled | — | — | `blue/blue1000` | 100% |
-| Text | Default | Disabled | — | — | `gray/gray900` | 50% |
-| Text | Green | Enabled | — | — | `green/green500` | 100% |
+| Ghost | Default | Enabled | — | — | `blue/blue1000` | 100% |
+| Ghost | Default | Disabled | — | — | `gray/gray900` | 50% |
+| Ghost | Green | Enabled | — | — | `green/green500` | 100% |
 
 Typography: `NotoSansTC/14px/Bold` → Noto Sans TC, Bold, 14px, lh 1.5
 
@@ -157,10 +157,9 @@ Typography: `NotoSansTC/14px/Bold` → Noto Sans TC, Bold, 14px, lh 1.5
 
 ### 版本規格 Variant Specs
 
-外框 (component set container) 設定：
+外框 (component set container，變體排列用外框，不隨 instance 匯入) 設定：
 - Layout: Vertical Auto Layout
-- Corner Radius: `full` = 100
-- Padding: `4xl` = 40（四邊）
+- Padding: `4xl` = 40（四邊，含 itemSpacing）
 
 內層 state-layer 設定：
 - Layout: Horizontal Auto Layout, 主軸居中對齊
@@ -215,7 +214,7 @@ Frame 設定：
 - Gap: `xxs` = 4
 - Min Height: 48px
 - Width: Hug
-- Component set container Padding: `4xl` = 40；Corner Radius: `full` = 100
+- Component set container Padding: `4xl` = 40（含 itemSpacing；變體排列用外框，不隨 instance 匯入）
 
 | Variant | State | Icon Color | Text Color | Opacity |
 |---|---|---|---|---|
@@ -255,7 +254,6 @@ Frame 設定：
 - Layout: Horizontal Auto Layout, 垂直居中對齊
 - Min Height: 48px
 - Width: Hug（文字自然展開，無左右 padding）
-- Component set container Corner Radius: `full` = 100
 
 | Size | State | Text Color | Opacity |
 |---|---|---|---|
@@ -292,3 +290,13 @@ Frame 設定：
 Typography: `NotoSansTC/16px/Bold` → Noto Sans TC, Bold, 16px, lh 1.5
 
 > Block Button 無 State 或 Variant 屬性，為單一靜態版本。
+
+---
+
+## 實作備註 Implementation Notes
+
+- **綁定狀態（已驗證）：** 五組按鈕（Dynamic / Bottom / Icon / Text Link / Block）的所有填色、外框、文字色、圖標色皆綁定至本地 `Primitive` 色彩變數（`gray/*`、`blue/blue1000`、`green/green500`），所有文字皆綁定本地文字樣式（`NotoSansTC/14px/Bold`、`NotoSansTC/16px/Bold`），無遠端樣式、無寫死 hex。
+- **間距／圓角綁定：** 所有 padding、gap、圓角皆綁定本地 `Spacing` 與 `Radius` 集合 Token。原始檔案中 **Dynamic Button `sm` 尺寸 padding、Bottom Button `state-layer` padding、Icon Button gap** 曾誤綁至一套外部（非本地）Spacing 集合（變數名如 `Spacing - md・12`、`Spacing - xs・4`），已全數改綁本地 Token（`md`＝12、`xxs`＝4）。重建時務必使用本地集合。
+- **變體命名（重要）：** Dynamic Button 的文字樣式按鈕，其 `Style` 變體值為 **`Ghost`**（非 `Text`）；`Type=Green` 僅於 `Ghost` 出現。重建變體時請完全比照 Figma 變體字串，以確保 instance 對應正確。
+- **Ghost/Disabled 外框一致性：** `lg` 與 `sm` 的 `Ghost/Disabled` 變體皆為無外框的文字樣式按鈕（先前 `lg` 誤帶 1px `gray/gray900` 外框，已移除）。
+- **元件組外框：** 各 COMPONENT_SET 的外框（padding `4xl`、圓角 `s`）為變體排列用容器，不隨 instance 匯入，非產品屬性。
