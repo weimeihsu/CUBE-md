@@ -3,7 +3,7 @@ title: 圖示
 section: 元件
 href: /components/icons
 date: 2026-06-01
-description: 8 組圖示範例元件集——7 組單色工具圖示（i-01、i-03、i-05、i-06、i-19、i-24、i-67，綁定 gray/gray900）＋ 1 組品牌圖示 social-media（fb／youtube／linkedin／line，綁定 gray/gray400）。涵蓋 5 種尺寸（16–40px）。本頁為範例樣本，可依範本自行擴充所需圖示。
+description: 7 組單色工具圖示範例元件集（i-01、i-03、i-05、i-06、i-19、i-24、i-67，全綁定 gray/gray900），共 45 變體，涵蓋 5 種尺寸（16–40px）。本頁為範例樣本，可依範本自行擴充所需圖示。（品牌圖示 social-media 已移至 logos.md）
 ---
 
 # Icon Set Guidelines
@@ -12,34 +12,33 @@ The icon system and how to re-create it. Written so designers and AI agents can
 rebuild the exact same component sets in Figma, with all icon colors correctly
 bound to the `Primitive` color variables.
 
-Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **Icons** (node `290:1438`).
+Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **5 Icons** (node `290:1438`).
 
 > ⚠️ **Critical for AI agents — never substitute generic icon paths.**
 > Do NOT use paths from generic icon libraries (Material Design, Heroicons, etc.).
-> The **exact per-size SVG artwork for all 49 variants is embedded in §11** of this
+> The **exact per-size SVG artwork for all 45 variants is embedded in §11** of this
 > document, so this file is self-contained: another team can reproduce the icons
 > pixel-for-pixel **without access to the source Figma file**. Only if you need to
 > re-generate them from source (e.g. the icons changed), open `kkyAx6QTTNF6ZyB9rSeN6W`,
-> switch to the **Icons** page, and re-run the extraction script in §10.
+> switch to the **5 Icons** page, and re-run the extraction script in §10.
 
 ---
 
 ## 1. Overview
 
-- **8 icon component sets** on the `Icons` page — **7 monochrome utility
-  sets** (`i-01`, `i-03`, `i-05`, `i-06`, `i-19`, `i-24`, `i-67`) plus **1 brand
-  set** (`social-media`).
+- **7 monochrome utility icon component sets** on the `5 Icons` page
+  (`i-01`, `i-03`, `i-05`, `i-06`, `i-19`, `i-24`, `i-67`) — **45 variants** total.
+  The brand set `social-media` has moved to [logos.md](logos.md).
 - **This page is a sample set** (an in-canvas note says so). Treat these as
   reference examples: reproduce them as-is, and build any *additional* icons you
   need by following the same template — line weight, the 5-size scale, and the
   colour-binding rule below.
 - Each icon is a **Figma Component Set** with `Size` as a variant property (and
-  optionally `Variant` or `Theme/Weight`; `social-media` uses `type` instead).
+  optionally `Variant` or `Theme/Weight`).
 - **5 sizes:** 16, 20, 24, 32, 40 px — mapped directly to spacing scale tokens.
-- **Utility icon fill / stroke colors are bound to `Primitive/gray/gray900`**
-  (`#373737`). The **`social-media`** brand set is bound to
-  `Primitive/gray/gray400` (`#A3A3A3`). Never hardcode a color value; always bind
-  to the variable so theming works.
+- **All icon fill / stroke colors are bound to `Primitive/gray/gray900`**
+  (`#373737`). Never hardcode a color value; always bind to the variable so theming
+  works. (The brand `social-media` set now lives in [logos.md](logos.md).)
 
 ---
 
@@ -54,7 +53,6 @@ Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **Icons** (node `290:1438`).
 | `i-19`         | Close / X (stroke)     | Size × Theme (stroke) × Weight    | 5  | `gray/gray900` |
 | `i-24`         | Search (magnifier)     | Size only                         | 5  | `gray/gray900` |
 | `i-67`         | Checkmark (stroke)     | Size × Theme (stroke) × Weight    | 5  | `gray/gray900` |
-| `social-media` | Brand icons (fb, youtube, linkedin, line) | `type` only    | 4  | `gray/gray400` |
 
 > `i-05`, `i-19` and `i-67` share the same stroke-theme weight ladder
 > (`Weight` = 1.3 / 1.5 / 1.5 / 1.5 / 2 for sizes 16 / 20 / 24 / 32 / 40). Note
@@ -136,20 +134,6 @@ Component name format: `Size=<px>, Theme=stroke, Weight=<value>`
 > the canonical `Size=<px>, Theme=stroke, Weight=<value>` format (single space after
 > each comma) across all three sets — keep this exact spacing when rebuilding.
 
-### social-media (type only)
-Brand glyph set — a single monochrome treatment (no size variants; every glyph is
-`40 × 40`). The shape `Union` fill is bound to **`gray/gray400`** (`#A3A3A3`), not
-`gray900`, so the brand marks read as neutral UI icons.
-
-| type       | Brand    |
-| ---------- | -------- |
-| `fb`       | Facebook |
-| `youtube`  | YouTube  |
-| `linkedin` | LinkedIn |
-| `line`     | LINE     |
-
-Component name format: `type=<fb|youtube|linkedin|line>`
-
 ---
 
 ## 5. Color binding (critical)
@@ -163,12 +147,10 @@ Rules:
   `BOOLEAN_OPERATION` (Union / Subtract) to `gray/gray900`.
 - For genuinely **stroked** icons (i-67): bind the **stroke color** of the icon's
   `VECTOR` to `gray/gray900`.
-- For the **`social-media`** brand set: bind the `Union` **fill** to
-  **`gray/gray400`** (`#A3A3A3`) instead of `gray900`.
 - Bind the visible top-level shape (the `Union` / `Subtract` / `Vector`); nested
   child `Vector`s inside a boolean operation don't need binding — the boolean op
   carries the rendered color.
-- **No construction guides remain.** Earlier, 25 of the 49 variants carried a hidden
+- **No construction guides remain.** Earlier, 25 of the 45 variants carried a hidden
   `Icon Grid` instance (a pink/red alignment guide); these have been **deleted from
   every component** so each variant now contains only its icon shape. When rebuilding,
   do **not** add any grid — just the shape node.
@@ -204,7 +186,7 @@ Component (e.g. Size=24, Variant=outlined)
 
 ## 7. How to re-create
 
-1. **Create a page** named `Icons`.
+1. **Create a page** named `5 Icons`.
 2. **Create a Component Set** for each icon in §2, named `i-01` … `i-67`.
 3. For each size (16, 20, 24, 32, 40) and each variant combination, **create a
    Component** variant named using the format in §4.
@@ -235,12 +217,11 @@ Component (e.g. Size=24, Variant=outlined)
 
 ```json
 {
-  "page": "Icons",
+  "page": "5 Icons",
   "sample": true,
   "colorBinding": {
     "collection": "Primitive",
-    "utility": { "variable": "gray/gray900 | #373737", "hex": "#373737", "applyTo": "fill (outlined/filled/size-only/filled-Union stroke) or stroke (true stroked Vector, i-67)" },
-    "brand":   { "variable": "gray/gray400 | #A3A3A3", "hex": "#A3A3A3", "applyTo": "fill of social-media Union" }
+    "utility": { "variable": "gray/gray900 | #373737", "hex": "#373737", "applyTo": "fill (outlined/filled/size-only/filled-Union stroke) or stroke (true stroked Vector, i-67)" }
   },
   "sizes": [
     { "px": 16, "spacingToken": "Spacing/lg"  },
@@ -265,8 +246,7 @@ Component (e.g. Size=24, Variant=outlined)
         "Theme":  ["stroke"],
         "Weight": { "16":"1.3", "20":"1.5", "24":"1.5", "32":"1.5", "40":"2" }
       }
-    },
-    { "id": "social-media", "description": "Brand icons (monochrome)", "color": "gray/gray400", "variantProps": { "type": ["fb","youtube","linkedin","line"] } }
+    }
   ]
 }
 ```
@@ -280,8 +260,8 @@ this only to **re-generate** the catalog from source if the icons change. Execut
 `use_figma` in the **source file** (`kkyAx6QTTNF6ZyB9rSeN6W`).
 
 ```javascript
-// Step 1 — switch to the Icons page
-const page = figma.root.children.find(p => p.name === "Icons");
+// Step 1 — switch to the 5 Icons page
+const page = figma.root.children.find(p => p.name === "5 Icons");
 await figma.setCurrentPageAsync(page);
 
 // Step 2 — map icon shape node IDs (shape child of each component, not the component itself)
@@ -306,9 +286,7 @@ const shapeNodes = {
   // i-05 chevron left: filled-Union nodes
   "i05-16":"179:3292","i05-20":"179:3296","i05-24":"179:3300","i05-32":"179:3304","i05-40":"179:3308",
   // i-19 close/X: filled-Union nodes
-  "i19-16":"179:3335","i19-20":"179:3340","i19-24":"179:3345","i19-32":"179:3350","i19-40":"179:3355",
-  // social-media brand: Union nodes (40px only)
-  "sm-fb":"248:722","sm-youtube":"248:723","sm-linkedin":"248:724","sm-line":"248:725"
+  "i19-16":"179:3335","i19-20":"179:3340","i19-24":"179:3345","i19-32":"179:3350","i19-40":"179:3355"
 };
 
 // Step 3 — export each shape node as SVG
@@ -331,26 +309,25 @@ needed to recreate each icon at pixel-perfect fidelity in the target file.
 
 ## 11. Embedded SVG catalogue (source of truth for exact reproduction)
 
-Every one of the 49 variants below is the **exact frame-sized SVG** exported from the
+Every one of the 45 variants below is the **exact frame-sized SVG** exported from the
 source components (`viewBox` = the component frame; the glyph is already positioned
 inside it, so no manual insetting is needed). Keys are `icon → variant → size` (utility
-icons with a single visual style use `_`; `social-media` is keyed by `type`).
+icons with a single visual style use `_`).
 
 > 🎨 **The hex in each SVG is a placeholder — the real colour is a local variable.**
 > An SVG cannot carry a Figma binding, so the export bakes in the resolved hex. After
 > importing each icon you **must** rebind its fill/stroke to the **local** colour
 > variable below (the exact same one the source uses). Do **not** leave the raw hex,
-> and do **not** bind to a `gray900`/`gray400` from a remote/published library —
+> and do **not** bind to a `gray900` from a remote/published library —
 > always the file's own `Primitive` collection.
 >
 > | SVG hex | Bind to (local variable) | Collection | Applies to |
 > | ------- | ------------------------ | ---------- | ---------- |
 > | `#373737` | `gray/gray900` | `Primitive` (local, not remote) | fill of `i-01/i-03/i-05/i-06/i-19/i-24`; **stroke** of `i-67` |
-> | `#A3A3A3` | `gray/gray400` | `Primitive` (local, not remote) | fill of all `social-media` |
 >
-> Verified against source: all 49 shapes already bind to these local variables
-> (`gray/gray900` and `gray/gray400` in the local `Primitive` collection) — 0 remote,
-> 0 raw-hex, 0 legacy-duplicate bindings.
+> Verified against source: all 45 shapes already bind to the local `gray/gray900`
+> variable (in the `Primitive` collection) — 0 remote, 0 raw-hex, 0 legacy-duplicate
+> bindings.
 
 > **Rebuild rule:** import the SVG for each variant verbatim (or create a `VECTOR`
 > from its `d`), keep the frame at the `Size` px, then bind the colour variable. Do
@@ -434,12 +411,6 @@ icons with a single visual style use `_`; `social-media` is keyed by `type`).
       "32": "<svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M28.0015 5.05916L17.0601 15.9996L28.0015 26.941L26.941 28.0015L15.9996 17.0601L5.05914 28.0015L3.9986 26.941L14.939 15.9996L3.9986 5.05916L5.05914 3.99861L15.9996 14.939L26.941 3.99861L28.0015 5.05916Z\" fill=\"#373737\"/></svg>",
       "40": "<svg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M35.0029 6.41406L21.415 20.001L35.0029 33.5889L33.5889 35.0029L20.001 21.415L6.41406 35.0029L5 33.5889L18.5869 20.001L5 6.41406L6.41406 5L20.001 18.5869L33.5889 5L35.0029 6.41406Z\" fill=\"#373737\"/></svg>"
     }
-  },
-  "social-media": {
-    "fb": "<svg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M20 0C31.0457 0 40 8.9543 40 20C40 31.0457 31.0457 40 20 40C8.9543 40 0 31.0457 0 20C0 8.9543 8.9543 0 20 0ZM20 1C9.50659 1 1 9.50659 1 20C1 30.4934 9.50659 39 20 39C30.4934 39 39 30.4934 39 20C39 9.50659 30.4934 1 20 1ZM19.1982 8.04395C20.7067 6.63125 22.5934 6.47381 26.667 6.82715V11.085H23.6865C22.7496 11.0852 21.9905 11.8749 21.9902 12.8496V16.4404H26.4785L25.9316 21.1494H21.9902V33.333H17.2939V21.1494H13.333V16.4404H17.2754V12.791C17.2755 10.8296 17.997 9.1687 19.1982 8.04395Z\" fill=\"#A3A3A3\"/></svg>",
-    "youtube": "<svg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M20 0C31.0457 0 40 8.9543 40 20C40 31.0457 31.0457 40 20 40C8.9543 40 0 31.0457 0 20C0 8.9543 8.9543 0 20 0ZM20 1C9.50659 1 1 9.50659 1 20C1 30.4934 9.50659 39 20 39C30.4934 39 39 30.4934 39 20C39 9.50659 30.4934 1 20 1ZM19.7461 10.667C23.1255 10.667 26.4361 10.8197 29.6533 11.1123C31.3458 11.2662 32.7071 12.5603 32.9434 14.2383C33.1955 16.0301 33.333 17.9719 33.333 20C33.333 22.0279 33.1954 23.9697 32.9434 25.7617C32.7071 27.4397 31.3459 28.7338 29.6533 28.8877C26.4361 29.1805 23.1255 29.333 19.7461 29.333C16.5509 29.333 13.4175 29.1967 10.3662 28.9346C8.66956 28.7884 7.30236 27.4922 7.06348 25.8115C6.80675 24.0058 6.66699 22.0466 6.66699 20C6.667 17.9533 6.80696 15.9943 7.06348 14.1885C7.30258 12.5077 8.66971 11.2113 10.3662 11.0654C13.4176 10.8031 16.5509 10.667 19.7461 10.667ZM17.3359 24.0293L24.2617 20.0381L17.3359 16.0469V24.0293Z\" fill=\"#A3A3A3\"/></svg>",
-    "linkedin": "<svg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M20 0C31.0457 0 40 8.9543 40 20C40 31.0457 31.0457 40 20 40C8.9543 40 0 31.0457 0 20C0 8.9543 8.9543 0 20 0ZM20 1C9.50659 1 1 9.50659 1 20C1 30.4934 9.50659 39 20 39C30.4934 39 39 30.4934 39 20C39 9.50659 30.4934 1 20 1ZM14.3682 30.958H9.39453V14.9551H14.3682V30.958ZM27.0361 14.5566C32.072 14.5566 33.0009 17.8698 33.001 22.1797L32.999 30.958H28.0293V23.1768C28.0293 21.3198 27.9961 18.9317 25.4453 18.9316C22.8563 18.9316 22.4609 20.954 22.4609 23.041V30.958H17.4922V14.9551H22.2617V17.1416H22.3291C23.3021 15.4787 25.1102 14.4847 27.0361 14.5566ZM11.8828 7C13.4758 7 14.7666 8.29079 14.7666 9.88379C14.7675 11.4757 13.4767 12.7676 11.8838 12.7676C10.291 12.7675 9.00014 11.4766 9 9.88477C8.999 8.29183 10.2899 7.0011 11.8828 7Z\" fill=\"#A3A3A3\"/></svg>",
-    "line": "<svg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M20 0C31.0457 0 40 8.9543 40 20C40 31.0457 31.0457 40 20 40C8.9543 40 0 31.0457 0 20C0 8.9543 8.9543 0 20 0ZM20 1C9.50659 1 1 9.50659 1 20C1 30.4934 9.50659 39 20 39C30.4934 39 39 30.4934 39 20C39 9.50659 30.4934 1 20 1ZM20 8C27.3516 8 33.3328 12.8396 33.333 18.7881C33.333 21.1684 32.4074 23.313 30.4756 25.4258C27.6778 28.6363 21.423 32.5458 20 33.1436C18.5773 33.7416 18.7866 32.764 18.8447 32.4277C18.8786 32.2277 19.0352 31.2891 19.0352 31.2891C19.0801 30.9493 19.1264 30.4237 18.9922 30.0879C18.8428 29.7175 18.2515 29.525 17.8174 29.4316C11.4102 28.5874 6.66699 24.1208 6.66699 18.7881C6.66718 12.8396 12.6484 8.00001 20 8ZM11.3008 15.9131C11.1574 15.9131 11.0402 16.029 11.04 16.1719V21.9648C11.0401 22.0342 11.0681 22.0975 11.1123 22.1436L11.1201 22.1514C11.1667 22.1956 11.2301 22.2226 11.2998 22.2227H15.0361C15.1793 22.2227 15.2959 22.1069 15.2959 21.9639V21.0312C15.2958 20.8886 15.1792 20.7725 15.0361 20.7725H12.4951V16.1719C12.4949 16.029 12.3784 15.9131 12.2354 15.9131H11.3008ZM16.3555 15.9141C16.212 15.9141 16.0957 16.0295 16.0957 16.1719V21.9648C16.0959 22.1074 16.2122 22.2226 16.3555 22.2227H17.291C17.4337 22.2227 17.5506 22.1074 17.5508 21.9648V16.1719C17.5508 16.0295 17.4339 15.9141 17.291 15.9141H16.3555ZM18.7197 15.9141C18.5762 15.9141 18.46 16.0295 18.46 16.1719V21.9648C18.4602 22.1074 18.5764 22.2227 18.7197 22.2227H19.6543C19.7973 22.2227 19.9148 22.1074 19.915 21.9648V18.5244L22.5801 22.1133C22.5983 22.139 22.6217 22.1608 22.6465 22.1777L22.6494 22.1797C22.6545 22.1835 22.66 22.1866 22.665 22.1895L22.6846 22.1992C22.6888 22.2008 22.693 22.2035 22.6973 22.2051C22.7 22.206 22.7029 22.2064 22.7051 22.207C22.7112 22.2093 22.7169 22.2113 22.7227 22.2129C22.7239 22.2129 22.7253 22.2135 22.7266 22.2139C22.7474 22.2197 22.7699 22.2226 22.793 22.2227H23.7285C23.8718 22.2225 23.9881 22.1073 23.9883 21.9648V16.1719C23.9883 16.0296 23.8719 15.9142 23.7285 15.9141H22.793C22.6496 15.9142 22.5332 16.0295 22.5332 16.1719V19.6133L19.8711 16.0283C19.8649 16.0189 19.8578 16.0104 19.8506 16.002L19.8486 16.001C19.8434 15.9954 19.8382 15.9893 19.833 15.9844C19.8315 15.9832 19.8296 15.9823 19.8281 15.9805C19.8236 15.9766 19.8197 15.9726 19.8145 15.9688C19.8126 15.9669 19.8102 15.9656 19.8086 15.9639C19.8041 15.9606 19.7991 15.957 19.7949 15.9541L19.7871 15.9492C19.7825 15.9466 19.777 15.9447 19.7725 15.9424C19.7696 15.9411 19.7675 15.9397 19.7646 15.9385C19.7599 15.9359 19.7554 15.933 19.75 15.9316C19.7471 15.9303 19.7438 15.9294 19.7412 15.9287C19.736 15.9268 19.7304 15.9254 19.7256 15.9238C19.7225 15.9232 19.7199 15.9218 19.7168 15.9209C19.7119 15.9196 19.7064 15.9193 19.7012 15.918C19.698 15.9174 19.6939 15.9173 19.6904 15.917C19.6863 15.9164 19.6815 15.9154 19.6768 15.915L19.6641 15.9141H18.7197ZM25.1562 15.9131C25.0864 15.9131 25.0238 15.9414 24.9766 15.9863C24.9759 15.9873 24.974 15.9883 24.9736 15.9893C24.9721 15.9908 24.971 15.9926 24.9697 15.9941C24.9251 16.0406 24.8976 16.1028 24.8975 16.1719V21.9648C24.8976 22.0343 24.9251 22.0975 24.9697 22.1436C24.971 22.1448 24.9724 22.1459 24.9736 22.1475C24.9743 22.1484 24.9762 22.1494 24.9775 22.1504C25.0241 22.1949 25.0866 22.2226 25.1562 22.2227H28.8926C29.0361 22.2227 29.1523 22.1069 29.1523 21.9639V21.0312C29.1522 20.8886 29.036 20.7725 28.8926 20.7725H26.3516V19.7939H28.8926C29.0361 19.7939 29.1523 19.6773 29.1523 19.5342V18.6025C29.1523 18.4591 29.0361 18.3428 28.8926 18.3428H26.3516V17.3643H28.8926C29.036 17.3643 29.1522 17.2481 29.1523 17.1055V16.1729C29.1523 16.0295 29.0361 15.9131 28.8926 15.9131H25.1562Z\" fill=\"#A3A3A3\"/></svg>"
   }
 }
 ```
@@ -448,9 +419,10 @@ icons with a single visual style use `_`; `social-media` is keyed by `type`).
 
 ## 12. 實作備註 Implementation Notes
 
-- **綁定狀態已驗證（全部本地、非外部來源）：** 逐一檢查 49 個變體，全部綁定至**本地** `Primitive` 集合的色彩變數——`gray/gray900 | #373737`（`VariableID:1:895`，`remote:false`）與 `gray/gray400 | #A3A3A3`（`VariableID:1:890`，`remote:false`）；**0 個**綁定至 remote／發佈庫變數、**0 個**寫死 hex、**0 個**舊版重複命名。工具圖示（`i-01`、`i-03`、`i-06`、`i-19`、`i-24`、`i-67`、`i-05`）的 `Union`／`Subtract`／`Vector`（`i-03` filled 為 `Group → Subtract`）綁定 `gray/gray900`；`i-67` 為真描邊 `Vector`，綁定 **stroke** 並帶 `stroke-width` 1.3／1.5／1.5／1.5／2；`social-media` 四個品牌圖示綁定 `gray/gray400`。**§11 內嵌 SVG 的 hex 僅為佔位，重建時務必改綁上述本地變數，切勿綁定任何遠端／發佈庫的 gray900／gray400。**
-- **來源頁面為 `Icons`：** 本檔原記載的 `Icon-IconFont` 頁面並不存在，已更正為實際頁面名稱 `Icons`（node `290:1438`）。
-- **Icon Grid 已全數刪除：** 原本 49 個變體中有 25 個（如全部 `i-03`）內含 `Icon Grid` 對齊輔助 instance，現已從所有元件**刪除**，每個變體僅保留圖示本體，檔案更乾淨。重建時請勿再加入 grid。
+- **綁定狀態已驗證（全部本地、非外部來源）：** 逐一檢查 45 個變體，全部綁定至**本地** `Primitive` 集合的 `gray/gray900 | #373737`（`VariableID:1:895`，`remote:false`）；**0 個**綁定至 remote／發佈庫變數、**0 個**寫死 hex、**0 個**舊版重複命名。工具圖示（`i-01`、`i-03`、`i-06`、`i-19`、`i-24`、`i-05`）的 `Union`／`Subtract`（`i-03` filled 為 `Group → Subtract`）綁定 `gray/gray900`；`i-67` 為真描邊 `Vector`，綁定 **stroke** 並帶 `stroke-width` 1.3／1.5／1.5／1.5／2。**§11 內嵌 SVG 的 hex 僅為佔位，重建時務必改綁本地 `gray/gray900`，切勿綁定任何遠端／發佈庫變數。**
+- **social-media 已移出本檔：** 原第 8 組品牌圖示 `social-media`（原綁灰階 `gray400`）已移至 [logos.md](logos.md) 與 Figma **4 Logos** 頁面（`448:273`）；本檔現僅含 7 組工具圖示、45 變體、全綁 `gray/gray900`。
+- **來源頁面為 `Icons`：** 本檔原記載的 `Icon-IconFont` 頁面並不存在，已更正為實際頁面名稱 `5 Icons`（node `290:1438`）。
+- **Icon Grid 已全數刪除：** 原本 45 個變體中有 25 個（如全部 `i-03`）內含 `Icon Grid` 對齊輔助 instance，現已從所有元件**刪除**，每個變體僅保留圖示本體，檔案更乾淨。重建時請勿再加入 grid。
 - **變體命名已正規化：** `i-05`、`i-19`、`i-67` 三組描邊圖示的變體名稱原有不一致的逗號間距（如 `Size=16,Theme=stroke,Weight=1.3` 與 `Size=40, Theme=stroke,Weight=2`），已統一為 `Size=<px>, Theme=stroke, Weight=<value>`（逗號後單一空格），共修正 7 個變體。
 - **§11 為離線重建的唯一來源：** 由於這些圖示是**同一本地檔案內其他元件的實際依賴**（如 Buttons 用 `i-01`、TextField 用 `i-24`／`i-03`、Selections 用 `i-67`），§11 已內嵌每個變體的**精確 frame 尺寸 SVG**。安裝端**無需存取來源 Figma 檔**即可 1:1 重建：逐一匯入對應 SVG、維持 `Size` px、再依 §5 綁定色彩變數。切勿以單一路徑跨尺寸縮放——每個尺寸皆為獨立微調的圖形。
-- **重建須沿用變數：** 匯入 SVG 後，務必以本地色彩變數取代 SVG 內的 hex（`#373737` → `gray/gray900`、`#A3A3A3` → `gray/gray400`），勿保留寫死 hex。
+- **重建須沿用變數：** 匯入 SVG 後，務必以本地色彩變數取代 SVG 內的 hex（`#373737` → `gray/gray900`），勿保留寫死 hex。

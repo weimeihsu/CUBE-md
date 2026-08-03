@@ -253,7 +253,7 @@ Typography: `NotoSansTC/16px/Regular` → Noto Sans TC, Regular, 16px, lh 1.5
 > 文字內容預設為「選項」。
 
 勾選圖標：
-- Source: `i-67`（Icon-IconFont 頁面）
+- Source: `i-67`（`5 Icons` 頁面，見 [icons.md](icons.md)）
 - Size: 16 × 16px，stroke 風格
 - 顏色：`Selected=On, State=Enabled` 為 `green/green500`；`Selected=On, State=Disabled` 為 `gray/gray900`（並隨 state-layer 套用 50% opacity）
 

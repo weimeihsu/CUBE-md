@@ -13,7 +13,7 @@ source of truth for fonts, the type scale, weights, and the named text styles.
 It is written so that both designers and AI agents can re-create the exact same
 system in Figma (or in code) from scratch.
 
-Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **Typography** (文字).
+Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **2 Typography** (文字).
 
 ---
 
@@ -163,7 +163,7 @@ For programmatic re-creation. Line height and letter spacing apply to all entrie
 
 ## 實作備註 Implementation Notes
 
-**Figma source:** file `kkyAx6QTTNF6ZyB9rSeN6W`, page **Typography**, container frame `Typography` (`1:167`).
+**Figma source:** file `kkyAx6QTTNF6ZyB9rSeN6W`, page **2 Typography**, container frame `Typography` (`1:167`).
 
 ### 層級結構 Layer hierarchy
 

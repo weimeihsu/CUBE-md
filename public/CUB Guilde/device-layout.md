@@ -15,7 +15,7 @@ description: 五種裝置的基礎版面／網格模板（iOS、Android、手機
 > 3. 間距 Spacing
 > 4. 頁首與頁尾 Header & Footer（提供 `WebHeader` / `WebFooter` 元件與原生頭尾）
 
-Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **DeviceLayout**（`179:186`）。
+Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **7 Device Layout**（`179:186`）。
 
 本頁提供五種裝置的**基礎版面骨架**，用以規範內容安全區、左右留白（gutter）與區塊垂直間距。它**不是可放入設計稿的元件**，而是設計／開發時對齊的量測參考。
 

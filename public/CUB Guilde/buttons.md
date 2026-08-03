@@ -225,7 +225,7 @@ Frame 設定：
 
 圖標 Icon：
 - Size: 16 × 16
-- Source: `i-01` from `Icon-IconFont` page
+- Source: `i-01` from `5 Icons` page（見 [icons.md](icons.md)）
 - Icon 排列：Primary = 圖標在前（Icon → Text）；Secondary = 圖標在後（Text → Icon）
 
 Typography: `NotoSansTC/14px/Bold` → Noto Sans TC, Bold, 14px, lh 1.5
@@ -284,7 +284,7 @@ Frame 設定：
 - Corner Radius: `lg` (radius) = 12
 
 內容層：
-- Icon: 16 × 16，顏色 `gray/gray600`，Source: `i-01` from `Icon-IconFont` page
+- Icon: 16 × 16，顏色 `gray/gray600`，Source: `i-01` from `5 Icons` page（見 [icons.md](icons.md)）
 - Label: 文字 `新增區塊`，顏色 `gray/gray600`
 
 Typography: `NotoSansTC/16px/Bold` → Noto Sans TC, Bold, 16px, lh 1.5

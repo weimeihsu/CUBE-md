@@ -11,9 +11,9 @@ description: 涵蓋 6 組色系的 68 個基礎色彩變數：藍、綠、紫、
 The primitive color palette and how to re-create it. This is the single source of
 truth for the base color tokens. It is written so designers and AI agents can
 rebuild the exact same system: **import the colors into the Variables panel**
-*and* **create a `Color` page that renders the swatch grid**.
+*and* **create a `3 Color-Palette` page that renders the swatch grid**.
 
-Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, Variables collection **Primitive**.
+Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **3 Color-Palette**, Variables collection **Primitive**.
 
 ---
 
@@ -139,9 +139,9 @@ Weight steps per set: `100, 150, 200, 300, 400, 500, 600, 700, 800, 900, 1000`
 
 ---
 
-## 4. Step 2 — Create the `Color` page and build the swatch grid
+## 4. Step 2 — Create the `3 Color-Palette` page and build the swatch grid
 
-Create a page named **`Color`** and build a grid of swatches, one row per color set.
+Create a page named **`3 Color-Palette`** and build a grid of swatches, one row per color set.
 
 **Container** — `Primitive Colors`, VERTICAL auto layout, item spacing `24`,
 padding `0`, cross-axis align `MIN`.
@@ -193,7 +193,7 @@ Building the grid in §4 reuses tokens from the other systems — create those f
     "gray": {"0":"#FFFFFF","100":"#F5F5F5","150":"#E7E7E7","200":"#D9D9D9","300":"#BDBDBD","400":"#A3A3A3","500":"#898989","600":"#707070","700":"#5C5C5C","800":"#494949","900":"#373737","1000":"#262626","1100":"#000000"}
   },
   "swatchGrid": {
-    "page": "Color",
+    "page": "3 Color-Palette",
     "container": {"name": "Primitive Colors", "layout": "VERTICAL", "itemSpacing": 24},
     "row": {"layout": "HORIZONTAL", "itemSpacingToken": "Spacing/md"},
     "swatch": {

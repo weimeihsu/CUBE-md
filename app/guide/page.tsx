@@ -7,12 +7,13 @@ const baseFiles = [
   { label: "顏色 Colors",                file: "color-palette.md",  description: "68 個顏色變數，6 組色系",        url: "/base/colors" },
   { label: "字體 Typography",            file: "typography.md",     description: "28 種文字樣式，2 種字體家族",    url: "/base/typography" },
   { label: "間距與圓角 Spacing & Radius", file: "spacing-radius.md", description: "10 個間距 Token，4 個圓角 Token", url: "/base/spacing-radius" },
+  { label: "商標 Logos",                 file: "logos.md",          description: "國泰世華商標（完整／精簡）＋ social-media 品牌圖示" },
   { label: "頁首與頁尾 Header & Footer", file: "header-footer.md",  description: "網頁 RWD 頁首／頁尾三斷點、原生頭尾參考",   url: "/components/header-footer" },
   { label: "裝置版面 Device Layout",     file: "device-layout.md",  description: "五種裝置版面骨架，安全內容區與留白間距", url: "/base/device-layout" },
 ]
 
 const componentFiles = [
-  { label: "圖標 Icons",                file: "icons.md",          description: "8 組圖標範例元件集，5 種尺寸",              url: "/components/icons" },
+  { label: "圖標 Icons",                file: "icons.md",          description: "7 組工具圖示元件集，45 變體，5 種尺寸",       url: "/components/icons" },
   { label: "按鈕 Buttons",              file: "buttons.md",        description: "5 種按鈕類型，32 種變體",                    url: "/components/buttons" },
   { label: "選擇元件 Selections",        file: "selections.md",     description: "核取方塊、單選框、選項卡片",                 url: "/components/selections" },
   { label: "文字欄位 Text Field",        file: "text-field.md",     description: "輸入框、浮動標籤、欄位群組",                 url: "/components/text-field" },
@@ -122,7 +123,7 @@ export default function GuidePage() {
                   </div>
                 </div>
                 <p className="text-[14px] text-muted-foreground">
-                  ⚠️ <strong className="text-foreground">頁首與頁尾 Header &amp; Footer</strong> 須在 <strong className="text-foreground">裝置版面 Device Layout</strong> 之前匯入——Device Layout 會在裝置骨架中置入頁首／頁尾。<strong className="text-foreground">Device Layout</strong> 為基礎建設的最後一份文件，它引用前述所有基礎建設的間距、色彩變數與頁首／頁尾元件，請務必在其他基礎建設文件全數完成後才匯入。
+                  ⚠️ 依賴順序：<strong className="text-foreground">商標 Logos</strong>（含 social-media 品牌圖示）須在 <strong className="text-foreground">頁首與頁尾 Header &amp; Footer</strong> 之前匯入；<strong className="text-foreground">Header &amp; Footer</strong> 又須在 <strong className="text-foreground">裝置版面 Device Layout</strong> 之前匯入——Device Layout 會在裝置骨架中置入頁首／頁尾。<strong className="text-foreground">Device Layout</strong> 為基礎建設的最後一份文件，它引用前述所有基礎建設的間距、色彩變數與頁首／頁尾元件，請務必在其他基礎建設文件全數完成後才匯入。
                 </p>
               </div>
             </div>

@@ -15,7 +15,7 @@ description: 輸入框、浮動標籤輸入框與文字欄位群組元件，涵�
 > 3. 字體排版 Typography
 > 4. 間距 Spacing
 > 5. 圓角 Radius
-> 6. Icons 頁面（引用 `i-24`、`i-03`；精確 SVG 幾何見 [icons.md](icons.md) §11）
+> 6. `5 Icons` 頁面（引用 `i-24`、`i-03`；精確 SVG 幾何見 [icons.md](icons.md) §11）
 > 7. Selections 頁面（引用 `Small Checkbox`）
 > 8. 按鈕 Buttons 頁面（引用 `Small Text Link`）
 
@@ -113,8 +113,8 @@ description: 輸入框、浮動標籤輸入框與文字欄位群組元件，涵�
 
 | 位置 | Icon | Size | Source |
 |---|---|---|---|
-| Leading（左側，預設顯示） | `i-24`（搜尋）| 20 × 20px | Icons 頁面（`Size=20` 變體，`28:3963`）|
-| Trailing（右側，選配） | `i-03`（清除）| 20 × 20px | Icons 頁面（`Size=20` 變體）|
+| Leading（左側，預設顯示） | `i-24`（搜尋）| 20 × 20px | `5 Icons` 頁面（`Size=20` 變體，`28:3963`）|
+| Trailing（右側，選配） | `i-03`（清除）| 20 × 20px | `5 Icons` 頁面（`Size=20` 變體）|
 
 > Trailing icon 容器有 `padding-left: sm = 8px`，與文字保持間距。
 

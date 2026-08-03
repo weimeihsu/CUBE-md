@@ -12,7 +12,7 @@ Spacing and radius tokens combined — matching the layout of the reference page
 in Figma. Both sections follow the same pattern: import into the Variables panel,
 then build a visual scale on the shared `Spacing & Radius` page.
 
-Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **Spacing & Radius**,
+Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **1 Spacing & Radius**,
 Variable collections **Spacing** and **Radius**.
 
 ---
@@ -133,7 +133,7 @@ Both scales reuse shared tokens — create these first:
     "unit": "px",
     "tokens": { "xxs":4, "xs":6, "sm":8, "md":12, "lg":16, "xl":20, "2xl":24, "3xl":32, "4xl":40, "5xl":80 },
     "scalePage": {
-      "page": "Spacing & Radius",
+      "page": "1 Spacing & Radius",
       "sectionHeading": "間距 Spacing",
       "row": { "name": "spacing scale", "layout": "HORIZONTAL", "counterAxisAlign": "MIN", "itemSpacingToken": "Spacing/md" },
       "swatch": {
@@ -150,7 +150,7 @@ Both scales reuse shared tokens — create these first:
     "unit": "px",
     "tokens": { "s":4, "md":6, "lg":12, "full":100 },
     "scalePage": {
-      "page": "Spacing & Radius",
+      "page": "1 Spacing & Radius",
       "sectionHeading": "圓角 Radius",
       "row": { "name": "radius scale", "layout": "HORIZONTAL", "counterAxisAlign": "MIN", "itemSpacingToken": "Spacing/md" },
       "swatch": {
