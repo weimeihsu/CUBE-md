@@ -15,7 +15,7 @@ description: 輸入框、浮動標籤輸入框與文字欄位群組元件，涵�
 > 3. 字體排版 Typography
 > 4. 間距 Spacing
 > 5. 圓角 Radius
-> 6. Icon-IconFont 頁面（引用 `i-24`、`i-03`）
+> 6. Icons 頁面（引用 `i-24`、`i-03`；精確 SVG 幾何見 [icons.md](icons.md) §11）
 > 7. Selections 頁面（引用 `Small Checkbox`）
 > 8. 按鈕 Buttons 頁面（引用 `Small Text Link`）
 
@@ -113,10 +113,12 @@ description: 輸入框、浮動標籤輸入框與文字欄位群組元件，涵�
 
 | 位置 | Icon | Size | Source |
 |---|---|---|---|
-| Leading（左側，預設顯示） | `i-24`（搜尋）| 20 × 20px | Icon-IconFont 頁面 |
-| Trailing（右側，選配） | `i-03`（清除）| 20 × 20px | Icon-IconFont 頁面 |
+| Leading（左側，預設顯示） | `i-24`（搜尋）| 20 × 20px | Icons 頁面（`Size=20` 變體，`28:3963`）|
+| Trailing（右側，選配） | `i-03`（清除）| 20 × 20px | Icons 頁面（`Size=20` 變體）|
 
 > Trailing icon 容器有 `padding-left: sm = 8px`，與文字保持間距。
+
+> ⚠️ **圖標尺寸攸關輸入框高度。** 輸入框高度為 HUG（內容高 ＋ 上下 padding `md`＝12＋12），由最高子元素決定。正常情況下文字（`16px`，行高 1.5 ＝ 24px）最高，故輸入框高 = 24 ＋ 24 = **48px**。若 `i-24`／`i-03` 圖標重建成**過大尺寸**（超過 24px），圖標會取代文字成為最高子元素，整排輸入框高度即被撐高、跑版。務必以 [icons.md](icons.md) §11 的 **`Size=20`（20 × 20）** 內嵌 SVG 重建這兩個圖標——SVG 的 `viewBox` 即為 `0 0 20 20`、字形已內縮定位，匯入後保持 20 × 20，即可維持 48px 標準高度。
 
 ---
 
