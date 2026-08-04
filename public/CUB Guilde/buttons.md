@@ -69,6 +69,18 @@ description: 新增 5 種按鈕類型——動態按鈕、底部按鈕、圖示�
 
 Icon Button、Text Link 與 Block Button 無 Hover 狀態。
 
+### 預設文字 Default labels（重建時請沿用來源文字，勿自行更改）
+
+各元件 `label-text` 節點的預設文字內容（取自 Figma 來源元件）：
+
+| 元件 Component | 預設文字 Default label |
+|---|---|
+| Dynamic Button（元件 1）| `按鈕` |
+| Bottom Button（元件 2）| `按鈕` |
+| Icon Button（元件 3）| `圖標按鈕` |
+| Text Link（元件 4）| `文字連結` |
+| Block Button（元件 5）| `新增區塊` |
+
 ---
 
 ## 元件 1 — 按鈕 Dynamic Button
@@ -157,17 +169,21 @@ Typography: `NotoSansTC/14px/Bold` → Noto Sans TC, Bold, 14px, lh 1.5
 
 ### 版本規格 Variant Specs
 
-外框 (component set container，變體排列用外框，不隨 instance 匯入) 設定：
-- Layout: Vertical Auto Layout
-- Padding: `4xl` = 40（四邊，含 itemSpacing）
+元件本體（每個 variant COMPONENT）設定：
+- **Size: `343 × 48px`** — 寬度為**固定 `343px`**（`layoutSizingHorizontal = FIXED`）、高度 HUG。此為 Figma 來源元件的實際尺寸。
+- Layout: Vertical Auto Layout（`primaryAxisSizingMode = AUTO`、`counterAxisSizingMode = FIXED`）
 
 內層 state-layer 設定：
 - Layout: Horizontal Auto Layout, 主軸居中對齊
+- **Width: `FILL`**（填滿 343 元件寬）、高度 HUG
 - Padding: `md` (spacing) = 12（四邊）
 - Corner Radius: `md` (radius) = 6
-- Width: **Fill Container** — 寬度填滿父層容器，不設固定寬度
+- `label-text`：Width `FILL`、文字置中
 
-> 使用情境：單一按鈕時佔滿全寬；兩個按鈕並排時各自 Fill，等分共享寬度（間距 `md` = 12）。
+> ⚠️ **寬度務必比照來源：元件 master 為固定 `343px`，不是 Fill。** 先前文件依網頁（`button.tsx`）的「填滿容器」行為描述，導致重建時寬度錯誤。若要在你的版面讓按鈕撐滿，請在**放置 instance 之後**再把該 instance 寬度設為 Fill；但**元件 master 必須是固定 `343px`**。
+> 排列外框（component set container）：Vertical Auto Layout、Padding `4xl`＝40（含 itemSpacing），僅為變體排列用，**不隨 instance 匯入**。
+
+預設文字 Default label：`按鈕`
 
 | Style | State | Fill | Stroke | Text Color | Opacity |
 |---|---|---|---|---|---|
@@ -229,6 +245,8 @@ Frame 設定：
 - Icon 排列：Primary = 圖標在前（Icon → Text）；Secondary = 圖標在後（Text → Icon）
 
 Typography: `NotoSansTC/14px/Bold` → Noto Sans TC, Bold, 14px, lh 1.5
+
+預設文字 Default label：**`圖標按鈕`**（`label-text` 節點的文字內容；重建時請沿用此文字，勿改為「按鈕」等其他字串）。
 
 ---
 

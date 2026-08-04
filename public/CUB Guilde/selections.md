@@ -84,12 +84,28 @@ Frame 設定：
 | Off | Enabled | `gray/gray0` | `gray/gray500` / 1px | — | 100% |
 | Off | Disabled | `gray/gray100` | `gray/gray300` / 1px | — | 50% |
 | Off | Error | `gray/gray0` | `red/red500` / 1px | — | 100% |
-| On | Enabled | `green/green500` | `green/green500` / 1px | `ic_a11y_tick`，白色 | 100% |
-| On | Disabled | `gray/gray600` | `gray/gray600` / 1px | `ic_a11y_tick`，白色 | 50% |
+| On | Enabled | `green/green500` | `green/green500` / 1px | 內嵌白色描邊勾選（見下）| 100% |
+| On | Disabled | `gray/gray600` | `gray/gray600` / 1px | 內嵌白色描邊勾選（見下）| 50% |
 
-勾選圖標 Checkmark Icon：
-- Source: `ic_a11y_tick`
-- Size: 16 × 16px，居中於方框內
+#### 勾選圖標 Checkmark（內嵌本地描邊，勿用外部資產）
+
+> ⚠️ **此勾選必須以本地描邊重建，不可引用外部圖示資產。** 原先此勾選綁定至**外部發佈庫**的繪製樣式（`Gray/Gray0`），重建時會失敗。請改為一個**本地 `VECTOR`（描邊）**，並將描邊色綁定至**本地 `gray/gray0`**（白色）。
+
+規格：
+- 節點：`VECTOR`（stroke 描邊），**非** instance、**非**外部圖示。
+- 尺寸：`16 × 16px` 字形，**置中於 20 × 20 方框內**（上下左右各內縮 2px）。
+- 描邊色：綁定**本地** `gray/gray0`（`#FFFFFF`）— 在綠底（Enabled）／灰底（Disabled）上呈白色勾。
+- 描邊寬度 `stroke-width: 1.3`；`stroke-linejoin: round`；無端點。
+- 幾何與 [icons.md](icons.md) 的 `i-67`（`Size=16`）**完全相同**，Path `d`（16×16 座標）：
+  `M14.52 3.29 L5.64 12.21 L1.52 8.11`
+
+內嵌 SVG（`stroke` 的 hex 僅為佔位；重建時務必把描邊改綁**本地 `gray/gray0`**）：
+
+```svg
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.52 3.29L5.64002 12.21L1.52002 8.11" stroke="#FFFFFF" stroke-width="1.3" stroke-linejoin="round"/></svg>
+```
+
+> **為何內嵌、而非引用 `i-67`：** `i-67` 的描邊綁定 `gray/gray900`（深灰）；此處勾選需**白色**。若改用 `i-67` instance，必須額外覆寫描邊顏色（instance override），較易在重建時遺失或出錯。獨立內嵌一個白色描邊（綁本地 `gray/gray0`）為**零依賴、零覆寫**，最不易出錯——這是本符號採用的做法。
 
 ---
 
@@ -267,5 +283,5 @@ Typography: `NotoSansTC/16px/Regular` → Noto Sans TC, Regular, 16px, lh 1.5
 - **文字綁定狀態：** 標籤（`label-text`）與錯誤訊息（`error-text`）文字皆綁定本地文字樣式 `NotoSansTC/14px/Regular` 與 `NotoSansTC/16px/Regular`。原為外部 `Android/Noto Sans TC/*` 遠端樣式，已改綁本地同尺寸樣式。
 - **間距／圓角綁定狀態：** padding／gap 綁定本地 `Spacing`（`sm`＝8、`md`＝12、`xxs`＝4）；圓角綁定本地 `Radius`（`s`＝4、`md`＝6、`full`＝100）。原外部 `Spacing`／`Radius` 集合（`Spacing - md・12`、`Radius - full・100` 等）已依數值改綁本地 Token。
 - **展示裝飾不列入元件色：** 頁面的區塊標題（`Title`，`gray/gray800` ＋ `NotoSansTC/32px/Bold`）、示範列底板（`green/green100` 填色 ＋ `green/green150` 邊框）與外框卡片（`gray/gray150` 邊框）皆為版面展示用裝飾，**非元件本體色彩**；雖已綁定本地變數，但不納入上方元件色表，重建元件時可忽略。
-- **變體命名修正：** `Radio Button`（含標籤版，`99:775`）的 `State` 變體原有 `DIsabled` 拼字錯誤，已更正為 `Disabled`（變體 `99:794`、`99:776`）。
+- **核取方塊勾選已改為本地描邊：** `Checkbox` 的白色勾選原先綁定至**外部發佈庫**的繪製樣式（`Gray/Gray0`，`remote=true`），重建時會失敗。現已在來源檔改為**本地 `VECTOR` 描邊**、描邊色綁定**本地 `gray/gray0`**（`On/Enabled` 與 `On/Disabled` 兩個變體皆已改綁，`remote=false`）。本文件亦內嵌其精確描邊幾何（與 `i-67` Size=16 相同），採**零依賴內嵌**而非引用 `i-67`（後者為 `gray900`，需覆寫顏色易出錯）。
 - **重建須沿用變數：** 所有值均以本地變數／樣式綁定，重建時請沿用變數，勿寫死 hex 或像素值。
