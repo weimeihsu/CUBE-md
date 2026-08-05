@@ -86,3 +86,13 @@ Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **4 Logos**（node `448:273`�
 - **品牌色不綁變數：** 所有資產保留品牌 hex，**勿綁定** CUBE 灰階變數（與工具圖示相反）。
 - **商標結構：** 含 5 個線性漸層（綠色樹 ×2、CUBE 立體標金屬灰 ×3）＋ 黑色字標路徑；精簡版為完整版左側 `Cathay logo` 區塊。
 - **安裝順序：** 本檔須在 `header-footer.md` 之前安裝，否則頁首／頁尾與其社群圖示、以及裝置版面會缺少依賴。
+- **SVG import verification (critical):** After `figma.createNodeFromSvg(svgStr)`, always
+  check the child count **before** moving children to a Component. Expected counts:
+  - Full logo (324×34): **10 children** (4 green tree paths + 1 black text path + 1 divider
+    + 3 CUBE gradient paths + 1 black CUBE text path)
+  - Simplified logo (188×34): **5 children** (4 green tree paths + 1 black 國泰世華／Cathay
+    text path — the Chinese text is baked into that single black compound path)
+  - Each social-media icon: **1 child**
+  If the count is lower (e.g. only 4), the large `fill="black"` path was silently dropped
+  during import. Call `await svgFrame.screenshot()` inline to confirm visually before
+  converting. Do **not** proceed to `createComponent()` if the count is wrong.

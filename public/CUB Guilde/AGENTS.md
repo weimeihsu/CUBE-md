@@ -120,6 +120,14 @@ const cs = figma.combineAsVariants(comps, page);
 const key = Object.keys(cs.componentPropertyDefinitions).find(k => k.startsWith('leadingIcon'));
 ```
 
+### `createNodeFromSvg` may silently drop complex paths
+
+When a `<path d="…">` attribute is very long (e.g. Chinese character outlines, compound
+logos), the SVG importer can truncate it without throwing an error. **Always verify the
+resulting frame's `children.length` and call `await frame.screenshot()` before moving
+children to a Component.** If the count is wrong, retry — the import is atomic and safe
+to re-run.
+
 ### Always set auto-layout sizing modes AFTER `resize()`
 
 `resize(w, h)` sets **both** axes to `FIXED`, silently overwriting any `primaryAxisSizingMode` / `counterAxisSizingMode` set earlier. Set sizing modes after the resize call:

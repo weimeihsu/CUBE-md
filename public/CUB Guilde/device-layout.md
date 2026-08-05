@@ -13,7 +13,7 @@ description: 五種裝置的基礎版面／網格模板（iOS、Android、手機
 > 1. 基礎設定 Base Settings
 > 2. 色彩 Colors
 > 3. 間距 Spacing
-> 4. 頁首與頁尾 Header & Footer（提供 `WebHeader` / `WebFooter` 元件與原生頭尾）
+> 4. 頁首與頁尾 Header & Footer（提供 `WebHeader` / `WebFooter`，以及原生頭尾元件 **`StatusBar`（`148:9212`，iOS `148:9211`／Android `148:9210`）、`iOS Home Indicator`、`Android Bottom Button`（`148:9227`）**；iOS／Android 版面會連結這些 StatusBar）
 
 Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **7 Device Layout**（`179:186`）。
 
@@ -32,6 +32,29 @@ Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **7 Device Layout**（`179:186
 | **DESK**（桌機 1280）| `1280` 寬 | `WebHeader` `68` | `40`（最小）| `≤ 1200`（置中）| `20` | `100` |
 
 > 內容寬度 = 畫板寬度 − 左右留白 ×2（行動裝置與平板）。DESK 改為**最大寬度 1200px 置中**，兩側留白隨視窗放大，最小 `40px`。
+>
+> ⚠️ iOS／Android 的 `StatusBar`（及 `iOS Home Indicator`／`Android Bottom Button`）為 **`6 Header & Footer` 頁面元件的 instance，重建時務必連結**，勿建立空白條——精確 SVG 見 [header-footer.md](header-footer.md)。
+
+---
+
+## 版面自動佈局與尺寸 Auto-layout & sizing（重建關鍵）
+
+> ⚠️ **五種畫板皆為 auto-layout。MB／TB／DESK 的高度為 HUG（隨內容自動長高），切勿設固定高度。** 先前 rebuild 把畫板做成固定高度，導致內容變動時版面不會重排——這正是需要修正的地方。
+
+| 裝置 Device | 畫板 auto-layout | 寬度 Width | 高度 Height |
+|---|---|---|---|
+| iOS | VERTICAL | FIXED `375` | **FIXED `812`**（裝置螢幕）|
+| Android | VERTICAL | FIXED `360` | **FIXED `800`**（裝置螢幕）|
+| MB | VERTICAL | FIXED `375` | **HUG**（隨內容）|
+| TB | VERTICAL | FIXED `768` | **HUG** |
+| DESK | VERTICAL | FIXED `1280` | **HUG** |
+
+- **MB／TB／DESK（網頁）：** 畫板為 **VERTICAL auto-layout**、`primaryAxisSizingMode = AUTO`（**高度 HUG**）、`counterAxisSizingMode = FIXED`（寬度固定）。子項由上而下堆疊：`WebHeader` → 內容 `body` → `WebFooter`，各段之間為垂直間距（頁首→內容 `xl`＝20；內容→頁尾 MB／TB `4xl`＝40、DESK `100`）。**畫板高度＝各子項＋間距之總和**（如 MB `83+20+446+40+594 = 1183`），會隨內容自動長高。
+- **iOS／Android（原生）：** 畫板為 VERTICAL auto-layout，但**高度固定**（`primaryAxisSizingMode = FIXED` ＝裝置螢幕 `812`／`800`）、寬度固定；`StatusBar`（頂）＋ `body`（中，填滿剩餘）＋ 原生底部元件（底）。
+- **`WebHeader` / `WebFooter` instance：** 本身為 VERTICAL auto-layout、**高度 HUG**，隨內容長高——重建時保持 HUG，勿鎖死高度。
+- **`body`：** HORIZONTAL auto-layout（左 gutter｜`container`｜右 gutter），**寬度 FILL**；內含安全內容區 `container`（兩軸 FILL）。此為量測骨架，`body`／`container` 高度在骨架中為固定佔位值。
+
+> ✅ 重建檢查：MB／TB／DESK 畫板必為 **VERTICAL + 高度 HUG + 寬度固定**；`WebHeader`／`WebFooter` 保持高度 HUG。**唯 iOS／Android 為固定螢幕高度**，其餘一律 HUG。
 
 ---
 
@@ -67,27 +90,36 @@ Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **7 Device Layout**（`179:186
 ## 各裝置細節 Per-Device Detail
 
 ### iOS（`179:267`，`375 × 812`）
-- 原生頭尾：頂部 `StatusBar` `44px`、底部 `iOS Home Indicator` `34px`（皆為原生模擬，刻意不綁定 CUBE 變數）。
+- 畫板：VERTICAL auto-layout，**高度固定 `812`**（裝置螢幕）、寬度固定 `375`（原生裝置尺寸，非 HUG）。
+- **頂部 `StatusBar`＝連結（instance）`6 Header & Footer` 頁面的 `StatusBar` 元件之 `StatusBar=iOS` 變體（`148:9211`），`375 × 44`。** ⚠️ **務必連結此元件、勿留空**——其精確幾何（時間＋系統圖標）已內嵌於 [header-footer.md](header-footer.md) §StatusBar SVG。
+- 底部 `iOS Home Indicator`（`148:9195`）`375 × 34`：**連結（instance）`6 Header & Footer` 元件**，指示條填色綁**本地** `gray/gray1000`；SVG 見 [header-footer.md](header-footer.md)。⚠️ 務必連結、勿留空。
+- `StatusBar` 顏色為 OS 模擬色（literal，不綁定）；`iOS Home Indicator` 綁定本地 `gray/gray1000`。
 - 安全內容區 `container`：`x = 20`、寬 `335`（左右各 `xl` 留白）。
 
 ### Android（`179:266`，`360 × 800`）
-- 原生頭尾：頂部 `StatusBar` `24px`、底部 `Android Bottom Button` `48px`（原生模擬，不綁定）。
+- 畫板：VERTICAL auto-layout，**高度固定 `800`**（裝置螢幕）、寬度固定 `360`（原生裝置尺寸，非 HUG）。
+- **頂部 `StatusBar`＝連結（instance）`6 Header & Footer` 頁面的 `StatusBar` 元件之 `StatusBar=Android` 變體（`148:9210`），`360 × 24`。** ⚠️ **務必連結、勿留空**——精確 SVG 見 [header-footer.md](header-footer.md) §StatusBar SVG。
+- 底部 `Android Bottom Button`（`148:9227`）`360 × 48`，亦為 `6 Header & Footer` 元件 instance（白底 `gray/gray0`、頂線 `gray/gray150`、圖標 `gray/gray800`；SVG 見 [header-footer.md](header-footer.md)）。
+- `StatusBar` 顏色為 OS 模擬色（不綁定）；`Android Bottom Button` 綁定本地灰階變數。
 - 安全內容區 `container`：`x = 20`、寬 `320`（左右各 `xl` 留白）。
 
 ### MB（手機網頁 375，`272:905`）
-- `WebHeader`（含瀏覽器列）高 `83`。
+- 畫板：**VERTICAL auto-layout，高度 HUG（隨內容長高），寬度固定 `375`**；高度＝`83+20+446+40+594 = 1183`。
+- `WebHeader`（含瀏覽器列）高 `83`（instance，高度 HUG）。
 - 頁首下方 `xl`（20）間距 → 內容區。
 - `container`：寬 `335`，左右各 `xl` 留白。
 - 內容下方 `4xl`（40）間距 → `WebFooter`。
 
 ### TB（平板 768，`272:1810`）
-- `WebHeader` 高 `100`。
+- 畫板：**VERTICAL auto-layout，高度 HUG，寬度固定 `768`**；高度＝`100+20+446+40+287 = 893`。
+- `WebHeader` 高 `100`（instance，高度 HUG）。
 - 頁首下方 `xl`（20）間距 → 內容區。
 - `container`：寬 `728`，左右各 `xl` 留白。
 - 內容下方 `4xl`（40）間距 → `WebFooter`。
 
 ### DESK（桌機 1280，`272:2101`）
-- `WebHeader` 高 `68`。
+- 畫板：**VERTICAL auto-layout，高度 HUG，寬度固定 `1280`**；高度＝`68+566+205 = 839`（`max1200` 容器已含頁首→內容 `20` 與內容→頁尾 `100` 標記）。
+- `WebHeader` 高 `68`（instance，高度 HUG）。
 - 內容以 `max1200` 容器置中：**最大寬度 `1200px`**，兩側最小留白 `4xl`（40）。
 - 頁首下方 `xl`（20）間距 → 內容區。
 - 內容下方 `100px` 大間距 → `WebFooter`。
@@ -101,5 +133,5 @@ Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **7 Device Layout**（`179:186
 - **間距未變數綁定：** 留白／間距標註框為固定尺寸的量測參考，**未**綁定 `Spacing` 變數；僅響應式網頁畫板寬度（375／768／1280）綁定至 `Device/Breakpoint`。重建產品 UI（非本骨架）時，仍應以本地 `Spacing` Token 綁定實際留白。
 - **留白統一為 `xl`（20）：** iOS、Android、MB、TB 四種裝置左右留白一致為 `20px`（`Spacing/xl`）。桌機改為 `1200px` 置中、最小留白 `40px`（`Spacing/4xl`）。
 - **垂直節奏：** 頁首→內容固定 `xl`（20）；內容→頁尾在 MB／TB 為 `4xl`（40），DESK 為 `100px`（無對應 Token，見上）。
-- **原生頭尾不綁定：** iOS／Android 的 `StatusBar`、`Home Indicator`、`Bottom Button` 為作業系統外觀模擬，顏色**刻意不綁定** CUBE 變數（沿用 [header-footer.md](header-footer.md) 的原生頭尾參考）。
+- **原生頭尾為 instance（務必連結，勿留空）：** iOS／Android 的 `StatusBar`（iOS＝`148:9211`／Android＝`148:9210`，來自 `6 Header & Footer` 元件 `148:9212`）、`iOS Home Indicator`（`148:9195`）、`Android Bottom Button`（`148:9227`）皆為該頁元件的 **instance**——重建時務必**連結**這些元件，其精確 SVG 已內嵌於 [header-footer.md](header-footer.md)；**切勿建立空白佔位條**（先前 rebuild 的 StatusBar 出現空白即因未連結此元件）。綁定：`StatusBar` 為 OS 模擬色 literal（不綁定）；`iOS Home Indicator` 綁 `gray/gray1000`；`Android Bottom Button` 綁 `gray/gray0`／`gray/gray150`／`gray/gray800`。
 - **頁首／頁尾為 instance：** 各網頁裝置的 `WebHeader` / `WebFooter` 皆為 [header-footer.md](header-footer.md) 元件的 instance，版面模板僅引用、不改動其內部。
