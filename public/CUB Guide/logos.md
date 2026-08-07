@@ -22,11 +22,17 @@ Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **4 Logos**（node `448:273`�
 
 | 資產 | 元件 / Node | 尺寸 | 顏色 | 使用位置 |
 | --- | --- | --- | --- | --- |
-| 商標（完整版）| `logo`（`200:757`）| 324 × 34 | 綠 `#00994E` ＋ 綠漸層 ＋ 黑字標 ＋ 金屬灰漸層（CUBE 立體標）| 桌機／平板頁首 |
-| 商標（精簡版）| `logo` 之 `Cathay logo` 群組 | 188 × 34 | 同上（不含分隔線與 CUBE 立體標）| 手機頁首、所有頁尾 |
+| 商標 | `logo`（`200:757`，單一 Component）| 完整 324 × 34 / 精簡 188 × 34 | 綠 `#00994E` ＋ 綠漸層 ＋ 黑字標 ＋ 金屬灰漸層（CUBE 立體標）| 完整版：桌機／平板頁首；精簡版：手機頁首、所有頁尾 |
 | `social-media` | `social-media`（`251:282`，Component Set）| 40 × 40（×4）| 灰 `#A3A3A3` | 頁尾社群連結 |
 
-> `social-media` 為 Component Set，以 `type` 變體切換 `fb` / `youtube` / `linkedin` / `line`；每個字標已轉為外框路徑（無需字型）。精簡版商標即完整版左側的「國泰世華」鎖定圖（不含分隔線與 CUBE 立體標）。
+> **`logo` 元件屬性：**
+> | Property | Type | Default | 說明 |
+> |---|---|---|---|
+> | `CUBE logo` | Boolean | `true` | `true` = 顯示分隔線 ＋ CUBE 立體標（完整版 324px）；`false` = 隱藏兩者（精簡版 188px，僅國泰世華鎖定圖） |
+>
+> `logo` 為**單一 Component**（非 Component Set）。其 3 個子節點：`Cathay logo`（GROUP，永遠顯示）、`divider`（VECTOR，visibility → `CUBE logo` prop）、`CUBE logo`（GROUP，visibility → `CUBE logo` prop）。精簡版就是 `CUBE logo = false` 的狀態，並非另一個元件。
+>
+> `social-media` 為 Component Set，以 `type` 變體切換 `fb` / `youtube` / `linkedin` / `line`；每個字標已轉為外框路徑（無需字型）。
 
 ---
 
@@ -42,10 +48,21 @@ Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **4 Logos**（node `448:273`�
 ## 3. 重建方式 How to rebuild
 
 1. 在目標檔建立（或使用）名為 `4 Logos` 的頁面。
-2. 將 §4 每個 SVG **原樣匯入**（或以其 path `d` 建立 vector），維持標示尺寸。
-3. 將 `social-media` 建為 Component Set，`type` 變體＝`fb` / `youtube` / `linkedin` / `line`。
-4. **勿改色、勿綁定變數**——品牌色即為最終色。
-5. 商標精簡版可直接匯入下方 188×34 版本，或取完整版左側 `Cathay logo` 區塊。
+2. 匯入完整版 SVG（§4，324×34），**驗證子節點數 = 10** 後轉為 Component（命名 `logo`）。
+3. **加入 boolean prop 並連結子節點可見性：**
+   ```js
+   // logo 必須為 standalone COMPONENT（非 variant），可直接呼叫 addComponentProperty
+   const propKey = logo.addComponentProperty('CUBE logo', 'BOOLEAN', true);
+   // 找到 divider 與 CUBE logo 子節點，綁定 visible
+   const divider = logo.findOne(n => n.name === 'divider');
+   const cubeGroup = logo.findOne(n => n.name === 'CUBE logo');
+   divider.componentPropertyReferences = { visible: propKey };
+   cubeGroup.componentPropertyReferences = { visible: propKey };
+   ```
+   完成後 instance 切換 `CUBE logo = false` 即得精簡版（188px）外觀。
+4. 將 `social-media` 建為 Component Set，`type` 變體＝`fb` / `youtube` / `linkedin` / `line`。
+5. **勿改色、勿綁定變數**——品牌色即為最終色。
+6. 精簡版 SVG（§4，188×34）供視覺參考或備用匯入，**不需建為獨立 Component**——精簡版即 `logo` 的 `CUBE logo = false` 狀態。
 
 座標精度：商標為 1 位小數（於 34px 尺寸下視覺無差異）；`social-media` 為原始匯出。
 
@@ -105,6 +122,7 @@ Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **4 Logos**（node `448:273`�
 
 ## 5. 實作備註 Implementation Notes
 
+- **`logo` 為單一 Component，以 boolean prop 區分完整版／精簡版：** `CUBE logo`（default `true`）控制 `divider` 與 `CUBE logo` 群組的 visibility。**勿**將精簡版另建為獨立 Component 或獨立 variant——應重建 boolean prop 並連結子節點（見 §3）。
 - **拆分來源：** 商標原內嵌於 [header-footer.md](header-footer.md)、`social-media` 原為 [icons.md](icons.md) 第 8 組（曾綁 `gray/gray400`）；兩者現移至本檔與 Figma **4 Logos** 頁面（`448:273`），以縮小單次重建 token。`icons.md` 現僅存 7 組工具圖示（45 變體，全綁 `gray/gray900`）。
 - **品牌色不綁變數：** 所有資產保留品牌 hex，**勿綁定** CUBE 灰階變數（與工具圖示相反）。
 - **商標結構：** 含 5 個線性漸層（綠色樹 ×2、CUBE 立體標金屬灰 ×3）＋ 黑色字標路徑；精簡版為完整版左側 `Cathay logo` 區塊。

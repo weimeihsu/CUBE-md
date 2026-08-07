@@ -23,15 +23,15 @@ Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **7 Device Layout**（`179:186
 
 ## 版面總表 Layout Overview
 
-| 裝置 Device | 畫板 Artboard | 頁首 Header | 左右留白 Gutter | 內容寬度 Content Width | 頁首→內容 | 內容→頁尾 |
+| 裝置 Device | 畫板 Artboard | 頁首 Header | 左右留白 Gutter | 內容寬度 Content Width | 頁首→內容 gap | 內容→頁尾 gap |
 |---|---|---|---|---|---|---|
-| **iOS**（原生）| `375 × 812` | StatusBar `44` + Home Indicator `34` | `20` | `335` | — | — |
-| **Android**（原生）| `360 × 800` | StatusBar `24` + Bottom Button `48` | `20` | `320` | — | — |
-| **MB**（手機網頁 375）| `375` 寬 | `WebHeader` `83` | `20` | `335` | `20` | `40` |
-| **TB**（平板 768）| `768` 寬 | `WebHeader` `100` | `20` | `728` | `20` | `40` |
-| **DESK**（桌機 1280）| `1280` 寬 | `WebHeader` `68` | `40`（最小）| `≤ 1200`（置中）| `20` | `100` |
+| **iOS**（原生）| `375 × 812` | StatusBar `44` ＋ DesignMark `20` ＋ Home Indicator `34` | `20` | `335` | — | — |
+| **Android**（原生）| `360 × 800` | StatusBar `24` ＋ DesignMark `60` ＋ Bottom Button `48` | `20` | `320` | — | — |
+| **MB**（手機網頁 375）| `375` 寬 | `WebHeader` `63`（`mb=false`）| `20` | `335` | `20`（`orange/orange150`）| `40`（`orange/orange150`）|
+| **TB**（平板 768）| `768` 寬 | `WebHeader` `80`（`mb=false`）| `20` | `728` | `20`（`orange/orange150`）| `40`（`orange/orange150`）|
+| **DESK**（桌機 1280）| `1280` 寬 | `WebHeader` `68`（`mb=false`）| `40`（每側）| `1200`（`max1200` 容器，x = 40，置中）| `20`（`orange/orange150`）| `100`（`orange/orange150`）|
 
-> 內容寬度 = 畫板寬度 − 左右留白 ×2（行動裝置與平板）。DESK 改為**最大寬度 1200px 置中**，兩側留白隨視窗放大，最小 `40px`。
+> 內容寬度 = 畫板寬度 − 左右留白 ×2（行動裝置與平板）。DESK 改為 **`max1200` 容器固定寬度 `1200px` 置中**，x = 40（兩側各 40px 留白）。
 >
 > ⚠️ iOS／Android 的 `StatusBar`（及 `iOS Home Indicator`／`Android Bottom Button`）為 **`6 Header & Footer` 頁面元件的 instance，重建時務必連結**，勿建立空白條——精確 SVG 見 [header-footer.md](header-footer.md)。
 
@@ -49,8 +49,8 @@ Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **7 Device Layout**（`179:186
 | TB | VERTICAL | FIXED `768` | **HUG** |
 | DESK | VERTICAL | FIXED `1280` | **HUG** |
 
-- **MB／TB／DESK（網頁）：** 畫板為 **VERTICAL auto-layout**、`primaryAxisSizingMode = AUTO`（**高度 HUG**）、`counterAxisSizingMode = FIXED`（寬度固定）。子項由上而下堆疊：`WebHeader` → 內容 `body` → `WebFooter`，各段之間為垂直間距（頁首→內容 `xl`＝20；內容→頁尾 MB／TB `4xl`＝40、DESK `100`）。**畫板高度＝各子項＋間距之總和**（如 MB `83+20+446+40+594 = 1183`），會隨內容自動長高。
-- **iOS／Android（原生）：** 畫板為 VERTICAL auto-layout，但**高度固定**（`primaryAxisSizingMode = FIXED` ＝裝置螢幕 `812`／`800`）、寬度固定；`StatusBar`（頂）＋ `body`（中，填滿剩餘）＋ 原生底部元件（底）。
+- **MB／TB／DESK（網頁）：** 畫板為 **VERTICAL auto-layout**、`primaryAxisSizingMode = AUTO`（**高度 HUG**）、`counterAxisSizingMode = FIXED`（寬度固定）。子項由上而下依序堆疊（**itemSpacing = 0**，間距由 DesignMark 子項本身佔位）：`WebHeader`（`mb=false`）→ `DesignMark`（頁首→內容，`orange/orange150`）→ `body` → `DesignMark`（內容→頁尾，`orange/orange150`）→ `WebFooter`。**畫板高度＝各子項總和**（MB `63+20+446+40+594 = 1163`；TB `80+20+446+40+287 = 873`）。
+- **iOS／Android（原生）：** 畫板為 VERTICAL auto-layout，**高度固定**（`primaryAxisSizingMode = FIXED`，iOS `812` / Android `800`）、寬度固定。子項由上而下：`StatusBar`（頂）→ `DesignMark`（iOS `20px` / Android `60px`，`orange/orange150`）→ `body`（中）→ 原生底部元件（底）。body Y 座標：iOS `64`（44＋20）；Android `84`（24＋60）。
 - **`WebHeader` / `WebFooter` instance：** 本身為 VERTICAL auto-layout、**高度 HUG**，隨內容長高——重建時保持 HUG，勿鎖死高度。
 - **`body`：** HORIZONTAL auto-layout（左 gutter｜`container`｜右 gutter），**寬度 FILL**；內含安全內容區 `container`（兩軸 FILL）。此為量測骨架，`body`／`container` 高度在骨架中為固定佔位值。
 
@@ -90,39 +90,55 @@ Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **7 Device Layout**（`179:186
 ## 各裝置細節 Per-Device Detail
 
 ### iOS（`179:267`，`375 × 812`）
-- 畫板：VERTICAL auto-layout，**高度固定 `812`**（裝置螢幕）、寬度固定 `375`（原生裝置尺寸，非 HUG）。
-- **頂部 `StatusBar`＝連結（instance）`6 Header & Footer` 頁面的 `StatusBar` 元件之 `StatusBar=iOS` 變體（`148:9211`），`375 × 44`。** ⚠️ **務必連結此元件、勿留空**——其精確幾何（時間＋系統圖標）已內嵌於 [header-footer.md](header-footer.md) §StatusBar SVG。
-- 底部 `iOS Home Indicator`（`148:9195`）`375 × 34`：**連結（instance）`6 Header & Footer` 元件**，指示條填色綁**本地** `gray/gray1000`；SVG 見 [header-footer.md](header-footer.md)。⚠️ 務必連結、勿留空。
-- `StatusBar` 顏色為 OS 模擬色（literal，不綁定）；`iOS Home Indicator` 綁定本地 `gray/gray1000`。
-- 安全內容區 `container`：`x = 20`、寬 `335`（左右各 `xl` 留白）。
+- 畫板：VERTICAL auto-layout，**高度固定 `812`**、寬度固定 `375`，itemSpacing = 0。
+- 子項堆疊順序（上→下）：
+  1. `StatusBar`（instance `148:9211`，`375 × 44`，Y = 0）⚠️ 務必連結元件、勿留空
+  2. `DesignMark`（`375 × 20`，Y = 44，填色 `orange/orange150`）— 瀏覽器列間距標記
+  3. `body`（`375 × 714`，**Y = 64**）— 安全內容區；`container` 寬 `335`，左右各 `xl`（20px）
+  4. `iOS Home Indicator`（instance `148:9195`，`375 × 34`，Y = 778）⚠️ 務必連結、填色綁 `gray/gray1000`
+- `StatusBar` 顏色為 OS literal（不綁定）；`iOS Home Indicator` 綁本地 `gray/gray1000`。
+- **body Y = 64 = StatusBar（44）＋ DesignMark（20）**；body 高 = 812 − 44 − 20 − 34 = **714**。
 
 ### Android（`179:266`，`360 × 800`）
-- 畫板：VERTICAL auto-layout，**高度固定 `800`**（裝置螢幕）、寬度固定 `360`（原生裝置尺寸，非 HUG）。
-- **頂部 `StatusBar`＝連結（instance）`6 Header & Footer` 頁面的 `StatusBar` 元件之 `StatusBar=Android` 變體（`148:9210`），`360 × 24`。** ⚠️ **務必連結、勿留空**——精確 SVG 見 [header-footer.md](header-footer.md) §StatusBar SVG。
-- 底部 `Android Bottom Button`（`148:9227`）`360 × 48`，亦為 `6 Header & Footer` 元件 instance（白底 `gray/gray0`、頂線 `gray/gray150`、圖標 `gray/gray800`；SVG 見 [header-footer.md](header-footer.md)）。
-- `StatusBar` 顏色為 OS 模擬色（不綁定）；`Android Bottom Button` 綁定本地灰階變數。
-- 安全內容區 `container`：`x = 20`、寬 `320`（左右各 `xl` 留白）。
+- 畫板：VERTICAL auto-layout，**高度固定 `800`**、寬度固定 `360`，itemSpacing = 0。
+- 子項堆疊順序（上→下）：
+  1. `StatusBar`（instance `148:9210`，`360 × 24`，Y = 0）⚠️ 務必連結元件、勿留空
+  2. `DesignMark`（`360 × 60`，Y = 24，填色 `orange/orange150`）— 瀏覽器列間距標記
+  3. `body`（`360 × 668`，**Y = 84**）— 安全內容區；`container` 寬 `320`，左右各 `xl`（20px）
+  4. `Android Bottom Button`（instance `148:9227`，`360 × 48`，Y = 752）⚠️ 務必連結；填色綁 `gray/gray0`，頂線 `gray/gray150`，圖標 `gray/gray800`
+- `StatusBar` 顏色為 OS literal（不綁定）；`Android Bottom Button` 綁本地灰階變數。
+- **body Y = 84 = StatusBar（24）＋ DesignMark（60）**；body 高 = 800 − 24 − 60 − 48 = **668**。
 
 ### MB（手機網頁 375，`272:905`）
-- 畫板：**VERTICAL auto-layout，高度 HUG（隨內容長高），寬度固定 `375`**；高度＝`83+20+446+40+594 = 1183`。
-- `WebHeader`（含瀏覽器列）高 `83`（instance，高度 HUG）。
-- 頁首下方 `xl`（20）間距 → 內容區。
-- `container`：寬 `335`，左右各 `xl` 留白。
-- 內容下方 `4xl`（40）間距 → `WebFooter`。
+- 畫板：**VERTICAL auto-layout，高度 HUG，寬度固定 `375`**，itemSpacing = 0；高度＝`63+20+446+40+594 = 1163`。
+- 子項堆疊順序（上→下）：
+  1. `WebHeader`（instance，`mb=false`，**高 `63`**，高度 HUG）
+  2. `DesignMark`（`375 × 20`，填色 `orange/orange150`）— 頁首→內容間距
+  3. `body`（`375 × 446`）— `container` 寬 `335`，左右各 `xl`（20px）
+  4. `DesignMark`（`375 × 40`，填色 `orange/orange150`）— 內容→頁尾間距
+  5. `WebFooter`（instance，高度 HUG）
+- ⚠️ `WebHeader` 的 `mb` 屬性必須為 `false`（預設值）——設為 `true` 會多出 20px 底部間距，使版面間距顯示為 0px。
 
 ### TB（平板 768，`272:1810`）
-- 畫板：**VERTICAL auto-layout，高度 HUG，寬度固定 `768`**；高度＝`100+20+446+40+287 = 893`。
-- `WebHeader` 高 `100`（instance，高度 HUG）。
-- 頁首下方 `xl`（20）間距 → 內容區。
-- `container`：寬 `728`，左右各 `xl` 留白。
-- 內容下方 `4xl`（40）間距 → `WebFooter`。
+- 畫板：**VERTICAL auto-layout，高度 HUG，寬度固定 `768`**，itemSpacing = 0；高度＝`80+20+446+40+287 = 873`。
+- 子項堆疊順序（上→下）：
+  1. `WebHeader`（instance，`mb=false`，**高 `80`**，高度 HUG）
+  2. `DesignMark`（`768 × 20`，填色 `orange/orange150`）— 頁首→內容間距
+  3. `body`（`768 × 446`）— `container` 寬 `728`，左右各 `xl`（20px）
+  4. `DesignMark`（`768 × 40`，填色 `orange/orange150`）— 內容→頁尾間距
+  5. `WebFooter`（instance，高度 HUG）
+- ⚠️ `WebHeader` 的 `mb` 屬性必須為 `false`（預設值），原因同 MB。
 
 ### DESK（桌機 1280，`272:2101`）
-- 畫板：**VERTICAL auto-layout，高度 HUG，寬度固定 `1280`**；高度＝`68+566+205 = 839`（`max1200` 容器已含頁首→內容 `20` 與內容→頁尾 `100` 標記）。
-- `WebHeader` 高 `68`（instance，高度 HUG）。
-- 內容以 `max1200` 容器置中：**最大寬度 `1200px`**，兩側最小留白 `4xl`（40）。
-- 頁首下方 `xl`（20）間距 → 內容區。
-- 內容下方 `100px` 大間距 → `WebFooter`。
+- 畫板：**VERTICAL auto-layout，高度 HUG，寬度固定 `1280`**，itemSpacing = 0。
+- 子項堆疊順序（上→下）：
+  1. `WebHeader`（instance，`mb=false`，**高 `68`**，高度 HUG）
+  2. `DesignMark`（`1280 × 20`，填色 `orange/orange150`）— 頁首→內容間距
+  3. `max1200`（`1200 × body_h`，x = 40）— 內容以最大寬度 `1200px` 置中，兩側最小留白 `4xl`（40px）
+  4. `DesignMark`（`1280 × 100`，填色 `orange/orange150`）— 內容→頁尾間距
+  5. `WebFooter`（instance，高度 HUG）
+- ⚠️ `WebHeader` 的 `mb` 屬性必須為 `false`（預設值）。
+- 內容→頁尾間距 `100px` 無對應 Spacing Token（刻度最大 `4xl`＝40），直接以固定 `100` 建立 DesignMark。
 
 ---
 
@@ -132,6 +148,7 @@ Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **7 Device Layout**（`179:186
 - **量測標記配色：** 垂直留白／間距標記使用 `orange/orange400`；DESK 內容最大寬度（1200px）水平標記使用 `blue/blue500`；裝置畫板背景為 `gray/gray100`。
 - **間距未變數綁定：** 留白／間距標註框為固定尺寸的量測參考，**未**綁定 `Spacing` 變數；僅響應式網頁畫板寬度（375／768／1280）綁定至 `Device/Breakpoint`。重建產品 UI（非本骨架）時，仍應以本地 `Spacing` Token 綁定實際留白。
 - **留白統一為 `xl`（20）：** iOS、Android、MB、TB 四種裝置左右留白一致為 `20px`（`Spacing/xl`）。桌機改為 `1200px` 置中、最小留白 `40px`（`Spacing/4xl`）。
-- **垂直節奏：** 頁首→內容固定 `xl`（20）；內容→頁尾在 MB／TB 為 `4xl`（40），DESK 為 `100px`（無對應 Token，見上）。
+- **垂直節奏：** 頁首→內容固定 `xl`（20，`orange/orange150` DesignMark）；內容→頁尾在 MB／TB 為 `4xl`（40，`orange/orange150`），DESK 為 `100px`（`orange/orange150`，無對應 Token）。iOS 與 Android 的 StatusBar 後同樣各有一個 DesignMark（iOS `20px`、Android `60px`，`orange/orange150`），body Y 座標分別為 `64` 與 `84`。
+- **`WebHeader` 必須使用 `mb=false`（預設值）：** 版面骨架中的 `WebHeader` instance 不應顯示底部間距——底部 20px 間距改由緊接在後的 `DesignMark` 呈現（`orange/orange150`）。若 `mb=true`，WebHeader 本身多出 20px，而 DesignMark 又疊加 20px，導致頁首→內容實際視覺距離變成 40px。
 - **原生頭尾為 instance（務必連結，勿留空）：** iOS／Android 的 `StatusBar`（iOS＝`148:9211`／Android＝`148:9210`，來自 `6 Header & Footer` 元件 `148:9212`）、`iOS Home Indicator`（`148:9195`）、`Android Bottom Button`（`148:9227`）皆為該頁元件的 **instance**——重建時務必**連結**這些元件，其精確 SVG 已內嵌於 [header-footer.md](header-footer.md)；**切勿建立空白佔位條**（先前 rebuild 的 StatusBar 出現空白即因未連結此元件）。綁定：`StatusBar` 為 OS 模擬色 literal（不綁定）；`iOS Home Indicator` 綁 `gray/gray1000`；`Android Bottom Button` 綁 `gray/gray0`／`gray/gray150`／`gray/gray800`。
 - **頁首／頁尾為 instance：** 各網頁裝置的 `WebHeader` / `WebFooter` 皆為 [header-footer.md](header-footer.md) 元件的 instance，版面模板僅引用、不改動其內部。

@@ -92,9 +92,10 @@ Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **6 Header & Footer**（`148:4
 
 ### 元件屬性 Properties
 
-| Property | Type | Options |
-|---|---|---|
-| `Device` | Variant | `DESK` / `TB` / `MB` |
+| Property | Type | Default | Options / 說明 |
+|---|---|---|---|
+| `Device` | Variant | `DESK` | `DESK` / `TB` / `MB` |
+| `mb` | Boolean | `false` | 控制 `bottom-spacer` 顯示隱藏。`false` = 隱藏（預設）；`true` = 顯示 20px 底部間距。套用至版面頁時依頁面需求切換。|
 
 共同設定：
 
@@ -107,7 +108,7 @@ Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **6 Header & Footer**（`148:4
 - 無瀏覽器列。
 - `nav-content`：max-width `1200px`，height `68px`，上下 padding `lg`（16px），完整 logo 靠左。
 - 容器底部 1px 分隔線。
-- 下方 `bottom-spacer` 空白間距 `30px`。
+- 下方 `bottom-spacer` 空白間距 `20px`（`mb` 屬性為 `true` 時顯示）。
 
 ### TB（平板 768px，`191:440`）
 
