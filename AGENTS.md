@@ -13,3 +13,16 @@ Whenever the user asks you to build or update a spec doc in `public/doc/*.md` fr
 3. **Report improvement suggestions** after scanning: list mis-bound values (foreign collection, legacy duplicate, raw literal), values with no matching local token, and any binding inconsistencies. Offer to fix them.
 4. **Document binding state** in the `.md` under an "實作備註 Implementation Notes" section so downstream agents rebuild with variables, not hard-coded values.
 5. After registering a new doc, add it to the appropriate array in `app/guide/page.tsx` (`baseFiles` or `componentFiles`).
+
+# Figma Plugin API — SVG import verification
+
+`createNodeFromSvg(svgStr)` silently drops paths it cannot parse (complex compound paths, unsupported commands) — no error is thrown. Always check the child count immediately after import, before moving children into a Component:
+
+```js
+const svgFrame = await figma.createNodeFromSvgAsync(svgStr);
+if (svgFrame.children.length !== expectedCount) {
+  throw new Error(`SVG incomplete: got ${svgFrame.children.length}, expected ${expectedCount}`);
+}
+```
+
+Each component's spec doc lists its expected child counts. Do not proceed to `createComponent()` if the count is wrong.

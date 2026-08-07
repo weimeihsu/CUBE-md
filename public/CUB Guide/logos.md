@@ -51,6 +51,29 @@ Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **4 Logos**（node `448:273`�
 
 ---
 
+> ### ⚠️ 匯入前必讀 — SVG 黑色文字路徑常被靜默丟棄
+>
+> 商標 SVG 包含一條**極長的黑色複合路徑**（`fill="black"`），內含「國泰世華銀行 Cathay United Bank」及「cube」字標的所有字元向量。`createNodeFromSvg` 在遇到複雜複合路徑時會**靜默略過**，不拋出錯誤——結果只剩綠色樹形，完全沒有文字。
+>
+> **匯入後立即驗證子節點數，不符合則停止，不要繼續建立 Component：**
+>
+> | 資產 | 預期子節點數 | 說明 |
+> |---|---|---|
+> | 完整版 Full logo（324×34）| **10** | 4 綠樹路徑 ＋ 1 黑色字標路徑 ＋ 1 分隔線 ＋ 3 CUBE 漸層路徑 ＋ 1 黑色 cube 字標路徑 |
+> | 精簡版 Simplified（188×34）| **5** | 4 綠樹路徑 ＋ 1 黑色字標路徑（國泰世華 ＋ Cathay United Bank） |
+> | 每個 social-media 圖示 | **1** | 單一圓形複合路徑 |
+>
+> ```js
+> const svgFrame = await figma.createNodeFromSvgAsync(svgStr);
+> if (svgFrame.children.length !== expectedCount) {
+>   throw new Error(`SVG import incomplete: got ${svgFrame.children.length}, expected ${expectedCount}. Black text path was dropped.`);
+> }
+> // Optional: visual confirmation
+> await svgFrame.screenshot();
+> ```
+
+---
+
 ## 4. 內嵌 SVG 資產（精確幾何，可直接匯入）
 
 ### 商標 完整版 Full logo（324 × 34）— 桌機／平板頁首
