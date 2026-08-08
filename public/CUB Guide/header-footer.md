@@ -138,6 +138,8 @@ Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **6 Header & Footer**（`148:4
 |---|---|---|
 | `Device` | Variant | `DESK` / `TB` / `MB` |
 
+> ⚠️ **絕對不要攤平（flatten）層級結構。** DESK／TB 的子項目必須放入 `1200-container` 包裹框內，MB 的子項目必須放入 `main-content` 包裹框內——直接掛在 `footer-body` 下層是錯誤的。若跳過包裹框，置中對齊、最大寬度限制與間距均無法正確呈現。**每層包裹框都是必要的，請一層一層建立。**
+
 共同設定：兩段式結構——
 
 1. **footer 上段**：白底，上緣 1px `gray/gray150`。含 logo、關係企業選單、社群圖標。

@@ -130,15 +130,20 @@ to re-run.
 
 ### Always set auto-layout sizing modes AFTER `resize()`
 
-`resize(w, h)` sets **both** axes to `FIXED`, silently overwriting any `primaryAxisSizingMode` / `counterAxisSizingMode` set earlier. Set sizing modes after the resize call:
+`resize(w, h)` sets **both** axes to `FIXED`, silently overwriting any `primaryAxisSizingMode` / `counterAxisSizingMode` set earlier. **Symptom: components end up stuck at the height passed to `resize()` (often `10px`) instead of hugging their content.** Always set sizing modes after the resize call:
 
 ```js
+// ❌ WRONG — primaryAxisSizingMode is silently lost when resize() runs
+comp.primaryAxisSizingMode = 'AUTO';
+comp.resize(296, 10);   // ← resets BOTH axes to FIXED; AUTO is gone
+
+// ✅ CORRECT — set sizing modes after resize()
 comp.resize(296, 10);
-comp.primaryAxisSizingMode = 'AUTO';   // height auto  (VERTICAL layout)
+comp.primaryAxisSizingMode = 'AUTO';   // height hugs content (VERTICAL layout)
 comp.counterAxisSizingMode = 'FIXED';  // width stays 296
 ```
 
-The same applies to `counterAxisSizingMode = 'AUTO'` on HORIZONTAL layouts (auto height). Setting it before `resize()` is silently lost.
+The same applies to `counterAxisSizingMode = 'AUTO'` on HORIZONTAL layouts. Setting either mode before `resize()` is silently discarded.
 
 ### Absolute-positioned floating labels
 
