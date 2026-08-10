@@ -8,6 +8,13 @@ description: 網頁 RWD 頁首與頁尾元件（桌機／平板／手機三斷�
 
 # 頁首與頁尾規格 Header & Footer Components Spec
 
+> 🔁 **重建後必做「自我檢查」——不需使用者要求，AI agent 完成本頁 rebuild 後請立即自行比對來源並逐項檢查、修正，再回報完成。** 本頁 rebuild 時特別容易出錯，重點檢查：
+> 1. **頁首填色**：外層元件容器（`Device=*`）與 `bottom-spacer`**不設填色**；白色 `gray/gray0` **僅**在 `header-shell`（導覽列）。勿把整個頁首容器塗白。
+> 2. **MB 頁尾（已 detach）**：`menu-links` 為 3 列 × 2 格 `尾選單選項`（每格 1px `gray/gray150` 邊框）、`legal-links` 為 4 列 × 2 欄；6 個選單＋8 個 legal 文字**照抄來源**（見 §MB）。
+> 3. **原生頭尾為 instance**：`StatusBar`（`148:9211`／`148:9210`）、`iOS Home Indicator`（`148:9195`）、`Android Bottom Button`（`148:9227`）務必**連結** `6 Header & Footer` 元件，**勿留空**、勿用已作廢的 `#02293D`／label「按鈕」。
+> 4. **商標 SVG 匯入**：若引用 [logos.md](logos.md)，`createNodeFromSvg` 後檢查 child count（完整版 10、精簡版 5），確認黑色字標未被丟棄。
+> 5. **綁定**：色彩／文字／間距綁本地變數；綠色橫幅用本地漸層樣式 `Cathay-Green`。
+
 > **前置作業 Prerequisites**
 > 請先完成以下匯入，再依本文件建立頁首／頁尾元件庫：
 > 1. 基礎設定 Base Settings

@@ -74,6 +74,22 @@ the next.
 - **Variant Specs** — describes every property combination that must exist; the matrix (e.g. 4 States × 3 Text configs = 12 variants) is the source of truth.
 - **實作備註 Implementation Notes** — records binding decisions and known edge cases; read this section before writing any plugin script.
 
+## 重建策略：複雜結構可分兩階段 Two-pass rebuild for complex structures
+
+複雜元件（如 `header-footer.md` 的頁尾格線、`device-layout.md` 的五種畫板、`icons.md`／
+`logos.md` 的大量 SVG）在單一回合內，agent 常因複雜度**壓縮或略過子節點**。這是可以接受
+的——請採**兩階段**，不要為了塞進一回合而永久省略細節：
+
+1. **第一階段（骨架草稿）：** 先建立**正確的容器結構、auto-layout 方向、尺寸模式（HUG／
+   FIXED／FILL）與變數綁定**。重複或複雜的子節點（多個選單格、每個 icon／SVG 路徑、逐一
+   文字）可先以佔位或最小數量帶過——**但結構與尺寸模式必須正確，不可簡化。**
+2. **第二階段（補齊＋自我檢查）：** 回頭把第一階段略過／壓縮的子節點**全部補齊**，並逐項
+   比對規格文件（文字內容、child count、邊框、綁定、HUG／FIXED 尺寸），修正差異後才算完成。
+
+> ⚠️ 不要因為「第一階段已能看出大致外觀」就當作完成——**第二階段補齊細節是必要步驟**，
+> 尤其是被壓縮的重複子節點與內嵌 SVG。凡標有 🔁 的文件（如 `header-footer.md`、
+> `device-layout.md`）務必執行第二階段的自我檢查清單。
+
 ## Page layout convention (every rebuilt page)
 
 Wrap each page's content in **one top-level auto-layout FRAME** so all rebuilt pages
@@ -127,6 +143,14 @@ logos), the SVG importer can truncate it without throwing an error. **Always ver
 resulting frame's `children.length` and call `await frame.screenshot()` before moving
 children to a Component.** If the count is wrong, retry — the import is atomic and safe
 to re-run.
+
+### No overlapping variants inside a component set
+
+Every variant in a component set must be **spaced apart — never stacked on top of one
+another**. After `combineAsVariants`, variants that share the same position overlap;
+they still work as instances, but the library looks broken. Lay them out with spacing —
+e.g. give the set an auto-layout (`HORIZONTAL`/`GRID`) with `itemSpacing`, or set explicit
+non-overlapping `x`/`y` before combining.
 
 ### Always set auto-layout sizing modes AFTER `resize()`
 

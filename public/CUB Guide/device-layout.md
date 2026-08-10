@@ -8,6 +8,12 @@ description: 五種裝置的基礎版面／網格模板（iOS、Android、手機
 
 # 裝置版面規格 Device Layout Spec
 
+> 🔁 **重建後必做「自我檢查」——不需使用者要求，AI agent 完成本頁 rebuild 後請立即自行比對來源並逐項檢查、修正，再回報完成。** 本頁 rebuild 時特別容易出錯，重點檢查：
+> 1. **畫板尺寸**：MB／TB／DESK 為 VERTICAL auto-layout、**高度 HUG**（隨內容）、寬度固定——**勿設固定高度**；iOS／Android 為固定螢幕高度（`812`／`800`）。
+> 2. **原生頭尾為 instance**：iOS／Android 的 `StatusBar`（`148:9211`／`148:9210`）、`iOS Home Indicator`（`148:9195`）、`Android Bottom Button`（`148:9227`）務必**連結** `6 Header & Footer` 元件，**勿留空白條**。
+> 3. **WebHeader／WebFooter**：連結對應 `Device=*` 變體，高度保持 HUG。
+> 4. **量測輔助**：`DesignMark`／`measurement` 為參考骨架，不輸出至產品 UI；輔助色綁本地變數。
+
 > **前置作業 Prerequisites**
 > 請先完成以下匯入，再依本文件建立版面模板：
 > 1. 基礎設定 Base Settings
