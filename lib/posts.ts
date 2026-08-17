@@ -22,7 +22,8 @@ function parseFrontmatter(content: string): Record<string, string> | null {
 }
 
 export function getPosts(): Post[] {
-  const dir = path.join(process.cwd(), "public/doc")
+  const dir = path.join(process.cwd(), "public/CUB Guide")
+  if (!fs.existsSync(dir)) return []
   const files = fs.readdirSync(dir).filter((f) => f.endsWith(".md"))
 
   return files
