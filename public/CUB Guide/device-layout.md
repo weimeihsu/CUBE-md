@@ -13,6 +13,8 @@ description: 五種裝置的基礎版面／網格模板（iOS、Android、手機
 > 2. **原生頭尾為 instance**：iOS／Android 的 `StatusBar`（`148:9211`／`148:9210`）、`iOS Home Indicator`（`148:9195`）、`Android Bottom Button`（`148:9227`）務必**連結** `6 Header & Footer` 元件，**勿留空白條**。
 > 3. **WebHeader／WebFooter**：連結對應 `Device=*` 變體，高度保持 HUG。
 > 4. **量測輔助**：`DesignMark`／`measurement` 為參考骨架，不輸出至產品 UI；輔助色綁本地變數。
+>
+> 📷 **參考截圖**（同資料夾）：`DeviceLayout/{iOS,Android,MB,TB,DESK}.jpg`。重建後請逐一裝置截圖比對結構與完整度；**但數值、變數、尺寸模式（HUG／FIXED）一律以本文件為準——勿從圖片讀取數值或文字**（圖片僅供對照外觀）。
 
 > **前置作業 Prerequisites**
 > 請先完成以下匯入，再依本文件建立版面模板：

@@ -14,6 +14,8 @@ description: 網頁 RWD 頁首與頁尾元件（桌機／平板／手機三斷�
 > 3. **原生頭尾為 instance**：`StatusBar`（`148:9211`／`148:9210`）、`iOS Home Indicator`（`148:9195`）、`Android Bottom Button`（`148:9227`）務必**連結** `6 Header & Footer` 元件，**勿留空**、勿用已作廢的 `#02293D`／label「按鈕」。
 > 4. **商標 SVG 匯入**：若引用 [logos.md](logos.md)，`createNodeFromSvg` 後檢查 child count（完整版 10、精簡版 5），確認黑色字標未被丟棄。
 > 5. **綁定**：色彩／文字／間距綁本地變數；綠色橫幅用本地漸層樣式 `Cathay-Green`。
+>
+> 📷 **參考截圖**（同資料夾）：`HeaderFooter/header/Device={DESK,TB,MB}.jpg`、`HeaderFooter/footer/Device={DESK,TB,MB}.jpg`。重建後請逐一斷點截圖比對結構與完整度；**但所有數值、變數名稱、綁定與尺寸模式一律以本文件為準——勿從圖片讀取數值或文字**（圖片僅供對照外觀）。
 
 > **前置作業 Prerequisites**
 > 請先完成以下匯入，再依本文件建立頁首／頁尾元件庫：
