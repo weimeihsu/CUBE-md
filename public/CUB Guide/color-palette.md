@@ -134,8 +134,11 @@ Weight steps per set: `100, 150, 200, 300, 400, 500, 600, 700, 800, 900, 1000`
    `<group>/<group><weight> | #HEX` (e.g. `blue/blue100 | #E9F6FE`) and set its
    value to the hex. The suffix doubles as a human-readable label in the panel.
 3. The `group/` prefix makes Figma group them as `blue ▸ blue100 …` in the panel.
-4. Scope: backgrounds/fills (`FRAME_FILL`, `SHAPE_FILL`) plus `TEXT_FILL` is fine
-   for a primitive palette.
+4. **Scope (required):** every Primitive color variable's `scopes` **must include
+   `FRAME_FILL`, `SHAPE_FILL`, `TEXT_FILL`, and `STROKE_COLOR`** — colors are used as
+   fills *and* as border/stroke colors (e.g. input borders, checkbox strokes, icon
+   strokes), so `STROKE_COLOR` must be present or they won't appear in the stroke-color
+   picker.
 
 ---
 
@@ -183,6 +186,7 @@ Building the grid in §4 reuses tokens from the other systems — create those f
   "collection": "Primitive",
   "type": "COLOR",
   "naming": "<group>/<group><weight> | #HEX",
+  "scopes": ["FRAME_FILL", "SHAPE_FILL", "TEXT_FILL", "STROKE_COLOR"],
   "groupOrder": ["blue", "green", "purple", "red", "orange", "gray"],
   "tokens": {
     "blue": {"100":"#E9F6FE","150":"#CAECFF","200":"#AAE1FF","300":"#67C7FB","400":"#35ADED","500":"#1890D2","600":"#0C76B0","700":"#076193","800":"#044D75","900":"#033A59","1000":"#02293D"},

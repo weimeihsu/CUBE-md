@@ -3,16 +3,16 @@ title: 商標 Logos
 section: 元件
 href: /components/logos
 date: 2026-08-03
-description: 品牌向量資產——國泰世華 CUBE 商標（完整版 324×34／精簡版 188×34）＋ social-media 品牌圖示集（fb／youtube／linkedin／line，40×40）。以精確內嵌 SVG 重建；品牌色刻意不綁定灰階變數。自 header-footer.md 與 icons.md 拆分，以縮小單次重建 token。
+description: 品牌向量資產——國泰世華 CUBE 商標（完整版 324×34／精簡版 188×34）＋ social-media 品牌圖示集（fb／youtube／linkedin／line，40×40）。以精確內嵌 SVG 重建；品牌色刻意不綁定灰階變數。（已退出重建工作流，僅作參考存檔）。
 ---
 
 # 商標與品牌圖示 Logos & Brand Icons
 
+> 🚫 **本文件已退出重建工作流（不重建）。** 商標 SVG 過於複雜、難以每次穩定重建，故排除；`6 Device Layout` 的頁首／頁尾改以 **`gray/gray150` 方塊**作為商標位置佔位。`4 Logos` 頁面仍存在於來源檔，但**不列入安裝步驟**。本檔僅作參考存檔。
+
 Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **4 Logos**（node `448:273`）。
 
-本檔集中管理**品牌向量資產**，自 [header-footer.md](header-footer.md)（商標）與 [icons.md](icons.md)（`social-media`）拆分而來——因這些 SVG 較大、內嵌於元件文件會拖慢重建，獨立成檔可讓每次重建落在單一 section 的 token 額度內。
-
-> ⚠️ **安裝順序：** 頁首／頁尾（[header-footer.md](header-footer.md)）使用商標與 `social-media`；裝置版面（[device-layout.md](device-layout.md)）透過頁首／頁尾間接依賴。**請在 `header-footer.md` 之前安裝本檔。**
+本檔集中管理**品牌向量資產**，自 原頁首／頁尾文件（已移除，內容併入 device-layout.md）（商標）與 [icons.md](icons.md)（`social-media`）拆分而來——因這些 SVG 較大、內嵌於元件文件會拖慢重建，獨立成檔可讓每次重建落在單一 section 的 token 額度內。
 
 > 🎨 **品牌色 — 勿綁定變數。** 與工具圖示相反（工具圖示須綁 `gray/gray900`），此處為品牌資產，**原樣匯入 SVG、保留其 hex 即可，切勿綁定或替換為 CUBE 灰階變數、勿改色**。
 
@@ -123,10 +123,9 @@ Source: Figma file `kkyAx6QTTNF6ZyB9rSeN6W`, page **4 Logos**（node `448:273`�
 ## 5. 實作備註 Implementation Notes
 
 - **`logo` 為單一 Component，以 boolean prop 區分完整版／精簡版：** `CUBE logo`（default `true`）控制 `divider` 與 `CUBE logo` 群組的 visibility。**勿**將精簡版另建為獨立 Component 或獨立 variant——應重建 boolean prop 並連結子節點（見 §3）。
-- **拆分來源：** 商標原內嵌於 [header-footer.md](header-footer.md)、`social-media` 原為 [icons.md](icons.md) 第 8 組（曾綁 `gray/gray400`）；兩者現移至本檔與 Figma **4 Logos** 頁面（`448:273`），以縮小單次重建 token。`icons.md` 現僅存 7 組工具圖示（45 變體，全綁 `gray/gray900`）。
+- **拆分來源：** 商標原內嵌於 原頁首／頁尾文件（已移除，內容併入 device-layout.md）、`social-media` 原為 [icons.md](icons.md) 第 8 組（曾綁 `gray/gray400`）；兩者現移至本檔與 Figma **4 Logos** 頁面（`448:273`），以縮小單次重建 token。`icons.md` 現僅存 7 組工具圖示（45 變體，全綁 `gray/gray900`）。
 - **品牌色不綁變數：** 所有資產保留品牌 hex，**勿綁定** CUBE 灰階變數（與工具圖示相反）。
 - **商標結構：** 含 5 個線性漸層（綠色樹 ×2、CUBE 立體標金屬灰 ×3）＋ 黑色字標路徑；精簡版為完整版左側 `Cathay logo` 區塊。
-- **安裝順序：** 本檔須在 `header-footer.md` 之前安裝，否則頁首／頁尾與其社群圖示、以及裝置版面會缺少依賴。
 - **SVG import verification (critical):** After `figma.createNodeFromSvg(svgStr)`, always
   check the child count **before** moving children to a Component. Expected counts:
   - Full logo (324×34): **10 children** (4 green tree paths + 1 black text path + 1 divider
